@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <swiper :slides-per-view="8" class="cat-slider">
+  <div class="container position-relative category">
+    <swiper v-bind="swiperOptions" class="cat-slider">
       <swiper-slide
         v-for="(category, index) in categories"
         :key="index"
@@ -19,11 +19,30 @@
         </a>
       </swiper-slide>
     </swiper>
+    <button
+      class="slick-prev slick-arrow"
+      aria-label="Previous"
+      type="button"
+      style=""
+    >
+      Previous
+    </button>
+    <button
+      class="slick-next slick-arrow"
+      aria-label="Next"
+      type="button"
+      style=""
+    >
+      Next
+    </button>
   </div>
 </template>
 
 <script>
+import { AUTOPLAY_TIME } from "@/constants";
 import { Swiper, SwiperSlide } from "swiper/vue";
+import SwiperCore, { Navigation, Autoplay } from "swiper";
+SwiperCore.use([Navigation, Autoplay]);
 
 export default {
   components: {
@@ -34,22 +53,48 @@ export default {
   setup() {
     const categories = [
       { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
       { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
       { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
       { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
       { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
       { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
       { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
     ];
 
-    return { categories };
+    const swiperOptions = {
+      slidesPerView: 8,
+      spaceBetween: 0,
+      autoplay: {
+        delay: AUTOPLAY_TIME,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 8,
+        },
+        480: {
+          slidesPerView: 4,
+        },
+        320: {
+          slidesPerView: 4,
+        },
+      },
+      navigation: {
+        prevEl: ".category .slick-prev",
+        nextEl: ".category .slick-next",
+      },
+    };
+
+    return {
+      categories,
+      swiperOptions,
+    };
   },
 };
 </script>

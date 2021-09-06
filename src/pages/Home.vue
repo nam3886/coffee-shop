@@ -2,12 +2,9 @@
   <div class="osahan-home-page">
     <category />
     <offer-product />
-
-    <div class="container">
-      <week-trending-product />
-      <most-popular-product />
-      <most-sale-product />
-    </div>
+    <week-trending-product />
+    <most-popular-product />
+    <most-sale-product />
   </div>
 </template>
 
