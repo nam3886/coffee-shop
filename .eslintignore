@@ -1,0 +1,4 @@
+# Ignore template files
+template/*
+src/assets/vendor/*
+src/assets/js/*
