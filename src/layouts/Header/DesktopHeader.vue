@@ -179,11 +179,15 @@
                 </div>
               </a>
               <!-- signin -->
-              <a href="login.html" class="widget-header mr-4 text-dark m-none">
+              <router-link
+                :to="{ name: 'Login' }"
+                class="widget-header mr-4 text-dark m-none"
+              >
+                <!-- đây là thẻ thay thế thẻ <a></a> trong cú pháp của vue.js để load trang ko reload  -->
                 <div class="icon d-flex align-items-center">
                   <i class="feather-user h6 mr-2 mb-0"></i> <span>Sign in</span>
                 </div>
-              </a>
+              </router-link>
               <!-- my account -->
               <div class="dropdown mr-4 m-none">
                 <a

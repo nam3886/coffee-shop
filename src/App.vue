@@ -2,6 +2,7 @@
   <layout-desktop-header />
   <layout-mobile-header />
   <router-view />
+  <!-- là phần body , nội dung sẽ thay đổi , header và footer là cố định, đảm nhiệm nội dung của body -->
   <layout-mobile-footer />
   <layout-desktop-footer />
   <navigation />
@@ -29,3 +30,4 @@ export default {
   },
 };
 </script>
+// todo Ẩn header,footer trang login và register
