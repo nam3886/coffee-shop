@@ -8,10 +8,10 @@
           <div class="form-group">
             <label for="exampleInputEmail1" class="text-dark">Email</label>
             <input
+              id="exampleInputEmail1"
               type="email"
               placeholder="Enter Email"
               class="form-control"
-              id="exampleInputEmail1"
               aria-describedby="emailHelp"
             />
           </div>
@@ -20,10 +20,10 @@
               >Password</label
             >
             <input
+              id="exampleInputPassword1"
               type="password"
               placeholder="Enter Password"
               class="form-control"
-              id="exampleInputPassword1"
             />
           </div>
           <button class="btn btn-primary btn-lg btn-block">SIGN IN</button>

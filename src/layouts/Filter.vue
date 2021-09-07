@@ -1,10 +1,11 @@
 <template>
   <div
+    ref="modalFilter"
+    :class="{ 'd-block show': show }"
     class="modal fade"
-    id="exampleModal"
     tabindex="-1"
     role="dialog"
-    aria-labelledby="exampleModalLabel"
+    aria-labelledby="modalFilterLabel"
     aria-hidden="true"
   >
     <div class="modal-dialog modal-dialog-centered">
@@ -14,8 +15,8 @@
           <button
             type="button"
             class="close"
-            data-dismiss="modal"
             aria-label="Close"
+            @click="show = false"
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -29,8 +30,8 @@
               </div>
               <div class="custom-control border-bottom px-0 custom-radio">
                 <input
-                  type="radio"
                   id="customRadio1f"
+                  type="radio"
                   name="location"
                   class="custom-control-input"
                   checked
@@ -43,8 +44,8 @@
               </div>
               <div class="custom-control border-bottom px-0 custom-radio">
                 <input
-                  type="radio"
                   id="customRadio2f"
+                  type="radio"
                   name="location"
                   class="custom-control-input"
                 />
@@ -56,8 +57,8 @@
               </div>
               <div class="custom-control border-bottom px-0 custom-radio">
                 <input
-                  type="radio"
                   id="customRadio3f"
+                  type="radio"
                   name="location"
                   class="custom-control-input"
                 />
@@ -69,8 +70,8 @@
               </div>
               <div class="custom-control border-bottom px-0 custom-radio">
                 <input
-                  type="radio"
                   id="customRadio4f"
+                  type="radio"
                   name="location"
                   class="custom-control-input"
                 />
@@ -82,8 +83,8 @@
               </div>
               <div class="custom-control border-bottom px-0 custom-radio">
                 <input
-                  type="radio"
                   id="customRadio5f"
+                  type="radio"
                   name="location"
                   class="custom-control-input"
                 />
@@ -99,9 +100,9 @@
               </div>
               <div class="custom-control border-bottom px-0 custom-checkbox">
                 <input
+                  id="defaultCheck1"
                   type="checkbox"
                   class="custom-control-input"
-                  id="defaultCheck1"
                   checked
                 />
                 <label
@@ -112,9 +113,9 @@
               </div>
               <div class="custom-control border-bottom px-0 custom-checkbox">
                 <input
+                  id="defaultCheck2"
                   type="checkbox"
                   class="custom-control-input"
-                  id="defaultCheck2"
                 />
                 <label
                   class="custom-control-label py-3 w-100 px-3"
@@ -124,9 +125,9 @@
               </div>
               <div class="custom-control border-bottom px-0 custom-checkbox">
                 <input
+                  id="defaultCheck3"
                   type="checkbox"
                   class="custom-control-input"
-                  id="defaultCheck3"
                 />
                 <label
                   class="custom-control-label py-3 w-100 px-3"
@@ -173,7 +174,7 @@
             <button
               type="button"
               class="btn border-top btn-lg btn-block"
-              data-dismiss="modal"
+              @click="show = false"
             >
               Close
             </button>
@@ -190,7 +191,25 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      show: false,
+    };
+  },
+
+  watch: {
+    show(show) {
+      const body = document.querySelector("body");
+      body.classList.toggle("modal-open", show);
+      body.classList.toggle("fixed-bottom-bar", show);
+    },
+  },
+
+  mounted() {
+    this.$EMITTER.on("show-filter", () => (this.show = true));
+  },
+};
 </script>
 
 <style></style>

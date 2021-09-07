@@ -9,10 +9,11 @@
         <a
           class="text-white font-weight-bold ml-auto"
           data-toggle="modal"
-          data-target="#exampleModal"
           href="#"
-          >Filter</a
+          @click.prevent="$EMITTER.emit('show-filter')"
         >
+          Filter
+        </a>
       </div>
     </div>
     <div class="input-group mt-3 rounded shadow-sm overflow-hidden">

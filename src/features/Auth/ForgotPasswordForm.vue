@@ -13,9 +13,9 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Email</label>
             <input
+              id="exampleInputEmail1"
               type="email"
               class="form-control"
-              id="exampleInputEmail1"
               aria-describedby="emailHelp"
             />
           </div>

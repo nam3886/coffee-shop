@@ -12,9 +12,9 @@
           <div class="col-3 d-flex align-items-center m-none">
             <div class="dropdown mr-3">
               <a
+                id="navbarDropdown"
                 class="text-dark dropdown-toggle d-flex align-items-center py-3"
                 href="#"
-                id="navbarDropdown"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
@@ -77,8 +77,8 @@
                     </h6>
                     <div class="custom-control border-bottom px-0 custom-radio">
                       <input
-                        type="radio"
                         id="customRadio1"
+                        type="radio"
                         name="location"
                         class="custom-control-input"
                       />
@@ -90,8 +90,8 @@
                     </div>
                     <div class="custom-control border-bottom px-0 custom-radio">
                       <input
-                        type="radio"
                         id="customRadio2"
+                        type="radio"
                         name="location"
                         class="custom-control-input"
                         checked=""
@@ -104,8 +104,8 @@
                     </div>
                     <div class="custom-control border-bottom px-0 custom-radio">
                       <input
-                        type="radio"
                         id="customRadio3"
+                        type="radio"
                         name="location"
                         class="custom-control-input"
                       />
@@ -117,8 +117,8 @@
                     </div>
                     <div class="custom-control border-bottom px-0 custom-radio">
                       <input
-                        type="radio"
                         id="customRadio4"
+                        type="radio"
                         name="location"
                         class="custom-control-input"
                       />
@@ -130,8 +130,8 @@
                     </div>
                     <div class="custom-control border-bottom px-0 custom-radio">
                       <input
-                        type="radio"
                         id="customRadio5"
+                        type="radio"
                         name="location"
                         class="custom-control-input"
                       />
@@ -143,8 +143,8 @@
                     </div>
                     <div class="custom-control px-0 custom-radio">
                       <input
-                        type="radio"
                         id="customRadio6"
+                        type="radio"
                         name="location"
                         class="custom-control-input"
                       />
@@ -191,9 +191,9 @@
               <!-- my account -->
               <div class="dropdown mr-4 m-none">
                 <a
+                  id="dropdownMenuButton"
                   href="#"
                   class="dropdown-toggle text-dark py-3 d-block"
-                  id="dropdownMenuButton"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"

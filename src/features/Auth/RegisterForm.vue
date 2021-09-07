@@ -10,10 +10,10 @@
           <div class="form-group">
             <label for="exampleInputName1" class="text-dark">Name</label>
             <input
+              id="exampleInputName1"
               type="text"
               placeholder="Enter Name"
               class="form-control"
-              id="exampleInputName1"
               aria-describedby="nameHelp"
             />
           </div>
@@ -22,10 +22,10 @@
               >Mobile Number</label
             >
             <input
+              id="exampleInputNumber1"
               type="number"
               placeholder="Enter Mobile"
               class="form-control"
-              id="exampleInputNumber1"
               aria-describedby="numberHelp"
             />
           </div>
@@ -34,10 +34,10 @@
               >Password</label
             >
             <input
+              id="exampleInputPassword1"
               type="password"
               placeholder="Enter Password"
               class="form-control"
-              id="exampleInputPassword1"
             />
           </div>
           <button class="btn btn-primary btn-lg btn-block">SIGN UP</button>
