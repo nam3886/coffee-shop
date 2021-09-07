@@ -4,6 +4,7 @@
     <LoginForm v-if="currentRouteName === 'login'" />
     <RegisterForm v-if="currentRouteName === 'register'" />
     <ForgotPasswordForm v-if="currentRouteName === 'forgot_password'" />
+    <Verification v-if="currentRouteName === 'verification'" />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import Banner from "@/features/Auth/Banner.vue";
 import LoginForm from "@/features/Auth/LoginForm.vue";
 import RegisterForm from "@/features/Auth/RegisterForm.vue";
 import ForgotPasswordForm from "@/features/Auth/ForgotPasswordForm.vue";
+import Verification from "@/features/Auth/Verification.vue";
 import { computed } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 // link file LoginForm và Banner.vue vào file lớn Login.vue
@@ -22,6 +24,7 @@ export default {
     LoginForm,
     RegisterForm,
     ForgotPasswordForm,
+    Verification,
     //cú pháp khai báo component ở trên của vue.js
   },
 

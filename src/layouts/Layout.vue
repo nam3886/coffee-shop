@@ -34,7 +34,7 @@ export default {
   setup() {
     const router = useRouter();
     const ignoreHeaderAndFooter = computed(() => {
-      return ["login", "register", "forgot_password"].includes(
+      return ["login", "register", "forgot_password", "verification"].includes(
         router.currentRoute.value.name
       );
     });
@@ -43,4 +43,3 @@ export default {
   },
 };
 </script>
-// todo Ẩn header,footer trang login và register

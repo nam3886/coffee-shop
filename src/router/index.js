@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Layout from "@/layouts/Layout.vue";
 import Home from "@/pages/Home.vue";
-import Auth from "@/pages/Auth.vue";
+import authRoutes from "@/features/Auth/routes/index.js";
 
 const routes = [
   {
@@ -14,21 +14,7 @@ const routes = [
         name: "home",
         component: Home,
       },
-      {
-        path: "/dang-nhap",
-        name: "login",
-        component: Auth,
-      },
-      {
-        path: "/dang-ky",
-        name: "register",
-        component: Auth,
-      },
-      {
-        path: "/quen-mat-khau",
-        name: "forgot_password",
-        component: Auth,
-      },
+      ...authRoutes,
     ],
   },
 ];
