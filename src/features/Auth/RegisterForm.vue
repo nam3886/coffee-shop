@@ -49,9 +49,9 @@
         </form>
       </div>
       <div class="new-acc d-flex align-items-center justify-content-center">
-        <a href="login.html">
-          <p class="text-center m-0">Already an account? Sign in</p>
-        </a>
+        <router-link :to="{ name: 'login' }">
+          <p class="text-center m-0">Đã có tài khoản? Đăng nhập</p>
+        </router-link>
       </div>
     </div>
   </div>

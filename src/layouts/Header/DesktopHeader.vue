@@ -180,7 +180,7 @@
               </a>
               <!-- signin -->
               <router-link
-                :to="{ name: 'Login' }"
+                :to="{ name: 'login' }"
                 class="widget-header mr-4 text-dark m-none"
               >
                 <!-- đây là thẻ thay thế thẻ <a></a> trong cú pháp của vue.js để load trang ko reload  -->

@@ -33,13 +33,16 @@
             </button>
           </div>
         </form>
-        <a href="forgot_password.html" class="text-decoration-none">
-          <p class="text-center">Forgot your password?</p>
-        </a>
+        <router-link
+          :to="{ name: 'forgot_password' }"
+          class="text-decoration-none"
+        >
+          <p class="text-center">Quên mật khẩu?</p>
+        </router-link>
         <div class="d-flex align-items-center justify-content-center">
-          <a href="signup.html">
-            <p class="text-center m-0">Don't have an account? Sign up</p>
-          </a>
+          <router-link :to="{ name: 'register' }">
+            <p class="text-center m-0">Chưa có tài khoản? Đăng ký</p>
+          </router-link>
         </div>
       </div>
     </div>
