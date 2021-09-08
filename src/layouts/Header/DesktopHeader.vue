@@ -4,9 +4,9 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-1">
-            <a href="home.html" class="brand-wrap mb-0">
+            <router-link :to="{ name: 'home' }" class="brand-wrap mb-0">
               <img alt="#" class="img-fluid" src="img/logo_web.png" />
-            </a>
+            </router-link>
             <!-- brand-wrap.// -->
           </div>
           <div class="col-3 d-flex align-items-center m-none">
@@ -185,7 +185,8 @@
               >
                 <!-- đây là thẻ thay thế thẻ <a></a> trong cú pháp của vue.js để load trang ko reload  -->
                 <div class="icon d-flex align-items-center">
-                  <i class="feather-user h6 mr-2 mb-0"></i> <span>Sign in</span>
+                  <i class="feather-user h6 mr-2 mb-0"></i>
+                  <span>Đăng nhập</span>
                 </div>
               </router-link>
               <!-- my account -->
@@ -209,7 +210,7 @@
                       header-user
                     "
                   />
-                  Hi Osahan
+                  Hi Username
                 </a>
                 <div
                   class="dropdown-menu dropdown-menu-right"
@@ -222,16 +223,19 @@
                   <a class="dropdown-item" href="privacy.html"
                     >Privacy policy</a
                   >
-                  <a class="dropdown-item" href="login.html">Logout</a>
+                  <a class="dropdown-item" href="login.html">Đăng xuất</a>
                 </div>
               </div>
               <!-- signin -->
-              <a href="checkout.html" class="widget-header mr-4 text-dark">
+              <router-link
+                :to="{ name: 'cart' }"
+                class="widget-header mr-4 text-dark"
+              >
                 <div class="icon d-flex align-items-center">
                   <i class="feather-shopping-cart h6 mr-2 mb-0"></i>
-                  <span>Cart</span>
+                  <span>Giỏ hàng</span>
                 </div>
-              </a>
+              </router-link>
               <a class="toggle-navigation" href="#">
                 <span></span>
               </a>
