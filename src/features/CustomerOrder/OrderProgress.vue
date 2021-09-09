@@ -19,12 +19,14 @@
       <li class="nav-item" role="presentation">
         <a
           id="completed-tab"
-          class="nav-link border-0 text-dark py-3 active"
+          class="nav-link border-0 text-dark py-3"
           data-toggle="tab"
           href="#completed"
           role="tab"
           aria-controls="completed"
           aria-selected="true"
+          :class="{ active: status == 'completed' }"
+          @click.prevent="status = 'completed'"
         >
           <i class="feather-check mr-2 text-success mb-0"></i> Completed</a
         >
@@ -38,6 +40,8 @@
           role="tab"
           aria-controls="progress"
           aria-selected="false"
+          :class="{ active: status == 'progress' }"
+          @click.prevent="status = 'progress'"
         >
           <i class="feather-clock mr-2 text-warning mb-0"></i> On Progress</a
         >
@@ -51,6 +55,8 @@
           role="tab"
           aria-controls="canceled"
           aria-selected="false"
+          :class="{ active: status == 'cancelled' }"
+          @click.prevent="status = 'cancelled'"
         >
           <i class="feather-x-circle mr-2 text-danger mb-0"></i> Canceled</a
         >
@@ -60,7 +66,20 @@
 </template>
 
 <script>
-export default {};
-</script>
+import { computed } from "@vue/reactivity";
 
-<style></style>
+export default {
+  props: ["modelValue"],
+
+  emits: ["update:modelValue"],
+
+  setup(props, { emit }) {
+    const status = computed({
+      get: () => props.modelValue,
+      set: (status) => emit("update:modelValue", status),
+    });
+
+    return { status };
+  },
+};
+</script>

@@ -7,18 +7,36 @@
   </div>
   <section class="py-4 osahan-main-body">
     <div class="container">
-      <div class="row"><Progress></Progress><OrderStatus></OrderStatus></div>
+      <div class="row">
+        <!-- @update:status="status = $event"  -->
+        <OrderProgress v-model="status" />
+        <div id="myTabContent" class="tab-content col-md-9">
+          <StatusCompleted v-if="status == 'completed'" />
+          <StatusProgress v-if="status == 'progress'" />
+          <StatusCancelled v-if="status == 'cancelled'" />
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-import Progress from "@/features/CustomerOrder/Progress.vue";
-import OrderStatus from "@/features/CustomerOrder/OrderStatus.vue";
+import OrderProgress from "@/features/CustomerOrder/OrderProgress.vue";
+import StatusCompleted from "@/features/CustomerOrder/StatusCompleted.vue";
+import StatusProgress from "@/features/CustomerOrder/StatusProgress.vue";
+import StatusCancelled from "@/features/CustomerOrder/StatusCancelled.vue";
+import { ref } from "@vue/reactivity";
 export default {
   components: {
-    Progress,
-    OrderStatus,
+    OrderProgress,
+    StatusCompleted,
+    StatusProgress,
+    StatusCancelled,
+  },
+  setup() {
+    let status = ref("cancelled");
+    console.log(status);
+    return { status };
   },
 };
 </script>
