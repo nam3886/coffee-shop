@@ -25,3 +25,5 @@ export default {
   },
 };
 </script>
+
+// todo sửa label offer ở trang home

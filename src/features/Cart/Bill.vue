@@ -17,9 +17,9 @@
           class="mr-3 rounded-circle img-fluid"
         />
         <div class="d-flex flex-column">
-          <h6 class="mb-1 font-weight-bold">Spice Hut Indian Restaurant</h6>
+          <h6 class="mb-1 font-weight-bold">Nhà Hàng Nam & Khánh</h6>
           <p class="mb-0 small text-muted">
-            <i class="feather-map-pin"></i> 2036 2ND AVE, NEW YORK, NY 10029
+            <i class="feather-map-pin"></i> 1 Võ văn Ngân, Thủ Đức, TP.HCM
           </p>
         </div>
       </div>
@@ -38,7 +38,7 @@
           <div class="media align-items-center">
             <div class="mr-2 text-danger">&middot;</div>
             <div class="media-body">
-              <p class="m-0">Chicken Tikka Sub</p>
+              <p class="m-0">Cơm gà 1</p>
             </div>
           </div>
           <div class="d-flex align-items-center">
@@ -75,7 +75,7 @@
           <div class="media align-items-center">
             <div class="mr-2 text-danger">&middot;</div>
             <div class="media-body">
-              <p class="m-0">Methi Chicken Dry</p>
+              <p class="m-0">Cơm gà 2</p>
             </div>
           </div>
           <div class="d-flex align-items-center">
@@ -112,7 +112,7 @@
           <div class="media align-items-center">
             <div class="mr-2 text-danger">&middot;</div>
             <div class="media-body">
-              <p class="m-0">Reshmi Kebab</p>
+              <p class="m-0">Cơm gà 3</p>
             </div>
           </div>
           <div class="d-flex align-items-center">
@@ -149,7 +149,7 @@
           <div class="media align-items-center">
             <div class="mr-2 text-success">&middot;</div>
             <div class="media-body">
-              <p class="m-0">Lemon Cheese Dry</p>
+              <p class="m-0">Cơm gà 4</p>
             </div>
           </div>
           <div class="d-flex align-items-center">
@@ -185,7 +185,7 @@
           <div class="media align-items-center">
             <div class="mr-2 text-success">&middot;</div>
             <div class="media-body">
-              <p class="m-0">Rara Paneer</p>
+              <p class="m-0">Cơm gà 5</p>
             </div>
           </div>
           <div class="d-flex align-items-center">
@@ -212,13 +212,13 @@
       <div class="bg-white p-3 py-3 border-bottom clearfix">
         <div class="input-group-sm mb-2 input-group">
           <input
-            placeholder="Enter promo code"
+            placeholder="Nhập mã giảm giá"
             type="text"
             class="form-control"
           />
           <div class="input-group-append">
             <button type="button" class="btn btn-primary">
-              <i class="feather-percent"></i> APPLY
+              <i class="feather-percent"></i> Xác nhận
             </button>
           </div>
         </div>
@@ -229,7 +229,7 @@
             ></span>
           </div>
           <textarea
-            placeholder="Any suggestions? We will pass it on..."
+            placeholder="Ý kiến của khách hàng..."
             aria-label="With textarea"
             class="form-control"
           ></textarea>
@@ -237,28 +237,24 @@
       </div>
       <div class="bg-white p-3 clearfix border-bottom">
         <p class="mb-1">
-          Item Total <span class="float-right text-dark">$3140</span>
+          Tổng tiền <span class="float-right text-dark">$3140</span>
         </p>
         <p class="mb-1">
-          Restaurant Charges
+          Phí dịch vụ
           <span class="float-right text-dark">$62.8</span>
         </p>
-        <p class="mb-1">
-          Delivery Fee<span class="text-info ml-1"
-            ><i class="feather-info"></i></span
-          ><span class="float-right text-dark">$10</span>
-        </p>
+
         <p class="mb-1 text-success">
-          Total Discount<span class="float-right text-success">$1884</span>
+          Tổng giảm giá<span class="float-right text-success">$1884</span>
         </p>
         <hr />
         <h6 class="font-weight-bold mb-0">
-          TO PAY <span class="float-right">$1329</span>
+          Thực thu <span class="float-right">$1329</span>
         </h6>
       </div>
       <div class="p-3">
         <a class="btn btn-success btn-block btn-lg" href="successful.html"
-          >PAY $1329<i class="feather-arrow-right"></i
+          >Thực thu $1329<i class="feather-arrow-right"></i
         ></a>
       </div>
     </div>

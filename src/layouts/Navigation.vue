@@ -2,68 +2,68 @@
   <nav id="main-nav">
     <ul class="second-nav">
       <li>
-        <a href="home.html"><i class="feather-home mr-2"></i> Homepage</a>
+        <a href="home.html"><i class="feather-home mr-2"></i> Trang chủ</a>
       </li>
       <li>
-        <a href="my_order.html"><i class="feather-list mr-2"></i> My Orders</a>
+        <a href="my_order.html"><i class="feather-list mr-2"></i> Đơn hàng</a>
       </li>
       <li>
-        <a href="#"><i class="feather-edit-2 mr-2"></i> Authentication</a>
+        <a href="#"><i class="feather-edit-2 mr-2"></i> Xác thực</a>
         <ul>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="signup.html">Register</a></li>
-          <li><a href="forgot_password.html">Forgot Password</a></li>
-          <li><a href="verification.html">Verification</a></li>
-          <li><a href="location.html">Location</a></li>
+          <li><a href="login.html">Đăng nhập</a></li>
+          <li><a href="signup.html">Đăng kí</a></li>
+          <li><a href="forgot_password.html">Quên mật khẩu</a></li>
+          <li><a href="verification.html">Xác nhận</a></li>
+          <li><a href="location.html">Địa chỉ</a></li>
         </ul>
       </li>
       <li>
         <a href="favorites.html"
-          ><i class="feather-heart mr-2"></i> Favorites</a
+          ><i class="feather-heart mr-2"></i> Yêu thích</a
         >
       </li>
       <li>
         <a href="trending.html"
-          ><i class="feather-trending-up mr-2"></i> Trending</a
+          ><i class="feather-trending-up mr-2"></i> Nổi bật</a
         >
       </li>
       <li>
         <a href="most_popular.html"
-          ><i class="feather-award mr-2"></i> Most Popular</a
+          ><i class="feather-award mr-2"></i> Phổ biến nhất</a
         >
       </li>
       <li>
         <a href="restaurant.html"
-          ><i class="feather-paperclip mr-2"></i> Restaurant Detail</a
+          ><i class="feather-paperclip mr-2"></i> Chi tiết nhà hàng</a
         >
       </li>
       <li>
-        <a href="checkout.html"><i class="feather-list mr-2"></i> Checkout</a>
+        <a href="checkout.html"><i class="feather-list mr-2"></i> Kiểm tra</a>
       </li>
       <li>
         <a href="successful.html"
-          ><i class="feather-check-circle mr-2"></i> Successful</a
+          ><i class="feather-check-circle mr-2"></i> Đặt thành công</a
         >
       </li>
       <li>
-        <a href="map.html"><i class="feather-map-pin mr-2"></i> Live Map</a>
+        <a href="map.html"><i class="feather-map-pin mr-2"></i> Bản đồ</a>
       </li>
       <li>
         <a href="#"><i class="feather-user mr-2"></i> Profile</a>
         <ul>
-          <li><a href="profile.html">Profile</a></li>
-          <li><a href="favorites.html">Delivery support</a></li>
-          <li><a href="contact-us.html">Contact Us</a></li>
-          <li><a href="terms.html">Terms of use</a></li>
-          <li><a href="privacy.html">Privacy & Policy</a></li>
+          <li><a href="profile.html">Hồ sơ</a></li>
+          <li><a href="favorites.html">Hỗ trợ giao hàng</a></li>
+          <li><a href="contact-us.html">Liên hệ chúng tôi</a></li>
+          <li><a href="terms.html">Thời hạn sử dụng</a></li>
+          <li><a href="privacy.html">Bảo mật & Chính sách</a></li>
         </ul>
       </li>
       <li>
         <a href="#"><i class="feather-alert-triangle mr-2"></i> Error</a>
         <ul>
-          <li><a href="not-found.html">Not Found</a></li>
-          <li><a href="maintence.html"> Maintence</a></li>
-          <li><a href="coming-soon.html">Coming Soon</a></li>
+          <li><a href="not-found.html">Không tìm thấy</a></li>
+          <li><a href="maintence.html"> Bảo trì</a></li>
+          <li><a href="coming-soon.html">Quay lại sau</a></li>
         </ul>
       </li>
       <li>
@@ -111,7 +111,7 @@
       <li class="email">
         <a class="text-danger" href="home.html">
           <p class="h5 m-0"><i class="feather-home text-danger"></i></p>
-          Home
+          Trang chủ
         </a>
       </li>
       <li class="github">
@@ -123,7 +123,7 @@
       <li class="ko-fi">
         <a href="contact-us.html">
           <p class="h5 m-0"><i class="feather-phone"></i></p>
-          Help
+          Hỗ trợ
         </a>
       </li>
     </ul>
@@ -141,7 +141,7 @@ export default {
       disableAt: false,
       customToggle: $(".toggle-navigation"),
       levelSpacing: 40,
-      navTitle: "Askbootstrap",
+      navTitle: "Mở rộng",
       levelTitles: true,
       levelTitleAsBack: true,
       pushContent: "#container",

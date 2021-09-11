@@ -11,7 +11,7 @@
           </div>
           <div class="col-3 d-flex align-items-center m-none">
             <div class="dropdown mr-3">
-              <a
+              <!-- <a
                 id="navbarDropdown"
                 class="text-dark dropdown-toggle d-flex align-items-center py-3"
                 href="#"
@@ -31,12 +31,12 @@
                       icofont-size
                     "
                   ></i>
-                </div>
-                <div>
+                </div> -->
+              <!-- <div>
                   <p class="text-muted mb-0 small">Select Location</p>
                   Jawaddi Ludhiana...
-                </div>
-              </a>
+                </div> -->
+              <!-- </a> -->
               <div
                 class="dropdown-menu p-0 drop-loc"
                 aria-labelledby="navbarDropdown"
@@ -166,18 +166,18 @@
               <a href="search.html" class="widget-header mr-4 text-dark">
                 <div class="icon d-flex align-items-center">
                   <i class="feather-search h6 mr-2 mb-0"></i>
-                  <span>Search</span>
+                  <span>Tìm kiếm</span>
                 </div>
               </a>
               <!-- offers -->
-              <a
+              <!-- <a
                 href="offers.html"
                 class="widget-header mr-4 text-white btn bg-primary m-none"
               >
                 <div class="icon d-flex align-items-center">
                   <i class="feather-disc h6 mr-2 mb-0"></i> <span>Offers</span>
                 </div>
-              </a>
+              </a> -->
               <!-- signin -->
               <router-link
                 :to="{ name: 'login' }"
