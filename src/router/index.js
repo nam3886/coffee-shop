@@ -4,6 +4,7 @@ import Home from "@/pages/Home.vue";
 import authRoutes from "@/features/Auth/routes/index.js";
 import Cart from "@/pages/Cart.vue";
 import CustomerOrder from "@/pages/CustomerOrder.vue";
+import Table from "@/pages/Table.vue";
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
         path: "/hoa-don",
         name: "customer_order",
         component: CustomerOrder,
+      },
+      {
+        path: "/dat-ban",
+        name: "booking_table",
+        component: Table,
       },
       ...authRoutes,
     ],
