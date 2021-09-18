@@ -5,6 +5,9 @@
     <week-trending-product />
     <most-popular-product />
     <most-sale-product />
+    <div class="row bg-danger">
+      <div class="col">hi im Nam</div>
+    </div>
   </div>
 </template>
 
@@ -25,5 +28,7 @@ export default {
   },
 };
 </script>
+
+<style scoped></style>
 
 // todo sửa label offer ở trang home
