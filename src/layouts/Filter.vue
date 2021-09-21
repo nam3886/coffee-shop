@@ -26,7 +26,7 @@
             <div class="filter">
               <!-- SORT BY -->
               <div class="p-3 bg-light border-bottom">
-                <h6 class="m-0">SORT BY</h6>
+                <h6 class="m-0">Sắp xếp theo:</h6>
               </div>
               <div class="custom-control border-bottom px-0 custom-radio">
                 <input
@@ -39,7 +39,7 @@
                 <label
                   class="custom-control-label py-3 w-100 px-3"
                   for="customRadio1f"
-                  >Top Rated</label
+                  >Được đánh giá cao</label
                 >
               </div>
               <div class="custom-control border-bottom px-0 custom-radio">
@@ -52,7 +52,7 @@
                 <label
                   class="custom-control-label py-3 w-100 px-3"
                   for="customRadio2f"
-                  >Nearest Me</label
+                  >Gần tôi nhất</label
                 >
               </div>
               <div class="custom-control border-bottom px-0 custom-radio">
@@ -65,7 +65,7 @@
                 <label
                   class="custom-control-label py-3 w-100 px-3"
                   for="customRadio3f"
-                  >Cost High to Low</label
+                  >Giá từ cao tới thấp</label
                 >
               </div>
               <div class="custom-control border-bottom px-0 custom-radio">
@@ -78,7 +78,7 @@
                 <label
                   class="custom-control-label py-3 w-100 px-3"
                   for="customRadio4f"
-                  >Cost Low to High</label
+                  >Giá từ thấp tới cao</label
                 >
               </div>
               <div class="custom-control border-bottom px-0 custom-radio">
@@ -91,12 +91,12 @@
                 <label
                   class="custom-control-label py-3 w-100 px-3"
                   for="customRadio5f"
-                  >Most Popular</label
+                  >Phổ biến nhất</label
                 >
               </div>
               <!-- Filter -->
               <div class="p-3 bg-light border-bottom">
-                <h6 class="m-0">FILTER</h6>
+                <h6 class="m-0">Lọc thêm</h6>
               </div>
               <div class="custom-control border-bottom px-0 custom-checkbox">
                 <input
@@ -108,7 +108,7 @@
                 <label
                   class="custom-control-label py-3 w-100 px-3"
                   for="defaultCheck1"
-                  >Open Now</label
+                  >Đang mở</label
                 >
               </div>
               <div class="custom-control border-bottom px-0 custom-checkbox">
@@ -120,7 +120,7 @@
                 <label
                   class="custom-control-label py-3 w-100 px-3"
                   for="defaultCheck2"
-                  >Credit Cards</label
+                  >Thanh toán bằng thẻ tín dụng</label
                 >
               </div>
               <div class="custom-control border-bottom px-0 custom-checkbox">
@@ -132,12 +132,12 @@
                 <label
                   class="custom-control-label py-3 w-100 px-3"
                   for="defaultCheck3"
-                  >Alcohol Served</label
+                  >Có phục vụ rượu</label
                 >
               </div>
               <!-- Filter -->
               <div class="p-3 bg-light border-bottom">
-                <h6 class="m-0">ADDITIONAL FILTERS</h6>
+                <h6 class="m-0">Lọc thông thường</h6>
               </div>
               <div class="px-3 pt-3">
                 <input
@@ -149,7 +149,7 @@
                 />
                 <div class="form-row">
                   <div class="form-group col-6">
-                    <label>Min</label>
+                    <label>Thấp nhất</label>
                     <input
                       class="form-control"
                       placeholder="$0"
@@ -157,7 +157,7 @@
                     />
                   </div>
                   <div class="form-group text-right col-6">
-                    <label>Max</label>
+                    <label>Cao nhất</label>
                     <input
                       class="form-control"
                       placeholder="$1,0000"
@@ -176,12 +176,12 @@
               class="btn border-top btn-lg btn-block"
               @click="show = false"
             >
-              Close
+              Đóng
             </button>
           </div>
           <div class="col-6 m-0 p-0">
             <button type="button" class="btn btn-primary btn-lg btn-block">
-              Apply
+              Xác nhận
             </button>
           </div>
         </div>

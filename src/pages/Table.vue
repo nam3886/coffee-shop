@@ -22,8 +22,11 @@
 </template>
 
 <script>
+import { inject } from "@vue/runtime-core";
+
 export default {
   setup() {
+    const emitter = inject("emitter");
     const tables = [
       { id: 1, name: "table1" },
       { id: 2, name: "table2" },
@@ -40,9 +43,11 @@ export default {
       { id: 24, name: "table24" },
       { id: 25, name: "table25" },
     ];
+
     function selectTable(table) {
-      console.log(table);
+      emitter.emit("show-order-table", table);
     }
+
     return { tables, selectTable };
   },
 };

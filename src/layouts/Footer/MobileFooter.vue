@@ -17,7 +17,7 @@
           class="text-danger small font-weight-bold text-decoration-none"
         >
           <p class="h4 m-0"><i class="feather-home text-danger"></i></p>
-          Home
+          Trang chủ
         </a>
       </div>
       <div class="col">
@@ -26,7 +26,7 @@
           class="text-dark small font-weight-bold text-decoration-none"
         >
           <p class="h4 m-0"><i class="feather-map-pin"></i></p>
-          Trending
+          Nổi bật
         </a>
       </div>
       <div class="col bg-white rounded-circle mt-n4 px-3 py-2">
@@ -45,7 +45,7 @@
           class="text-dark small font-weight-bold text-decoration-none"
         >
           <p class="h4 m-0"><i class="feather-heart"></i></p>
-          Favorites
+          Yêu thích
         </a>
       </div>
       <div class="col">
@@ -54,7 +54,7 @@
           class="text-dark small font-weight-bold text-decoration-none"
         >
           <p class="h4 m-0"><i class="feather-user"></i></p>
-          Profile
+          Hồ sơ
         </a>
       </div>
     </div>

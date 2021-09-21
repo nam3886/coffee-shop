@@ -5,14 +5,14 @@
         <a class="toggle-navigation" href="#">
           <span></span>
         </a>
-        <h4 class="font-weight-bold m-0 pl-5">Browse</h4>
+        <h4 class="font-weight-bold m-0 pl-5">Tìm kiếm</h4>
         <a
           class="text-white font-weight-bold ml-auto"
           data-toggle="modal"
           href="#"
           @click.prevent="$EMITTER.emit('show-filter')"
         >
-          Filter
+          Lọc
         </a>
       </div>
     </div>
@@ -33,7 +33,7 @@
       <input
         type="text"
         class="shadow-none border-0 form-control"
-        placeholder="Search for restaurants or dishes"
+        placeholder="Tìm kiếm nhà hàng hoặc món ăn ..."
       />
     </div>
   </div>

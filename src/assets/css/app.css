@@ -21,3 +21,6 @@
     display: none;
   }
 }
+.modal-open.fixed-bottom-bar .osahan-menu-fotter.fixed-bottom {
+  padding-right: 4px !important;
+}

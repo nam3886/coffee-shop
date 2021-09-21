@@ -5,6 +5,7 @@
   <!-- là phần body , nội dung sẽ thay đổi , header và footer là cố định, đảm nhiệm nội dung của body -->
   <layout-mobile-footer v-if="!ignoreHeaderAndFooter" />
   <layout-desktop-footer v-if="!ignoreHeaderAndFooter" />
+  <ModalOrderTable />
   <navigation />
   <layout-filter />
 </template>
@@ -16,6 +17,7 @@ import LayoutDesktopHeader from "@/layouts/Header/DesktopHeader.vue";
 import LayoutMobileHeader from "@/layouts/Header/MobileHeader.vue";
 import LayoutMobileFooter from "@/layouts/Footer/MobileFooter.vue";
 import LayoutDesktopFooter from "@/layouts/Footer/DesktopFooter.vue";
+import ModalOrderTable from "@/components/ModalOrderTable.vue";
 import Navigation from "@/layouts/Navigation.vue";
 import LayoutFilter from "@/layouts/Filter.vue";
 import { useRouter } from "vue-router";
@@ -29,6 +31,7 @@ export default {
     LayoutDesktopFooter,
     Navigation,
     LayoutFilter,
+    ModalOrderTable,
   },
 
   setup() {
