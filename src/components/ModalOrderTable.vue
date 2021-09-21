@@ -8,9 +8,9 @@
     aria-hidden="true"
   >
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <form class="modal-content" @submit.prevent="submitOrderTable">
         <div class="modal-header">
-          <h5 id="exampleModalLabel" class="modal-title">Modal title</h5>
+          <h5 id="exampleModalLabel" class="modal-title">ĐẶT BÀN</h5>
           <button
             type="button"
             class="close"
@@ -21,21 +21,27 @@
           </button>
         </div>
         <div class="modal-body">
+          <label class="exampleFormControlInput1">Số khách đặt bàn</label>
           <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01"
-                >Options</label
-              >
-            </div>
-            <select id="inputGroupSelect01" class="custom-select">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select
+              id="inputGroupSelect01"
+              v-model.number="orderTable.personNumber"
+              class="custom-select"
+              placeholder="Chọn số lượng"
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
             </select>
           </div>
-          <date-picker v-model="date" class="inline-block h-full">
-            <template #default="{ inputValue, togglePopover }">
+
+          <date-picker
+            v-model="orderTable.date"
+            mode="dateTime"
+            :timezone="timezone"
+          >
+            <template #default="{ inputValue, inputEvents }">
+              <label class="exampleFormControlInput1">Thời gian đặt bàn</label>
               <div class="input-group mb-3" @click="togglePopover">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
@@ -56,56 +62,35 @@
                 </div>
                 <input
                   type="text"
-                  :value="inputValue"
                   class="form-control"
                   aria-label="Text input with checkbox"
+                  :value="inputValue"
+                  v-on="inputEvents"
                 />
               </div>
             </template>
           </date-picker>
-
-          <date-picker v-model="date" class="inline-block h-full">
-            <template #default="{ inputValue, togglePopover }">
-              <div class="input-group mb-3" @click="togglePopover">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <svg
-                      class="datepicker"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <input
-                  type="text"
-                  :value="inputValue"
-                  class="form-control"
-                  aria-label="Text input with checkbox"
-                />
-              </div>
-            </template>
-          </date-picker>
-
-          <textarea class="customernote">
- 
-              yeu cau khach hang 123
-          </textarea>
+          <label class="exampleFormControlInput1">Yêu cầu của khách hàng</label>
+          <textarea
+            v-model="orderTable.note"
+            class="form-control"
+            rows="3"
+            placeholder="Yêu cầu thêm ..."
+            aria-label="Yêu cầu thêm ..."
+            aria-describedby="addon-wrapping"
+          ></textarea>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" @click="show = false">
-            Close
+          <button
+            type="button"
+            class="rounded btn btn-secondary"
+            @click="show = false"
+          >
+            Đóng
           </button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="rounded btn btn-primary">Lưu</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </template>
@@ -121,9 +106,12 @@ export default {
   data() {
     return {
       show: false,
-      date: "",
-      masks: {
-        input: "YYYY-MM-DD h:mm A",
+      timezone: "",
+      orderTable: {
+        date: null,
+        table: null,
+        note: null,
+        personNumber: null,
       },
     };
   },
@@ -139,16 +127,28 @@ export default {
   mounted() {
     this.$EMITTER.on("show-order-table", (table) => {
       this.show = true;
-      console.log(table);
+      this.orderTable.table = table;
     });
+  },
+
+  methods: {
+    submitOrderTable() {
+      this.show = false;
+      console.log(this.orderTable);
+    },
   },
 };
 </script>
+
 <style scoped>
 .datepicker {
   width: 19px;
 }
 .customernote {
   width: 100%;
+}
+.exampleFormControlInput1 {
+  color: gray;
+  font-size: 125%;
 }
 </style>

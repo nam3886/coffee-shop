@@ -5,7 +5,6 @@ import store from "@/store";
 import mitt from "mitt";
 
 const emitter = mitt();
-console.log(emitter);
 const app = createApp(App);
 app.config.globalProperties.$EMITTER = emitter;
 app.use(store);
