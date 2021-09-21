@@ -1,7 +1,7 @@
 # coffee-shop  
 
 ## How to install npm and yarn
-install npm: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+install npm: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm<br>
 install yarn: https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable
 
 ## Project setup
