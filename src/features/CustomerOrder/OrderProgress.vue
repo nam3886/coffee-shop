@@ -69,7 +69,12 @@
 import { computed } from "@vue/reactivity";
 
 export default {
-  props: ["modelValue"],
+  props: {
+    modelValue: {
+      type: String,
+      required: true,
+    },
+  },
 
   emits: ["update:modelValue"],
 
