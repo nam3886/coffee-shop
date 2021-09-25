@@ -82,7 +82,7 @@ export default {
 
 <style scoped>
 #map {
-  display: block;
+  display: inline;
   position: relative;
   width: 100%;
 }
@@ -96,7 +96,5 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  width: 10%;
-  height: 10%;
 }
 </style>
