@@ -17,14 +17,43 @@
           ></div>
         </div>
       </div>
+      <table-12></table-12>
+      <table-2122></table-2122>
+      <table-35></table-35>
+      <table-4></table-4>
+      <table-68></table-68>
+      <table-7></table-7>
+      <table-9></table-9>
+      <table-23></table-23>
+      <table-24></table-24>
     </div>
   </div>
 </template>
 
 <script>
 import { inject } from "@vue/runtime-core";
+import Table68 from "@/components/Table/Table68.vue";
+import Table4 from "@/components/Table/Table4.vue";
+import Table7 from "@/components/Table/Table7.vue";
+import Table9 from "@/components/Table/Table9.vue";
+import Table12 from "@/components/Table/Table12.vue";
+import Table35 from "@/components/Table/Table35.vue";
+import Table2122 from "@/components/Table/Table2122.vue";
+import Table23 from "@/components/Table/Table23.vue";
+import Table24 from "@/components/Table/Table24.vue";
 
 export default {
+  components: {
+    Table68,
+    Table4,
+    Table7,
+    Table9,
+    Table12,
+    Table35,
+    Table2122,
+    Table23,
+    Table24,
+  },
   setup() {
     const emitter = inject("emitter");
     const tables = [
