@@ -10,8 +10,8 @@ export default {};
 
 <style scoped>
 .table {
-  width: 20%;
-  height: 20%;
+  width: 22%;
+  height: 25%;
   margin: 0;
   padding: 0;
 }

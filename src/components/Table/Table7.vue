@@ -1,9 +1,22 @@
 <template>
-  <img src="/img/ban7.png" alt="ban 7" />
+  <div class="table">
+    <img src="/img/ban7.png" alt="ban 7" />
+  </div>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style></style>
+<style scoped>
+.table {
+  width: 23%;
+  height: 24%;
+  margin: 0;
+  padding: 0;
+}
+.table > img {
+  width: 100%;
+  height: 100%;
+}
+</style>
