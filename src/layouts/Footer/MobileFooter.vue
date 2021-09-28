@@ -12,13 +12,10 @@
   >
     <div class="row">
       <div class="col selected">
-        <a
-          href="home.html"
-          class="text-danger small font-weight-bold text-decoration-none"
-        >
+        <router-link :to="{ name: 'home' }">
           <p class="h4 m-0"><i class="feather-home text-danger"></i></p>
           Trang chủ
-        </a>
+        </router-link>
       </div>
       <div class="col">
         <a

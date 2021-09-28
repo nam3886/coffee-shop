@@ -4,10 +4,10 @@
   >
     <div class="px-5 col-md-6 ml-auto">
       <div class="px-5 col-10 mx-auto">
-        <h2>Forgot password</h2>
+        <h2>Quên mật khẩu?</h2>
         <p>
-          Enter your email address below and we'll send you an email with
-          instructions on how to change your password
+          Nhập địa chỉ Email của bạn ở phía dưới và chúng tôi sẽ gửi bạn Email
+          hướng dẫn cách thay đổi mật khẩu
         </p>
         <form action="login.html" class="mt-5 mb-4">
           <div class="form-group">
@@ -19,7 +19,7 @@
               aria-describedby="emailHelp"
             />
           </div>
-          <button class="btn btn-primary btn-lg btn-block">Send</button>
+          <button class="btn btn-primary btn-lg btn-block">Gửi</button>
         </form>
       </div>
       <div class="new-acc d-flex align-items-center justify-content-center">

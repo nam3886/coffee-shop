@@ -3,7 +3,7 @@
     <div class="container py-5">
       <div class="row">
         <div id="map" class="col-12">
-          <img src="/img/tablemap5removebg.png" alt="map" class="img-map" />
+          <img src="/img/table5editremovebg.png" alt="map" class="img-map" />
           <table-68 class="draggable ui-widget-content" />
           <table-2122 class="draggable ui-widget-content" />
           <table-4 class="draggable ui-widget-content" />
@@ -13,6 +13,7 @@
           <table-23 class="draggable ui-widget-content" />
           <table-24 class="draggable ui-widget-content" />
           <table-35 class="draggable ui-widget-content" />
+          <table-25 class="draggable ui-widget-content" />
         </div>
       </div>
       <!-- <table-12></table-12>
@@ -32,15 +33,16 @@ import { inject } from "@vue/runtime-core";
 import $ from "jquery";
 import "jquery-ui/ui/widgets/draggable";
 import "@/assets/vendor/jquery/jquery.ui.touch-punch.min.js";
-import Table68 from "@/components/Table/Table68.vue";
-import Table4 from "@/components/Table/Table4.vue";
-import Table7 from "@/components/Table/Table7.vue";
-import Table9 from "@/components/Table/Table9.vue";
-import Table12 from "@/components/Table/Table12.vue";
-import Table35 from "@/components/Table/Table35.vue";
-import Table2122 from "@/components/Table/Table2122.vue";
-import Table23 from "@/components/Table/Table23.vue";
-import Table24 from "@/components/Table/Table24.vue";
+import Table68 from "@/components/Table/table_68.vue";
+import Table4 from "@/components/Table/table_4.vue";
+import Table7 from "@/components/Table/table_7.vue";
+import Table9 from "@/components/Table/table_9.vue";
+import Table12 from "@/components/Table/table_12.vue";
+import Table35 from "@/components/Table/table_35.vue";
+import Table2122 from "@/components/Table/table_2122.vue";
+import Table23 from "@/components/Table/table_23.vue";
+import Table24 from "@/components/Table/table_24.vue";
+import Table25 from "@/components/Table/table_25.vue";
 
 export default {
   components: {
@@ -53,6 +55,7 @@ export default {
     Table2122,
     Table23,
     Table24,
+    Table25,
   },
   setup() {
     const emitter = inject("emitter");
