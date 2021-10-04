@@ -6,52 +6,47 @@
       <div class="px-5 col-10 mx-auto">
         <h2 class="text-dark my-0">Xin chào bạn</h2>
         <p class="text-50">Đăng kí để tiếp tục</p>
-        <form class="mt-5 mb-4" action="verification.html">
-          <div class="form-group">
-            <label for="exampleInputName1" class="text-dark">Họ tên</label>
-            <input
-              id="exampleInputName1"
-              type="text"
-              placeholder="Nhập họ tên của bạn"
-              class="form-control"
-              aria-describedby="nameHelp"
-            />
-          </div>
-          <div class="form-group">
-            <label for="exampleInputNumber1" class="text-dark"
-              >Số điện thoại</label
-            >
+        <form class="mt-5 mb-4" @submit.prevent="handleRegister">
+          <form-group v-model="v$.email">
+            <label for="exampleInputNumber1" class="text-dark">
+              <!-- Số điện thoại -->
+              Email
+            </label>
             <input
               id="exampleInputNumber1"
-              type="number"
-              placeholder="Nhập số điện thoại của bạn"
+              v-model="v$.email.$model"
+              placeholder="Nhập email của bạn"
               class="form-control"
               aria-describedby="numberHelp"
             />
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1" class="text-dark"
-              >Mật khẩu</label
-            >
+          </form-group>
+          <form-group v-model="v$.password">
+            <label for="exampleInputPassword1" class="text-dark">
+              Mật khẩu
+            </label>
             <input
               id="exampleInputPassword1"
+              v-model="v$.password.$model"
               type="password"
               placeholder="Nhập mật khẩu"
               class="form-control"
             />
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1" class="text-dark"
-              >Nhập lại mật khẩu</label
-            >
+          </form-group>
+          <form-group v-model="v$.password_confirmation">
+            <label for="exampleInputPassword2" class="text-dark">
+              Nhập lại mật khẩu
+            </label>
             <input
-              id="exampleInputPassword1"
+              id="exampleInputPassword2"
+              v-model="v$.password_confirmation.$model"
               type="password"
               placeholder="Nhập lại"
               class="form-control"
             />
-          </div>
-          <button class="btn btn-primary btn-lg btn-block">Đăng kí</button>
+          </form-group>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">
+            Đăng kí
+          </button>
           <div class="py-2">
             <button class="btn btn-facebook btn-lg btn-block">
               <i class="feather-facebook"></i> Đăng nhập bằng Facebook
@@ -69,7 +64,28 @@
 </template>
 
 <script>
-export default {};
-</script>
+import { signUp } from "@/services/reuseable/useAuth";
+import signUpValidate from "@/features/Auth/validate/signUpValidate";
+import FormGroup from "@/components/FormGroup";
 
-<style></style>
+export default {
+  components: { FormGroup },
+
+  setup() {
+    const { state: user, v$ } = signUpValidate();
+
+    async function handleRegister() {
+      const result = await v$.value.$validate();
+      if (!result) return;
+
+      try {
+        await signUp(user);
+      } catch (error) {
+        console.log([error]);
+      }
+    }
+
+    return { user, v$, handleRegister };
+  },
+};
+</script>

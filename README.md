@@ -1,4 +1,4 @@
-# coffee-shop  
+# coffee-shop
 
 ## How to install npm and yarn
 install npm: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm<br>
@@ -9,20 +9,13 @@ install yarn: https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+## Cach 1
 ```
 yarn serve
 ```
+## Cach 2
 
-### Compiles and minifies for production
 ```
-yarn build
+docker build -f dockerfile.dev -t coffeeshop/coffeeshop:v1 .
+docker-compose -f docker-compose.dev.yml up -d
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

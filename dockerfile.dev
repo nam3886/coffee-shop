@@ -1,0 +1,12 @@
+FROM node:16-alpine
+
+WORKDIR /cache
+COPY package*.json ./
+RUN apk add yarn
+RUN yarn install
+
+WORKDIR /app
+COPY . .
+EXPOSE 8080
+
+ENTRYPOINT ["sh", "/app/entrypoint.sh"]
