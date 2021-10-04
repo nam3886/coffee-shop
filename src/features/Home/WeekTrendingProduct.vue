@@ -88,6 +88,8 @@
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import SwiperCore, { Navigation } from "swiper";
+import { ref } from "@vue/reactivity";
+import getListProduct from "@/services/reuseable/getListProduct.js";
 SwiperCore.use(Navigation);
 
 export default {
@@ -97,22 +99,10 @@ export default {
   },
 
   setup() {
-    const products = [
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-      { image: "img/pro1.jpg", url: "#" },
-    ];
+    const products = ref([]);
+    getListProduct("", function (listProduct) {
+      products.value = listProduct;
+    });
 
     const swiperOptions = {
       slidesPerView: 3,

@@ -488,7 +488,17 @@
 </template>
 
 <script>
-export default {};
+import { ref } from "@vue/reactivity";
+import getListProduct from "@/services/reuseable/getListProduct.js";
+export default {
+  setup() {
+    const products = ref([]);
+    getListProduct("", function (listProduct) {
+      products.value = listProduct;
+    });
+    return { products };
+  },
+};
 </script>
 
 <style></style>
