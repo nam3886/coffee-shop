@@ -58,6 +58,7 @@ import { signIn, getProfile } from "@/services/reuseable/useAuth";
 import signInValidate from "@/features/Auth/validate/signInValidate";
 import { localSetItem } from "@/helpers/local_storage";
 import { TOKEN } from "@/constants";
+import { useRouter } from "vue-router";
 import FormGroup from "@/components/FormGroup";
 
 export default {
@@ -65,15 +66,17 @@ export default {
 
   setup() {
     const { state: user, v$ } = signInValidate();
+    const router = useRouter();
 
     async function handleLogin() {
       const result = await v$.value.$validate();
       if (!result) return;
 
       try {
-        const { data } = await signIn(user);
-        localSetItem(TOKEN, data.data.access_token);
+        const { data: token } = await signIn(user);
+        localSetItem(TOKEN, token.data.access_token);
         await getProfile();
+        router.push({ name: "home" });
       } catch (error) {
         console.log([error]);
       }

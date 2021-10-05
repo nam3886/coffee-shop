@@ -169,17 +169,8 @@
                   <span>Tìm kiếm</span>
                 </div>
               </a>
-              <!-- offers -->
-              <!-- <a
-                href="offers.html"
-                class="widget-header mr-4 text-white btn bg-primary m-none"
-              >
-                <div class="icon d-flex align-items-center">
-                  <i class="feather-disc h6 mr-2 mb-0"></i> <span>Offers</span>
-                </div>
-              </a> -->
-              <!-- signin -->
               <router-link
+                v-if="!$store.getters.getIsAuthenticated"
                 :to="{ name: 'login' }"
                 class="widget-header mr-4 text-dark m-none"
               >
@@ -192,6 +183,7 @@
               <!-- my account -->
               <div class="dropdown mr-4 m-none">
                 <a
+                  v-if="!$store.getters.getIsAuthenticated"
                   id="dropdownMenuButton"
                   href="#"
                   class="dropdown-toggle text-dark py-3 d-block"
@@ -211,6 +203,28 @@
                     "
                   />
                   Hi Username
+                </a>
+                <a
+                  v-else
+                  id="dropdownMenuButton"
+                  href="#"
+                  class="dropdown-toggle text-dark py-3 d-block"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <img
+                    alt="#"
+                    :src="$store.getters.getProfile.avatar.url"
+                    class="
+                      img-fluid
+                      rounded-circle
+                      header-user
+                      mr-2
+                      header-user
+                    "
+                  />
+                  {{ $store.getters.getProfile.name }}
                 </a>
                 <div
                   class="dropdown-menu dropdown-menu-right"

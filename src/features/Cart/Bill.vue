@@ -25,154 +25,8 @@
       </div>
       <div class="bg-white border-bottom py-2">
         <div
-          class="
-            gold-members
-            d-flex
-            align-items-center
-            justify-content-between
-            px-3
-            py-2
-            border-bottom
-          "
-        >
-          <div class="media align-items-center">
-            <div class="mr-2 text-danger">&middot;</div>
-            <div class="media-body">
-              <p class="m-0">Cơm gà 1</p>
-            </div>
-          </div>
-          <div class="d-flex align-items-center">
-            <span class="count-number float-right"
-              ><button
-                type="button"
-                class="btn-sm left dec btn btn-outline-secondary"
-              >
-                <i class="feather-minus"></i></button
-              ><input
-                class="count-number-input"
-                type="text"
-                readonly=""
-                value="2" /><button
-                type="button"
-                class="btn-sm right inc btn btn-outline-secondary"
-              >
-                <i class="feather-plus"></i></button
-            ></span>
-            <p class="text-gray mb-0 float-right ml-2 text-muted small">$628</p>
-          </div>
-        </div>
-        <div
-          class="
-            gold-members
-            d-flex
-            align-items-center
-            justify-content-between
-            px-3
-            py-2
-            border-bottom
-          "
-        >
-          <div class="media align-items-center">
-            <div class="mr-2 text-danger">&middot;</div>
-            <div class="media-body">
-              <p class="m-0">Cơm gà 2</p>
-            </div>
-          </div>
-          <div class="d-flex align-items-center">
-            <span class="count-number float-right"
-              ><button
-                type="button"
-                class="btn-sm left dec btn btn-outline-secondary"
-              >
-                <i class="feather-minus"></i></button
-              ><input
-                class="count-number-input"
-                type="text"
-                readonly=""
-                value="2" /><button
-                type="button"
-                class="btn-sm right inc btn btn-outline-secondary"
-              >
-                <i class="feather-plus"></i></button
-            ></span>
-            <p class="text-gray mb-0 float-right ml-2 text-muted small">$628</p>
-          </div>
-        </div>
-        <div
-          class="
-            gold-members
-            d-flex
-            align-items-center
-            justify-content-between
-            px-3
-            py-2
-            border-bottom
-          "
-        >
-          <div class="media align-items-center">
-            <div class="mr-2 text-danger">&middot;</div>
-            <div class="media-body">
-              <p class="m-0">Cơm gà 3</p>
-            </div>
-          </div>
-          <div class="d-flex align-items-center">
-            <span class="count-number float-right"
-              ><button
-                type="button"
-                class="btn-sm left dec btn btn-outline-secondary"
-              >
-                <i class="feather-minus"></i></button
-              ><input
-                class="count-number-input"
-                type="text"
-                readonly=""
-                value="2" /><button
-                type="button"
-                class="btn-sm right inc btn btn-outline-secondary"
-              >
-                <i class="feather-plus"></i></button
-            ></span>
-            <p class="text-gray mb-0 float-right ml-2 text-muted small">$628</p>
-          </div>
-        </div>
-        <div
-          class="
-            gold-members
-            d-flex
-            align-items-center
-            justify-content-between
-            px-3
-            py-2
-            border-bottom
-          "
-        >
-          <div class="media align-items-center">
-            <div class="mr-2 text-success">&middot;</div>
-            <div class="media-body">
-              <p class="m-0">Cơm gà 4</p>
-            </div>
-          </div>
-          <div class="d-flex align-items-center">
-            <span class="count-number float-right"
-              ><button
-                type="button"
-                class="btn-sm left dec btn btn-outline-secondary"
-              >
-                <i class="feather-minus"></i></button
-              ><input
-                class="count-number-input"
-                type="text"
-                readonly=""
-                value="2" /><button
-                type="button"
-                class="btn-sm right inc btn btn-outline-secondary"
-              >
-                <i class="feather-plus"></i></button
-            ></span>
-            <p class="text-gray mb-0 float-right ml-2 text-muted small">$628</p>
-          </div>
-        </div>
-        <div
+          v-for="cart in $store.getters.getCart"
+          :key="cart.id"
           class="
             gold-members
             d-flex
@@ -185,27 +39,17 @@
           <div class="media align-items-center">
             <div class="mr-2 text-success">&middot;</div>
             <div class="media-body">
-              <p class="m-0">Cơm gà 5</p>
+              <p class="m-0">{{ cart.product.name }}</p>
             </div>
           </div>
           <div class="d-flex align-items-center">
-            <span class="count-number float-right"
-              ><button
-                type="button"
-                class="btn-sm left dec btn btn-outline-secondary"
-              >
-                <i class="feather-minus"></i></button
-              ><input
-                class="count-number-input"
-                type="text"
-                readonly=""
-                value="2" /><button
-                type="button"
-                class="btn-sm right inc btn btn-outline-secondary"
-              >
-                <i class="feather-plus"></i></button
-            ></span>
-            <p class="text-gray mb-0 float-right ml-2 text-muted small">$628</p>
+            <span class="count-number float-right">
+              <input-quantity :cart="cart" />
+            </span>
+            <p class="text-gray mb-0 float-right ml-2 text-muted small">
+              {{ cart.price }}
+            </p>
+            <button-delete-cart :cart-id="cart.id"> del </button-delete-cart>
           </div>
         </div>
       </div>
@@ -262,7 +106,13 @@
 </template>
 
 <script>
-export default {};
-</script>
+import ButtonDeleteCart from "@/components/ButtonDeleteCart";
+import InputQuantity from "@/components/InputQuantity";
 
-<style></style>
+export default {
+  components: {
+    ButtonDeleteCart,
+    InputQuantity,
+  },
+};
+</script>

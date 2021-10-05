@@ -33,14 +33,16 @@
                 >
               </div>
               <div class="favourite-heart text-danger position-absolute">
-                <a href="#" @click.prevent="myFunction(product.id)"
-                  ><i class="feather-heart"></i
-                ></a>
+                <button-add-cart :product-id="product.id">
+                  <a href="#" @click.prevent="">
+                    <i class="feather-heart"></i>
+                  </a>
+                </button-add-cart>
               </div>
               <div class="member-plan position-absolute">
                 <span class="badge badge-dark">Promoted</span>
               </div>
-              <a href="restaurant.html">
+              <a href="#">
                 <img
                   :alt="product.image"
                   :src="product.image"
@@ -51,8 +53,8 @@
             <div class="p-3 position-relative">
               <div class="list-card-body">
                 <h6 class="mb-1">
-                  <a href="restaurant.html" class="text-black"
-                    >{{ product.name }}
+                  <a href="#" class="text-black">
+                    {{ product.name }}
                   </a>
                 </h6>
                 <p class="text-gray mb-3">{{ product.price }}</p>
@@ -79,21 +81,21 @@
 <script>
 import { ref } from "@vue/reactivity";
 import getListProduct from "@/services/reuseable/getListProduct.js";
-import addToCart from "@/services/reuseable/addToCart.js";
+import ButtonAddCart from "@/components/ButtonAddCart";
+
 export default {
+  components: { ButtonAddCart },
+
   setup() {
-    function myFunction(productid) {
-      addToCart(productid, 1);
-    }
     const products = ref([]);
+
     getListProduct("", function (listProduct) {
       products.value = listProduct;
     });
-    return { products, myFunction };
+
+    return { products };
   },
 };
 </script>
-
-<style></style>
 
 // todo : price cần format
