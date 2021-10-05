@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { addToCart } from "@/services/reuseable/useCart";
+import { storeCartItem } from "@/services/reuseable/useCart";
 
 export default {
   props: {
@@ -17,7 +17,7 @@ export default {
 
   setup(props) {
     async function addCart() {
-      await addToCart({
+      await storeCartItem({
         product_id: props.productId,
         quantity: 1,
       });
