@@ -41,7 +41,7 @@ import Table23 from "@/components/Table/table_23.vue";
 import Table24 from "@/components/Table/table_24.vue";
 import Table25 from "@/components/Table/table_25.vue";
 import { saveTableMap, getTableMap } from "@/services/reuseable/useTable";
-import { useStore } from "vuex";
+// import { useStore } from "vuex";
 
 export default {
   components: {
@@ -59,7 +59,7 @@ export default {
   setup() {
     const emitter = inject("emitter");
     const tables = ref({});
-    const store = useStore();
+    // const store = useStore();
 
     getTableMap().then(({ data }) => {
       tables.value = data.data;
