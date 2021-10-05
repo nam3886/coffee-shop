@@ -22,6 +22,9 @@ import Navigation from "@/layouts/Navigation.vue";
 import LayoutFilter from "@/layouts/Filter.vue";
 import { useRouter } from "vue-router";
 import { computed } from "@vue/reactivity";
+import { SET_IS_AUTHENTICATED, SET_PROFILE } from "@/store/actionTypes";
+import { useStore } from "vuex";
+import { getProfile } from "@/services/reuseable/useAuth";
 
 export default {
   components: {
@@ -36,10 +39,16 @@ export default {
 
   setup() {
     const router = useRouter();
+    const store = useStore();
     const ignoreHeaderAndFooter = computed(() => {
       return ["login", "register", "forgot_password", "verification"].includes(
         router.currentRoute.value.name
       );
+    });
+
+    getProfile().then(({ data: profile }) => {
+      store.dispatch(SET_IS_AUTHENTICATED, true);
+      store.dispatch(SET_PROFILE, profile.data);
     });
 
     return { ignoreHeaderAndFooter };
