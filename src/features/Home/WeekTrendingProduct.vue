@@ -37,8 +37,8 @@
             </div>
             <a href="restaurant.html">
               <img
-                alt="#"
-                src="img/trending1.png"
+                :alt="product.image"
+                :src="product.image"
                 class="img-fluid item-img w-100"
               />
             </a>
@@ -47,10 +47,10 @@
             <div class="list-card-body">
               <h6 class="mb-1">
                 <a href="restaurant.html" class="text-black"
-                  >Famous Dave's Bar-B-Que
+                  >{{ product.name }}
                 </a>
               </h6>
-              <p class="text-gray mb-3">Vegetarian • Indian • Pure veg</p>
+              <p class="text-gray mb-3">{{ product.price }}</p>
               <p class="text-gray mb-3 time">
                 <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"
                   ><i class="feather-clock"></i> 15–30 min</span

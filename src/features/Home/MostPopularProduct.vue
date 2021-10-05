@@ -8,7 +8,11 @@
     </div>
     <div class="most_popular">
       <div class="row">
-        <div class="col-md-3 pb-3">
+        <div
+          v-for="(product, index) in products"
+          :key="index"
+          class="col-md-3 pb-3"
+        >
           <div
             class="
               list-card
@@ -34,8 +38,8 @@
               </div>
               <a href="restaurant.html">
                 <img
-                  alt="#"
-                  src="img/popular1.png"
+                  :alt="product.image"
+                  :src="product.image"
                   class="img-fluid item-img w-100"
                 />
               </a>
@@ -44,10 +48,10 @@
               <div class="list-card-body">
                 <h6 class="mb-1">
                   <a href="restaurant.html" class="text-black"
-                    >The osahan Restaurant
+                    >{{ product.name }}
                   </a>
                 </h6>
-                <p class="text-gray mb-1 small">• North • Hamburgers</p>
+                <p class="text-gray mb-1 small">{{ product.price }}</p>
                 <p class="text-gray mb-1 rating"></p>
                 <ul class="rating-stars list-unstyled">
                   <li>
@@ -67,7 +71,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 pb-3">
+        <div
+          v-for="(product, index) in products"
+          :key="index"
+          class="col-md-3 pb-3"
+        >
           <div
             class="
               list-card
@@ -93,8 +101,8 @@
               </div>
               <a href="restaurant.html">
                 <img
-                  alt="#"
-                  src="img/popular2.png"
+                  :alt="product.image"
+                  :src="product.image"
                   class="img-fluid item-img w-100"
                 />
               </a>
@@ -102,11 +110,11 @@
             <div class="p-3 position-relative">
               <div class="list-card-body">
                 <h6 class="mb-1">
-                  <a href="restaurant.html" class="text-black"
-                    >Thai Famous Indian Cuisine</a
-                  >
+                  <a href="restaurant.html" class="text-black">{{
+                    product.name
+                  }}</a>
                 </h6>
-                <p class="text-gray mb-1 small">• Indian • Pure veg</p>
+                <p class="text-gray mb-1 small">{{ product.price }}</p>
                 <p class="text-gray mb-1 rating"></p>
                 <ul class="rating-stars list-unstyled">
                   <li>
@@ -126,7 +134,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 pb-3">
+        <div
+          v-for="(product, index) in products"
+          :key="index"
+          class="col-md-3 pb-3"
+        >
           <div
             class="
               list-card
@@ -152,8 +164,8 @@
               </div>
               <a href="restaurant.html">
                 <img
-                  alt="#"
-                  src="img/popular3.png"
+                  :alt="product.image"
+                  :src="product.image"
                   class="img-fluid item-img w-100"
                 />
               </a>
@@ -162,10 +174,10 @@
               <div class="list-card-body">
                 <h6 class="mb-1">
                   <a href="restaurant.html" class="text-black"
-                    >The osahan Restaurant
+                    >{{ product.name }}
                   </a>
                 </h6>
-                <p class="text-gray mb-1 small">• Hamburgers • Pure veg</p>
+                <p class="text-gray mb-1 small">{{ product.price }}</p>
                 <p class="text-gray mb-1 rating"></p>
                 <ul class="rating-stars list-unstyled">
                   <li>
@@ -185,7 +197,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 pb-3">
+        <div
+          v-for="(product, index) in products"
+          :key="index"
+          class="col-md-3 pb-3"
+        >
           <div
             class="
               list-card
@@ -211,8 +227,8 @@
               </div>
               <a href="restaurant.html">
                 <img
-                  alt="#"
-                  src="img/popular4.png"
+                  :alt="product.image"
+                  :src="product.image"
                   class="img-fluid item-img w-100"
                 />
               </a>
@@ -220,11 +236,11 @@
             <div class="p-3 position-relative">
               <div class="list-card-body">
                 <h6 class="mb-1">
-                  <a href="restaurant.html" class="text-black"
-                    >Bite Me Now Sandwiches</a
-                  >
+                  <a href="restaurant.html" class="text-black">{{
+                    product.name
+                  }}</a>
                 </h6>
-                <p class="text-gray mb-1 small">American • Pure veg</p>
+                <p class="text-gray mb-1 small">{{ product.price }}</p>
                 <p class="text-gray mb-1 rating"></p>
                 <ul class="rating-stars list-unstyled">
                   <li>
@@ -246,7 +262,11 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3 pb-3">
+        <div
+          v-for="(product, index) in products"
+          :key="index"
+          class="col-md-3 pb-3"
+        >
           <div
             class="
               list-card
@@ -272,8 +292,8 @@
               </div>
               <a href="restaurant.html">
                 <img
-                  alt="#"
-                  src="img/popular5.png"
+                  :alt="product.image"
+                  :src="product.image"
                   class="img-fluid item-img w-100"
                 />
               </a>
@@ -282,10 +302,10 @@
               <div class="list-card-body">
                 <h6 class="mb-1">
                   <a href="restaurant.html" class="text-black"
-                    >The osahan Restaurant
+                    >{{ product.name }}
                   </a>
                 </h6>
-                <p class="text-gray mb-1 small">• North • Hamburgers</p>
+                <p class="text-gray mb-1 small">{{ product.price }}</p>
                 <p class="text-gray mb-1 rating"></p>
                 <ul class="rating-stars list-unstyled">
                   <li>
@@ -305,7 +325,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 pb-3">
+        <div
+          v-for="(product, index) in products"
+          :key="index"
+          class="col-md-3 pb-3"
+        >
           <div
             class="
               list-card
@@ -331,8 +355,8 @@
               </div>
               <a href="restaurant.html">
                 <img
-                  alt="#"
-                  src="img/popular6.png"
+                  :alt="product.image"
+                  :src="product.image"
                   class="img-fluid item-img w-100"
                 />
               </a>
@@ -340,11 +364,11 @@
             <div class="p-3 position-relative">
               <div class="list-card-body">
                 <h6 class="mb-1">
-                  <a href="restaurant.html" class="text-black"
-                    >Thai Famous Indian Cuisine</a
-                  >
+                  <a href="restaurant.html" class="text-black">{{
+                    product.name
+                  }}</a>
                 </h6>
-                <p class="text-gray mb-1 small">• Indian • Pure veg</p>
+                <p class="text-gray mb-1 small">{{ product.price }}</p>
                 <p class="text-gray mb-1 rating"></p>
                 <ul class="rating-stars list-unstyled">
                   <li>
@@ -364,7 +388,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 pb-3">
+        <div
+          v-for="(product, index) in products"
+          :key="index"
+          class="col-md-3 pb-3"
+        >
           <div
             class="
               list-card
@@ -390,8 +418,8 @@
               </div>
               <a href="restaurant.html">
                 <img
-                  alt="#"
-                  src="img/popular7.png"
+                  :alt="product.image"
+                  :src="product.image"
                   class="img-fluid item-img w-100"
                 />
               </a>
@@ -400,10 +428,10 @@
               <div class="list-card-body">
                 <h6 class="mb-1">
                   <a href="restaurant.html" class="text-black"
-                    >The osahan Restaurant
+                    >{{ product.name }}
                   </a>
                 </h6>
-                <p class="text-gray mb-1 small">• Hamburgers • Pure veg</p>
+                <p class="text-gray mb-1 small">{{ product.price }}</p>
                 <p class="text-gray mb-1 rating"></p>
                 <ul class="rating-stars list-unstyled">
                   <li>
@@ -423,7 +451,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 pb-3">
+        <div
+          v-for="(product, index) in products"
+          :key="index"
+          class="col-md-3 pb-3"
+        >
           <div
             class="
               list-card
@@ -449,8 +481,8 @@
               </div>
               <a href="restaurant.html">
                 <img
-                  alt="#"
-                  src="img/popular8.png"
+                  :alt="product.image"
+                  :src="product.image"
                   class="img-fluid item-img w-100"
                 />
               </a>
@@ -458,11 +490,11 @@
             <div class="p-3 position-relative">
               <div class="list-card-body">
                 <h6 class="mb-1">
-                  <a href="restaurant.html" class="text-black"
-                    >Bite Me Now Sandwiches</a
-                  >
+                  <a href="restaurant.html" class="text-black">{{
+                    product.name
+                  }}</a>
                 </h6>
-                <p class="text-gray mb-1 small">American • Pure veg</p>
+                <p class="text-gray mb-1 small">{{ product.price }}</p>
                 <p class="text-gray mb-1 rating"></p>
                 <ul class="rating-stars list-unstyled">
                   <li>
