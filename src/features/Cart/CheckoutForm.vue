@@ -196,7 +196,15 @@
 </template>
 
 <script>
-export default {};
+import { ref } from "@vue/reactivity";
+import addToCart from "@/services/reuseable/addToCart.js";
+export default {
+  setup() {
+    const products = ref([]);
+    addToCart("user_id", "product_id", "quantity");
+    return { products };
+  },
+};
 </script>
 
 <style></style>

@@ -1,11 +1,8 @@
 import API from "@/services/api.js";
 
-export default function (type, callback) {
-  API.post("/cart")
-    .then(function (res) {
-      if (typeof callback === "function") {
-        callback(res.data.data);
-      }
-    })
-    .catch((err) => console.log(err));
+export default function (product_id, quantity) {
+  API.post("/cart", {
+    product_id: product_id,
+    quantity: quantity,
+  }).catch((err) => console.log(err));
 }

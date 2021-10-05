@@ -33,7 +33,9 @@
                 >
               </div>
               <div class="favourite-heart text-danger position-absolute">
-                <a href="#"><i class="feather-heart"></i></a>
+                <a href="#" @click.prevent="myFunction(product.id)"
+                  ><i class="feather-heart"></i
+                ></a>
               </div>
               <div class="member-plan position-absolute">
                 <span class="badge badge-dark">Promoted</span>
@@ -77,13 +79,17 @@
 <script>
 import { ref } from "@vue/reactivity";
 import getListProduct from "@/services/reuseable/getListProduct.js";
+import addToCart from "@/services/reuseable/addToCart.js";
 export default {
   setup() {
+    function myFunction(productid) {
+      addToCart(productid, 1);
+    }
     const products = ref([]);
     getListProduct("", function (listProduct) {
       products.value = listProduct;
     });
-    return { products };
+    return { products, myFunction };
   },
 };
 </script>
