@@ -58,9 +58,7 @@ import { signIn, getProfile } from "@/services/reuseable/useAuth";
 import signInValidate from "@/features/Auth/validate/signInValidate";
 import { localSetItem } from "@/helpers/local_storage";
 import { TOKEN } from "@/constants";
-import { useStore } from "vuex";
 import { useRouter } from "vue-router";
-import { SET_IS_AUTHENTICATED, SET_PROFILE } from "@/store/actionTypes";
 import FormGroup from "@/components/FormGroup";
 
 export default {
@@ -68,7 +66,6 @@ export default {
 
   setup() {
     const { state: user, v$ } = signInValidate();
-    const store = useStore();
     const router = useRouter();
 
     async function handleLogin() {
@@ -78,9 +75,7 @@ export default {
       try {
         const { data: token } = await signIn(user);
         localSetItem(TOKEN, token.data.access_token);
-        const { data: profile } = await getProfile();
-        store.dispatch(SET_IS_AUTHENTICATED, true);
-        store.dispatch(SET_PROFILE, profile.data);
+        await getProfile();
         router.push({ name: "home" });
       } catch (error) {
         console.log([error]);
