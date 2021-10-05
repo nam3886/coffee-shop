@@ -25,7 +25,12 @@ import { computed } from "@vue/reactivity";
 import { getProfile } from "@/services/reuseable/useAuth";
 import { getCart } from "@/services/reuseable/useCart";
 import { useStore } from "vuex";
-import { SET_CART } from "@/store/actionTypes";
+import {
+  SET_CART,
+  SET_IS_AUTHENTICATED,
+  SET_PROFILE,
+} from "@/store/actionTypes";
+import { watchEffect } from "@vue/runtime-core";
 
 export default {
   components: {
@@ -40,17 +45,34 @@ export default {
 
   setup() {
     const router = useRouter();
+    const store = useStore();
+
     const ignoreHeaderAndFooter = computed(() => {
       return ["login", "register", "forgot_password", "verification"].includes(
         router.currentRoute.value.name
       );
     });
 
-    const store = useStore();
-    getProfile().then(async function () {
-      const { data } = await getCart();
-      store.dispatch(SET_CART, data.data);
+    getUserProfile();
+
+    watchEffect(() => {
+      const isAuthenticated = store.getters.getIsAuthenticated;
+      isAuthenticated && getUserProfile();
     });
+
+    async function getUserProfile() {
+      console.log("run get user profile");
+      if (!store.getters.getIsAuthenticated) return;
+
+      try {
+        const { data: profile } = await getProfile();
+        const { data: cart } = await getCart();
+        store.dispatch(SET_PROFILE, profile.data);
+        store.dispatch(SET_CART, cart.data);
+      } catch (error) {
+        store.dispatch(SET_IS_AUTHENTICATED, false);
+      }
+    }
 
     return { ignoreHeaderAndFooter };
   },

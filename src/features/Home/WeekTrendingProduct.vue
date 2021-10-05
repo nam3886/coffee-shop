@@ -30,7 +30,11 @@
               >
             </div>
             <div class="favourite-heart text-danger position-absolute">
-              <a href="#"><i class="feather-heart"></i></a>
+              <button-add-cart :product-id="product.id">
+                <a href="#" @click.prevent="">
+                  <i class="feather-shopping-cart"></i>
+                </a>
+              </button-add-cart>
             </div>
             <div class="member-plan position-absolute">
               <span class="badge badge-dark">Promoted</span>
@@ -50,7 +54,7 @@
                   >{{ product.name }}
                 </a>
               </h6>
-              <p class="text-gray mb-3">{{ product.price }}</p>
+              <p class="text-gray mb-3">{{ product.price_format }}</p>
               <p class="text-gray mb-3 time">
                 <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"
                   ><i class="feather-clock"></i> 15–30 min</span
@@ -59,7 +63,7 @@
               </p>
             </div>
             <div class="list-card-badge">
-              <span class="badge badge-danger">OFFER</span>
+              <span class="badge badge-danger">OFFER</span>&nbsp;
               <small> Use Coupon OSAHAN50</small>
             </div>
           </div>
@@ -90,12 +94,14 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import SwiperCore, { Navigation } from "swiper";
 import { ref } from "@vue/reactivity";
 import getListProduct from "@/services/reuseable/getListProduct.js";
+import ButtonAddCart from "@/components/ButtonAddCart";
 SwiperCore.use(Navigation);
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
+    ButtonAddCart,
   },
 
   setup() {

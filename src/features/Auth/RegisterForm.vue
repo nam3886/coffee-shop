@@ -67,11 +67,18 @@
 import { signUp } from "@/services/reuseable/useAuth";
 import signUpValidate from "@/features/Auth/validate/signUpValidate";
 import FormGroup from "@/components/FormGroup";
+import { localSetItem } from "@/helpers/local_storage";
+import { TOKEN } from "@/constants";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { SET_IS_AUTHENTICATED } from "@/store/actionTypes";
 
 export default {
   components: { FormGroup },
 
   setup() {
+    const router = useRouter();
+    const store = useStore();
     const { state: user, v$ } = signUpValidate();
 
     async function handleRegister() {
@@ -79,7 +86,10 @@ export default {
       if (!result) return;
 
       try {
-        await signUp(user);
+        const { data: token } = await signUp(user);
+        localSetItem(TOKEN, token.data.access_token);
+        await store.dispatch(SET_IS_AUTHENTICATED, true);
+        router.push({ name: "home" });
       } catch (error) {
         console.log([error]);
       }

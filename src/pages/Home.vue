@@ -5,9 +5,6 @@
     <week-trending-product />
     <most-popular-product />
     <most-sale-product />
-    <div class="row bg-danger">
-      <div class="col">hi im Nam</div>
-    </div>
   </div>
 </template>
 

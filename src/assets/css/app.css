@@ -24,3 +24,19 @@
 .modal-open.fixed-bottom-bar .osahan-menu-fotter.fixed-bottom {
   padding-right: 4px !important;
 }
+.btn-cart,
+.btn-logout {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.btn-cart a i {
+  color: #e23744;
+}
+.btn-cart a:hover i {
+  color: #0091bc;
+}
+.section-header .hc-nav-trigger {
+  top: 0;
+  bottom: 0;
+}

@@ -11,32 +11,6 @@
           </div>
           <div class="col-3 d-flex align-items-center m-none">
             <div class="dropdown mr-3">
-              <!-- <a
-                id="navbarDropdown"
-                class="text-dark dropdown-toggle d-flex align-items-center py-3"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <div>
-                  <i
-                    class="
-                      feather-map-pin
-                      mr-2
-                      bg-light
-                      rounded-pill
-                      p-2
-                      icofont-size
-                    "
-                  ></i>
-                </div> -->
-              <!-- <div>
-                  <p class="text-muted mb-0 small">Select Location</p>
-                  Jawaddi Ludhiana...
-                </div> -->
-              <!-- </a> -->
               <div
                 class="dropdown-menu p-0 drop-loc"
                 aria-labelledby="navbarDropdown"
@@ -181,9 +155,11 @@
                 </div>
               </router-link>
               <!-- my account -->
-              <div class="dropdown mr-4 m-none">
+              <div
+                v-if="$store.getters.getIsAuthenticated"
+                class="dropdown mr-4 m-none"
+              >
                 <a
-                  v-if="!$store.getters.getIsAuthenticated"
                   id="dropdownMenuButton"
                   href="#"
                   class="dropdown-toggle text-dark py-3 d-block"
@@ -193,29 +169,7 @@
                 >
                   <img
                     alt="#"
-                    src="img/user/1.jpg"
-                    class="
-                      img-fluid
-                      rounded-circle
-                      header-user
-                      mr-2
-                      header-user
-                    "
-                  />
-                  Hi Username
-                </a>
-                <a
-                  v-else
-                  id="dropdownMenuButton"
-                  href="#"
-                  class="dropdown-toggle text-dark py-3 d-block"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <img
-                    alt="#"
-                    :src="$store.getters.getProfile.avatar.url"
+                    :src="$store.getters.getProfile.avatar?.url"
                     class="
                       img-fluid
                       rounded-circle
@@ -237,7 +191,11 @@
                   <a class="dropdown-item" href="privacy.html"
                     >Privacy policy</a
                   >
-                  <a class="dropdown-item" href="login.html">Đăng xuất</a>
+                  <button-logout class="w-100 text-left">
+                    <a class="dropdown-item" href="#" @click.prevent="">
+                      Đăng xuất
+                    </a>
+                  </button-logout>
                 </div>
               </div>
               <!-- signin -->
@@ -267,7 +225,9 @@
 </template>
 
 <script>
-export default {};
-</script>
+import ButtonLogout from "@/components/ButtonLogout";
 
-<style></style>
+export default {
+  components: { ButtonLogout },
+};
+</script>

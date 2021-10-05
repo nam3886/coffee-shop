@@ -54,12 +54,14 @@
 </template>
 
 <script>
-import { signIn, getProfile } from "@/services/reuseable/useAuth";
+import { signIn } from "@/services/reuseable/useAuth";
 import signInValidate from "@/features/Auth/validate/signInValidate";
 import { localSetItem } from "@/helpers/local_storage";
 import { TOKEN } from "@/constants";
 import { useRouter } from "vue-router";
 import FormGroup from "@/components/FormGroup";
+import { useStore } from "vuex";
+import { SET_IS_AUTHENTICATED } from "@/store/actionTypes";
 
 export default {
   components: { FormGroup },
@@ -67,6 +69,7 @@ export default {
   setup() {
     const { state: user, v$ } = signInValidate();
     const router = useRouter();
+    const store = useStore();
 
     async function handleLogin() {
       const result = await v$.value.$validate();
@@ -75,7 +78,7 @@ export default {
       try {
         const { data: token } = await signIn(user);
         localSetItem(TOKEN, token.data.access_token);
-        await getProfile();
+        await store.dispatch(SET_IS_AUTHENTICATED, true);
         router.push({ name: "home" });
       } catch (error) {
         console.log([error]);

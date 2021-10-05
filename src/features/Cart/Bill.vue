@@ -25,7 +25,7 @@
       </div>
       <div class="bg-white border-bottom py-2">
         <div
-          v-for="cart in $store.getters.getCart"
+          v-for="cart in $store.getters.getCart.items"
           :key="cart.id"
           class="
             gold-members
@@ -39,7 +39,9 @@
           <div class="media align-items-center">
             <div class="mr-2 text-success">&middot;</div>
             <div class="media-body">
-              <p class="m-0">{{ cart.product.name }}</p>
+              <p class="m-0">
+                {{ cart.product.name }}
+              </p>
             </div>
           </div>
           <div class="d-flex align-items-center">
@@ -47,9 +49,11 @@
               <input-quantity :cart="cart" />
             </span>
             <p class="text-gray mb-0 float-right ml-2 text-muted small">
-              {{ cart.price }}
+              {{ cart.subtotal_format }}
             </p>
-            <button-delete-cart :cart-id="cart.id"> del </button-delete-cart>
+            <button-delete-cart :cart-id="cart.id" class="ml-2 text-danger">
+              <i class="feather-x-circle"></i>
+            </button-delete-cart>
           </div>
         </div>
       </div>
@@ -80,7 +84,7 @@
         </div>
       </div>
       <div class="bg-white p-3 clearfix border-bottom">
-        <p class="mb-1">
+        <!-- <p class="mb-1">
           Tổng tiền <span class="float-right text-dark">$3140</span>
         </p>
         <p class="mb-1">
@@ -91,15 +95,19 @@
         <p class="mb-1 text-success">
           Tổng giảm giá<span class="float-right text-success">$1884</span>
         </p>
-        <hr />
+        <hr /> -->
         <h6 class="font-weight-bold mb-0">
-          Thực thu <span class="float-right">$1329</span>
+          Thực thu
+          <span class="float-right">
+            {{ $store.getters.getCart.total }}
+          </span>
         </h6>
       </div>
       <div class="p-3">
-        <a class="btn btn-success btn-block btn-lg" href="successful.html"
-          >Thực thu $1329<i class="feather-arrow-right"></i
-        ></a>
+        <a class="btn btn-success btn-block btn-lg" href="successful.html">
+          Thực thu {{ $store.getters.getCart.total }}
+          <i class="feather-arrow-right"></i>
+        </a>
       </div>
     </div>
   </div>

@@ -41,7 +41,7 @@
           href="favorites.html"
           class="text-dark small font-weight-bold text-decoration-none"
         >
-          <p class="h4 m-0"><i class="feather-heart"></i></p>
+          <p class="h4 m-0"><i class="feather-shopping-cart"></i></p>
           Yêu thích
         </a>
       </div>

@@ -3,7 +3,7 @@
     <div class="pt-2 pb-3 title d-flex align-items-center">
       <h5 class="m-0">Most sales</h5>
       <a class="font-weight-bold ml-auto" href="#"
-        >26 places <i class="feather-chevrons-right"></i
+        >View all <i class="feather-chevrons-right"></i
       ></a>
     </div>
     <div class="most_sale">
@@ -35,7 +35,7 @@
               <div class="favourite-heart text-danger position-absolute">
                 <button-add-cart :product-id="product.id">
                   <a href="#" @click.prevent="">
-                    <i class="feather-heart"></i>
+                    <i class="feather-shopping-cart"></i>
                   </a>
                 </button-add-cart>
               </div>
@@ -57,7 +57,7 @@
                     {{ product.name }}
                   </a>
                 </h6>
-                <p class="text-gray mb-3">{{ product.price }}</p>
+                <p class="text-gray mb-3">{{ product.price_format }}</p>
                 <p class="text-gray mb-3 time">
                   <span
                     class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"
@@ -67,7 +67,7 @@
                 </p>
               </div>
               <div class="list-card-badge">
-                <span class="badge badge-danger">OFFER</span>
+                <span class="badge badge-danger">OFFER</span>&nbsp;
                 <small>65% OSAHAN50</small>
               </div>
             </div>

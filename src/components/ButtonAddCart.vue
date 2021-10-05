@@ -34,11 +34,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.btn-cart {
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-</style>
