@@ -4,16 +4,16 @@ export function storeCartItem(params) {
   return API.post("/cart", { ...params });
 }
 
-export function updateCartQuantity(quantity) {
-  return API.put("/cart", { quantity });
+export function updateCartQuantity(cartId, params) {
+  return API.put(`/cart/${cartId}`, params);
 }
 
 export function deleteCartItem(cartId) {
   return API.delete(`/cart/${cartId}`);
 }
 
-export function getCart() {
-  return API.get("/cart");
+export async function getCart() {
+  return await API.get("/cart");
 }
 
 export function getCartDetail(cartId) {

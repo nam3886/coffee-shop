@@ -1,11 +1,15 @@
-import { SET_IS_AUTHENTICATED, SET_PROFILE } from "@/store/actionTypes";
+import * as ACTION from "@/store/actionTypes";
 
 export default {
   setIsAuthenticated({ commit }, payload) {
-    commit(SET_IS_AUTHENTICATED, payload);
+    commit(ACTION.SET_IS_AUTHENTICATED, payload);
   },
 
   setProfile({ commit }, payload) {
-    commit(SET_PROFILE, payload);
+    commit(ACTION.SET_PROFILE, payload);
+  },
+
+  setCart({ commit }, payload) {
+    commit(ACTION.SET_CART, payload);
   },
 };

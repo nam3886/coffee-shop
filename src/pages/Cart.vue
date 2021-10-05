@@ -8,7 +8,10 @@
     </div>
     <!-- checkout -->
     <div class="container position-relative">
-      <div class="py-5 row"><CheckoutForm></CheckoutForm> <Bill></Bill></div>
+      <div class="py-5 row">
+        <CheckoutForm />
+        <Bill />
+      </div>
     </div>
   </div>
 </template>
@@ -16,6 +19,7 @@
 <script>
 import CheckoutForm from "@/features/Cart/CheckoutForm.vue";
 import Bill from "@/features/Cart/Bill.vue";
+
 export default {
   components: {
     CheckoutForm,
@@ -23,5 +27,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

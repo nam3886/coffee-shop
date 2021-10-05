@@ -7,6 +7,7 @@ export default createStore({
   state: {
     isAuthenticated: false,
     profile: {},
+    cart: [],
   },
   getters,
   actions,

@@ -23,6 +23,9 @@ import LayoutFilter from "@/layouts/Filter.vue";
 import { useRouter } from "vue-router";
 import { computed } from "@vue/reactivity";
 import { getProfile } from "@/services/reuseable/useAuth";
+import { getCart } from "@/services/reuseable/useCart";
+import { useStore } from "vuex";
+import { SET_CART } from "@/store/actionTypes";
 
 export default {
   components: {
@@ -43,7 +46,11 @@ export default {
       );
     });
 
-    getProfile();
+    const store = useStore();
+    getProfile().then(async function () {
+      const { data } = await getCart();
+      store.dispatch(SET_CART, data.data);
+    });
 
     return { ignoreHeaderAndFooter };
   },

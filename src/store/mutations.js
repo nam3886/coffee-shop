@@ -6,4 +6,8 @@ export default {
   setProfile(state, payload) {
     state.profile = { ...payload };
   },
+
+  setCart(state, payload) {
+    state.cart = [...payload];
+  },
 };
