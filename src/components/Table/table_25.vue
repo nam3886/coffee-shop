@@ -1,5 +1,7 @@
 <template>
-  <img src="/img/ban25.png" alt="ban 25" />
+  <div class="table">
+    <img src="/img/ban25.png" alt="ban 25" />
+  </div>
 </template>
 
 <script>
@@ -8,8 +10,8 @@ export default {};
 
 <style scoped>
 .table {
-  width: 15%;
-  height: 11%;
+  width: 7%;
+  height: 12%;
   margin: 0;
   padding: 0;
 }

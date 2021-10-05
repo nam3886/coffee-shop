@@ -1,35 +1,32 @@
 <template>
   <div class="osahan-home-page table-page">
-    <div class="container py-5">
+    <form class="container py-5" @submit.prevent="hanldeSaveTableMap">
       <div class="row">
         <div id="map" class="col-12">
           <img src="/img/table5editremovebg.png" alt="map" class="img-map" />
-          <table-68 class="draggable ui-widget-content" />
-          <table-2122 class="draggable ui-widget-content" />
-          <table-4 class="draggable ui-widget-content" />
-          <table-7 class="draggable ui-widget-content" />
-          <table-9 class="draggable ui-widget-content" />
-          <table-12 class="draggable ui-widget-content" />
-          <table-23 class="draggable ui-widget-content" />
-          <table-24 class="draggable ui-widget-content" />
-          <table-35 class="draggable ui-widget-content" />
-          <table-25 class="draggable ui-widget-content" />
+          <component
+            :is="table.type"
+            v-for="(table, key) in tables"
+            :key="table.id"
+            :data-index="key"
+            :data-type="table.type"
+            class="draggable ui-widget-content"
+            :style="`width: ${table.width}; height: ${table.height}; top: ${table.top}; left: ${table.left}`"
+            @click="selectTable"
+          ></component>
         </div>
       </div>
-      <!-- <table-12></table-12>
-      <table-2122></table-2122>
-      <table-35></table-35>
-      <table-4></table-4>
-      <table-7></table-7>
-      <table-9></table-9>
-      <table-23></table-23>
-      <table-24></table-24> -->
-    </div>
+      <div class="row mt-5">
+        <div class="col-12 text-right">
+          <button type="submit" class="btn btn-danger">Lưu</button>
+        </div>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
-import { inject } from "@vue/runtime-core";
+import { inject, onUpdated, ref } from "@vue/runtime-core";
 import $ from "jquery";
 import "jquery-ui/ui/widgets/draggable";
 import "@/assets/vendor/jquery/jquery.ui.touch-punch.min.js";
@@ -43,6 +40,8 @@ import Table2122 from "@/components/Table/table_2122.vue";
 import Table23 from "@/components/Table/table_23.vue";
 import Table24 from "@/components/Table/table_24.vue";
 import Table25 from "@/components/Table/table_25.vue";
+import { saveTableMap, getTableMap } from "@/services/reuseable/useTable";
+import { useStore } from "vuex";
 
 export default {
   components: {
@@ -59,35 +58,68 @@ export default {
   },
   setup() {
     const emitter = inject("emitter");
+    const tables = ref({});
+    const store = useStore();
+
+    getTableMap().then(({ data }) => {
+      tables.value = data.data;
+    });
 
     function selectTable(table) {
       emitter.emit("show-order-table", table);
     }
 
-    return { selectTable };
-  },
+    function hanldeSaveTableMap() {
+      saveTableMap({ map: tables.value });
+    }
 
-  mounted() {
-    $(function () {
-      $("#map .draggable").draggable({
+    function initialMap() {
+      const mapElement = $("#map .draggable");
+      mapElement.data("ui-draggable") && mapElement.draggable("destroy");
+
+      mapElement.draggable({
         containment: "parent",
         cursor: "grabbing",
+        stop: updateUserAction,
+      });
+    }
+
+    function updateUserAction(event, ui) {
+      const mapHeight = $("#map").height();
+      const mapWidth = $("#map").width();
+      const top = ui.position.top;
+      const left = ui.position.left;
+      const topPercent = (top / mapHeight) * 100;
+      const leftPercent = (left / mapWidth) * 100;
+      const heightPercent = ($(event.target).height() / mapHeight) * 100;
+      const widthPercent = ($(event.target).width() / mapWidth) * 100;
+      $(event.target).css({
+        top: `${topPercent}%`,
+        left: `${leftPercent}%`,
       });
 
-      $("#map .draggable").on("dragstop", function (event, ui) {
-        const height = $("#map").height();
-        const width = $("#map").width();
+      const newTables = { ...tables.value };
+      newTables[event.target.dataset.index] = {
+        name: event.target.dataset.type,
+        type: event.target.dataset.type,
+        image:
+          "http://localhost:8080" + $(event.target).find("img").attr("src"),
+        top: `${topPercent}%`,
+        left: `${leftPercent}%`,
+        width: `${widthPercent}%`,
+        height: `${heightPercent}%`,
+        price: 50000,
+      };
+      tables.value = newTables;
+      console.log("update table");
+    }
 
-        const top = ui.position.top;
-        const left = ui.position.left;
-
-        const topPercent = (top / height) * 100;
-        const leftPercent = (left / width) * 100;
-        console.log(topPercent, leftPercent);
-
-        $(event.target).css({ top: `${topPercent}%`, left: `${leftPercent}%` });
-      });
+    onUpdated(() => {
+      // store.getters.getProfile.type === "ROOT" && initialMap();
+      initialMap();
     });
+
+    return { selectTable, tables, hanldeSaveTableMap };
   },
 };
 </script>

@@ -31,6 +31,8 @@ import {
   SET_PROFILE,
 } from "@/store/actionTypes";
 import { watchEffect } from "@vue/runtime-core";
+import { localRemoveItem } from "@/helpers/local_storage";
+import { TOKEN } from "@/constants";
 
 export default {
   components: {
@@ -71,6 +73,8 @@ export default {
         store.dispatch(SET_CART, cart.data);
       } catch (error) {
         store.dispatch(SET_IS_AUTHENTICATED, false);
+        store.dispatch(SET_PROFILE, {});
+        localRemoveItem(TOKEN);
       }
     }
 
