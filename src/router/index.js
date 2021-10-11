@@ -5,6 +5,7 @@ import authRoutes from "@/features/Auth/routes/index.js";
 import Cart from "@/pages/Cart.vue";
 import CustomerOrder from "@/pages/CustomerOrder.vue";
 import Table from "@/pages/Table.vue";
+import FoodDetail from "@/pages/FoodDetail.vue";
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
         path: "/dat-ban",
         name: "booking_table",
         component: Table,
+      },
+      {
+        path: "/chi-tiet-san-pham",
+        name: "food_detail",
+        component: FoodDetail,
       },
       ...authRoutes,
     ],

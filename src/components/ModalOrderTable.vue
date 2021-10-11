@@ -151,4 +151,10 @@ export default {
   color: gray;
   font-size: 125%;
 }
+.modal-title {
+  margin-bottom: 1%;
+  margin-left: 36%;
+  color: gray;
+  font-size: 25px;
+}
 </style>
