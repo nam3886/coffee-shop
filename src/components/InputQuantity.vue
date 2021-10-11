@@ -25,6 +25,7 @@
 import { updateCartQuantity, getCart } from "@/services/reuseable/useCart";
 import { useStore } from "vuex";
 import { SET_CART } from "@/store/actionTypes";
+import { inject } from "@vue/runtime-core";
 
 export default {
   props: {
@@ -38,6 +39,7 @@ export default {
 
   setup(props) {
     const store = useStore();
+    const emitter = inject("emitter");
 
     function increase() {
       updateQuantity(props.cart.quantity + 1);
@@ -48,13 +50,19 @@ export default {
     }
 
     async function updateQuantity(quantity) {
-      await updateCartQuantity(props.cart.id, {
-        product_id: props.cart.product.id,
-        quantity,
-      });
-
-      const { data } = await getCart();
-      store.dispatch(SET_CART, data.data);
+      emitter.emit("overlay-loading", true);
+      try {
+        await updateCartQuantity(props.cart.id, {
+          product_id: props.cart.product.id,
+          quantity,
+        });
+        const { data } = await getCart();
+        store.dispatch(SET_CART, data.data);
+      } catch (error) {
+        console.log([error]);
+      } finally {
+        emitter.emit("overlay-loading", false);
+      }
     }
 
     return { increase, decrease };

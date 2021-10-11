@@ -73,7 +73,7 @@
 
 <script>
 import { signIn } from "@/services/reuseable/useAuth";
-import signInValidate from "@/features/Auth/validate/signInValidate";
+import signInValidate from "@/validate/signInValidate";
 import { localSetItem } from "@/helpers/local_storage";
 import { TOKEN } from "@/constants";
 import { useRouter } from "vue-router";

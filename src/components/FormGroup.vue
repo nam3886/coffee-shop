@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <slot />
-    <p v-if="modelValue?.$error" class="is-invalid">
+    <p v-if="modelValue?.$error" class="is-invalid mt-2 mb-0">
       {{ modelValue.$errors[0].$message }}
     </p>
   </div>

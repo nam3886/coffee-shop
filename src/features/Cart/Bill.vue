@@ -51,7 +51,10 @@
             <p class="text-gray mb-0 float-right ml-2 text-muted small">
               {{ cart.subtotal_format }}
             </p>
-            <button-delete-cart :cart-id="cart.id" class="ml-2 text-danger">
+            <button-delete-cart
+              :cart-id="cart.id"
+              class="ml-2 text-danger outline-none"
+            >
               <i class="feather-x-circle"></i>
             </button-delete-cart>
           </div>
@@ -70,18 +73,7 @@
             </button>
           </div>
         </div>
-        <div class="mb-0 input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"
-              ><i class="feather-message-square"></i
-            ></span>
-          </div>
-          <textarea
-            placeholder="Ý kiến của khách hàng..."
-            aria-label="With textarea"
-            class="form-control"
-          ></textarea>
-        </div>
+        <div id="customerNote"></div>
       </div>
       <div class="bg-white p-3 clearfix border-bottom">
         <!-- <p class="mb-1">
@@ -99,16 +91,12 @@
         <h6 class="font-weight-bold mb-0">
           Thực thu
           <span class="float-right">
-            {{ $store.getters.getCart.total }}
+            {{ $store.getters.getCart.total_format }}
           </span>
         </h6>
       </div>
-      <div class="p-3">
-        <a class="btn btn-success btn-block btn-lg" href="successful.html">
-          Thực thu {{ $store.getters.getCart.total }}
-          <i class="feather-arrow-right"></i>
-        </a>
-      </div>
+      <!-- teleport -->
+      <div id="btnSubmitCheckout" class="p-3"></div>
     </div>
   </div>
 </template>

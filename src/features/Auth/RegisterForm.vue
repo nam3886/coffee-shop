@@ -83,7 +83,7 @@
 
 <script>
 import { signUp } from "@/services/reuseable/useAuth";
-import signUpValidate from "@/features/Auth/validate/signUpValidate";
+import signUpValidate from "@/validate/signUpValidate";
 import FormGroup from "@/components/FormGroup";
 import { localSetItem } from "@/helpers/local_storage";
 import { TOKEN } from "@/constants";
