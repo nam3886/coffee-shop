@@ -5,8 +5,17 @@
     <div class="px-5 col-md-6 ml-auto">
       <div class="px-5 col-10 mx-auto">
         <h2 class="text-dark my-0">Xin chào bạn</h2>
-        <p class="text-50">Đăng kí để tiếp tục</p>
+        <router-link :to="{ name: 'home' }" class="text-50">
+          Trở về trang chủ
+        </router-link>
         <form class="mt-5 mb-4" @submit.prevent="handleRegister">
+          <v-alert
+            v-for="(error, index) in errors"
+            :key="index"
+            :counter="true"
+            :message="error.join()"
+            type="danger"
+          />
           <form-group v-model="v$.email">
             <label for="exampleInputNumber1" class="text-dark">
               <!-- Số điện thoại -->
@@ -44,9 +53,18 @@
               class="form-control"
             />
           </form-group>
-          <button type="submit" class="btn btn-primary btn-lg btn-block">
+          <v-button
+            :loading="loading"
+            type="submit"
+            class="
+              btn btn-primary btn-lg btn-block
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+          >
             Đăng kí
-          </button>
+          </v-button>
           <div class="py-2">
             <button class="btn btn-facebook btn-lg btn-block">
               <i class="feather-facebook"></i> Đăng nhập bằng Facebook
@@ -72,6 +90,7 @@ import { TOKEN } from "@/constants";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { SET_IS_AUTHENTICATED } from "@/store/actionTypes";
+import { ref } from "@vue/reactivity";
 
 export default {
   components: { FormGroup },
@@ -79,11 +98,14 @@ export default {
   setup() {
     const router = useRouter();
     const store = useStore();
+    const loading = ref(false);
+    const errors = ref([]);
     const { state: user, v$ } = signUpValidate();
 
     async function handleRegister() {
       const result = await v$.value.$validate();
       if (!result) return;
+      loading.value = true;
 
       try {
         const { data: token } = await signUp(user);
@@ -91,11 +113,13 @@ export default {
         await store.dispatch(SET_IS_AUTHENTICATED, true);
         router.push({ name: "home" });
       } catch (error) {
-        console.log([error]);
+        errors.value = error.response.data.errors;
+      } finally {
+        loading.value = false;
       }
     }
 
-    return { user, v$, handleRegister };
+    return { user, v$, handleRegister, loading, errors };
   },
 };
 </script>
