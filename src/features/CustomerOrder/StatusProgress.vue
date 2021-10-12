@@ -12,13 +12,21 @@
             <div class="text-muted mr-3">
               <img
                 alt="#"
-                src="img/popular3.png"
+                :src="order.items[0].product.image"
                 class="img-fluid order_img rounded"
               />
             </div>
             <div>
               <p class="mb-0 font-weight-bold">
-                <a href="restaurant.html" class="text-dark">Đơn hàng</a>
+                <router-link
+                  :to="{
+                    name: 'customer_order.show',
+                    params: { order_code: order.order_code },
+                  }"
+                  class="text-dark"
+                >
+                  Đơn hàng
+                </router-link>
               </p>
               <p class="mb-0">
                 {{ order.is_paid ? "đã thanh toán" : "chưa thanh toán" }}

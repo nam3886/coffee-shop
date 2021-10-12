@@ -44,7 +44,7 @@ const routes = [
         component: FoodDetail,
       },
       {
-        path: "/dat-hang-thanh-cong",
+        path: "/dat-hang-thanh-cong/:order_code",
         name: "order_success",
         component: OrderSuccess,
       },

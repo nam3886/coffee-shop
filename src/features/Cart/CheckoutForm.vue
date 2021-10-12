@@ -167,15 +167,32 @@ export default {
       emitter.emit(EV_OVERLAY_TRANSPARENT, true);
 
       try {
-        await storeOrder(checkout);
-        emitter.emit(EV_GET_CART);
-        router.push({ name: "order_success" });
+        const res = await storeOrder(checkout);
+        checkoutMethods[checkout.payment_method] &&
+          checkoutMethods[checkout.payment_method](res);
       } catch (error) {
         errors.value = error.response.data.errors;
       } finally {
         loading.value = false;
         emitter.emit(EV_OVERLAY_TRANSPARENT, false);
       }
+    }
+
+    const checkoutMethods = {
+      cash: cashMethod,
+      vnpay: vnpayMethod,
+    };
+
+    function cashMethod(res) {
+      emitter.emit(EV_GET_CART);
+      router.push({
+        name: "order_success",
+        params: { order_code: res.data.order_code },
+      });
+    }
+
+    function vnpayMethod(res) {
+      window.location.href = res.data.url;
     }
 
     return {
