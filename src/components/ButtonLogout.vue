@@ -23,10 +23,10 @@ export default {
 
     async function handleLogout() {
       await logout();
+      localRemoveItem(TOKEN);
       await store.dispatch(SET_IS_AUTHENTICATED, false);
       await store.dispatch(SET_PROFILE, {});
       await store.dispatch(SET_CART, {});
-      localRemoveItem(TOKEN);
       router.push({ name: "login" });
     }
 

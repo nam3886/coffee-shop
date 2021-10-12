@@ -90,7 +90,6 @@ import { TOKEN } from "@/constants";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { SET_IS_AUTHENTICATED } from "@/store/actionTypes";
-import { ref } from "@vue/reactivity";
 
 export default {
   components: { FormGroup },
@@ -98,25 +97,18 @@ export default {
   setup() {
     const router = useRouter();
     const store = useStore();
-    const loading = ref(false);
-    const errors = ref([]);
     const { state: user, v$ } = signUpValidate();
+    const { data: token, loading, errors, reCallApi } = signUp(user);
 
     async function handleRegister() {
       const result = await v$.value.$validate();
       if (!result) return;
       loading.value = true;
 
-      try {
-        const { data: token } = await signUp(user);
-        localSetItem(TOKEN, token.data.access_token);
-        await store.dispatch(SET_IS_AUTHENTICATED, true);
-        router.push({ name: "home" });
-      } catch (error) {
-        errors.value = error.response.data.errors;
-      } finally {
-        loading.value = false;
-      }
+      await reCallApi(user);
+      localSetItem(TOKEN, token.value.access_token);
+      await store.dispatch(SET_IS_AUTHENTICATED, true);
+      router.push({ name: "home" });
     }
 
     return { user, v$, handleRegister, loading, errors };

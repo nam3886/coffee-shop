@@ -189,4 +189,3 @@ export default {
   },
 };
 </script>
-// todo check loi be khi empty cart
