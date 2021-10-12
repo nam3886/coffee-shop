@@ -11,6 +11,7 @@
   <overlay-loading />
   <overlay-transparent />
   <toast />
+  <cart />
 </template>
 
 <script>
@@ -28,6 +29,7 @@ import LayoutFilter from "@/layouts/Filter.vue";
 import OverlayLoading from "@/layouts/OverlayLoading.vue";
 import OverlayTransparent from "@/layouts/OverlayTransparent.vue";
 import Toast from "@/layouts/Toast.vue";
+import Cart from "@/layouts/Cart.vue";
 
 export default {
   components: {
@@ -41,6 +43,7 @@ export default {
     OverlayLoading,
     OverlayTransparent,
     Toast,
+    Cart,
   },
 
   setup() {

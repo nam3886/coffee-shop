@@ -5,12 +5,11 @@
 </template>
 
 <script>
-import { storeCartItem, getCart } from "@/services/reuseable/useCart";
+import { storeCartItem } from "@/services/reuseable/useCart";
 import { useStore } from "vuex";
-import { SET_CART } from "@/store/actionTypes";
 import { useRouter } from "vue-router";
 import { inject } from "@vue/runtime-core";
-import { EV_OVERLAY_LOADING, EV_TOAST } from "@/constants";
+import { EV_OVERLAY_LOADING, EV_TOAST, EV_GET_CART } from "@/constants";
 
 export default {
   props: {
@@ -36,8 +35,7 @@ export default {
           product_id: props.productId,
           quantity: 1,
         });
-        const { data: cart } = await getCart();
-        store.dispatch(SET_CART, cart.data);
+        emitter.emit(EV_GET_CART);
         emitter.emit(EV_TOAST, {
           title: "Thêm thành công",
           content: `Tên: ${product.data.product.name}\n1 x ${product.data.product.price_format}`,

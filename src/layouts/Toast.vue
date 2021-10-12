@@ -31,7 +31,7 @@
 
 <script>
 import { reactive } from "@vue/reactivity";
-import { inject, onMounted } from "@vue/runtime-core";
+import { inject } from "@vue/runtime-core";
 import { wait } from "@/helpers";
 import { EV_TOAST } from "@/constants";
 
@@ -40,7 +40,7 @@ export default {
     const defaultTime = 2000; // seconds
     const messages = reactive([]);
     const emitter = inject("emitter");
-    onMounted(() => emitter.on(EV_TOAST, (message) => addMessage(message)));
+    emitter.on(EV_TOAST, (message) => addMessage(message));
 
     function addMessage(message) {
       const now = new Date();

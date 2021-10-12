@@ -140,7 +140,7 @@ import checkoutValidate from "@/validate/checkoutValidate";
 import { useRouter } from "vue-router";
 import { storeOrder } from "@/services/reuseable/useOrder";
 import FormGroup from "@/components/FormGroup";
-import { EV_OVERLAY_TRANSPARENT } from "@/constants";
+import { EV_OVERLAY_TRANSPARENT, EV_GET_CART } from "@/constants";
 
 export default {
   components: { FormGroup },
@@ -168,6 +168,7 @@ export default {
 
       try {
         await storeOrder(checkout);
+        emitter.emit(EV_GET_CART);
         router.push({ name: "order_success" });
       } catch (error) {
         errors.value = error.response.data.errors;
