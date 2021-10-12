@@ -28,7 +28,7 @@
           :class="{ active: status == 'completed' }"
           @click.prevent="status = 'completed'"
         >
-          <i class="feather-check mr-2 text-success mb-0"></i> Completed</a
+          <i class="feather-check mr-2 text-success mb-0"></i> Đã xong</a
         >
       </li>
       <li class="nav-item border-top" role="presentation">
@@ -43,7 +43,7 @@
           :class="{ active: status == 'progress' }"
           @click.prevent="status = 'progress'"
         >
-          <i class="feather-clock mr-2 text-warning mb-0"></i> On Progress</a
+          <i class="feather-clock mr-2 text-warning mb-0"></i> Đang làm</a
         >
       </li>
       <li class="nav-item border-top" role="presentation">
@@ -58,7 +58,7 @@
           :class="{ active: status == 'cancelled' }"
           @click.prevent="status = 'cancelled'"
         >
-          <i class="feather-x-circle mr-2 text-danger mb-0"></i> Canceled</a
+          <i class="feather-x-circle mr-2 text-danger mb-0"></i> Bị hủy</a
         >
       </li>
     </ul>

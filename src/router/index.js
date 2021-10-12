@@ -6,7 +6,7 @@ import Cart from "@/pages/Cart.vue";
 import CustomerOrder from "@/pages/CustomerOrder.vue";
 import Table from "@/pages/Table.vue";
 import FoodDetail from "@/pages/FoodDetail.vue";
-
+import OrderSuccess from "@/pages/OrderSuccess.vue";
 const routes = [
   {
     path: "/",
@@ -37,6 +37,11 @@ const routes = [
         path: "/chi-tiet-san-pham",
         name: "food_detail",
         component: FoodDetail,
+      },
+      {
+        path: "/dat-hang-thanh-cong",
+        name: "order_success",
+        component: OrderSuccess,
       },
       ...authRoutes,
     ],

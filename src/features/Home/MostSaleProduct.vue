@@ -76,15 +76,17 @@
       </div>
     </div>
   </div>
+  <LoadingButton></LoadingButton>
 </template>
 
 <script>
 import { ref } from "@vue/reactivity";
 import getListProduct from "@/services/reuseable/getListProduct.js";
 import ButtonAddCart from "@/components/ButtonAddCart";
+import LoadingButton from "@/components/LoadingButton";
 
 export default {
-  components: { ButtonAddCart },
+  components: { ButtonAddCart, LoadingButton },
 
   setup() {
     const products = ref([]);

@@ -18,37 +18,35 @@
             </div>
             <div>
               <p class="mb-0 font-weight-bold">
-                <a href="restaurant.html" class="text-dark"
-                  >Conrad Chicago Restaurant</a
-                >
+                <a href="trang-chu" class="text-dark">Trà đào</a>
               </p>
-              <p class="mb-0">Punjab, India</p>
-              <p>ORDER #321DERS</p>
+              <p class="mb-0">đẩy đủ</p>
+              <p>Mã:001</p>
               <p class="mb-0 small">
-                <a href="status_canceled.html">View Details</a>
+                <a href="status_canceled.html">Xem chi tiết</a>
               </p>
             </div>
             <div class="ml-auto">
               <p class="bg-danger text-white py-1 px-2 rounded small mb-1">
-                Payment failed
+                Lỗi thanh toán
               </p>
               <p class="small font-weight-bold text-center">
-                <i class="feather-clock"></i> 06/04/2020
+                <i class="feather-clock"></i> 01/10/2021
               </p>
             </div>
           </div>
           <div class="d-flex pt-3">
             <div class="small">
-              <p class="text- font-weight-bold mb-0">Kesar Sweet x 1</p>
-              <p class="text- font-weight-bold mb-0">Gulab Jamun x 4</p>
+              <p class="text- font-weight-bold mb-0">Trà đào x 1</p>
+              <p class="text- font-weight-bold mb-0">Khăn lạnh x 3</p>
             </div>
             <div class="text-muted m-0 ml-auto mr-3 small">
-              Total Payment<br />
-              <span class="text-dark font-weight-bold">$12.74</span>
+              Tổng tiền<br />
+              <span class="text-dark font-weight-bold">25.000đ</span>
             </div>
             <div class="text-right">
               <a href="contact-us.html" class="btn btn-outline-primary px-3"
-                >Help</a
+                >Trợ giúp</a
               >
             </div>
           </div>
@@ -66,37 +64,35 @@
             </div>
             <div>
               <p class="mb-0 font-weight-bold">
-                <a href="restaurant.html" class="text-dark"
-                  >Conrad Chicago Restaurant</a
-                >
+                <a href="restaurant.html" class="text-dark">Trà tắc</a>
               </p>
-              <p class="mb-0">Punjab, India</p>
-              <p>ORDER #321DERS</p>
+              <p class="mb-0">không đá , không đường</p>
+              <p>Mã:003</p>
               <p class="mb-0 small">
-                <a href="status_canceled.html">View Details</a>
+                <a href="status_canceled.html">Xem chi tiết</a>
               </p>
             </div>
             <div class="ml-auto">
               <p class="bg-danger text-white py-1 px-2 rounded small mb-1">
-                Canceled
+                Bị hủy
               </p>
               <p class="small font-weight-bold text-center">
-                <i class="feather-clock"></i> 06/04/2020
+                <i class="feather-clock"></i> 01/10/2021
               </p>
             </div>
           </div>
           <div class="d-flex pt-3">
             <div class="small">
-              <p class="text- font-weight-bold mb-0">Kesar Sweet x 1</p>
-              <p class="text- font-weight-bold mb-0">Gulab Jamun x 4</p>
+              <p class="text- font-weight-bold mb-0">Trà đào x 1</p>
+              <p class="text- font-weight-bold mb-0">Khăn lạnh x 2</p>
             </div>
             <div class="text-muted m-0 ml-auto mr-3 small">
-              Total Payment<br />
-              <span class="text-dark font-weight-bold">$12.74</span>
+              Tổng tiền<br />
+              <span class="text-dark font-weight-bold">20.000đ</span>
             </div>
             <div class="text-right">
               <a href="contact-us.html" class="btn btn-outline-primary px-3"
-                >Help</a
+                >Trợ giúp</a
               >
             </div>
           </div>
