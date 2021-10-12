@@ -19,11 +19,12 @@
         <h1 class="font-weight-bold">Bạn đã đặt thành công 😀!!</h1>
         <p>
           Kiểm tra hóa đơn của bạn tại
-          <a
-            href="hoa-don"
+          <router-link
+            :to="{ name: 'customer_order' }"
             class="font-weight-bold text-decoration-none text-primary"
-            >Đây</a
           >
+            Đây
+          </router-link>
           để xem thông tin chi tiết
         </p>
       </div>
@@ -34,9 +35,12 @@
         <p class="small text-muted">
           Yêu cầu của bạn đang được chúng tôi chuẩn bị
         </p>
-        <a href="hoa-don" class="btn rounded btn-primary btn-lg btn-block"
-          >Xem hóa đơn</a
+        <router-link
+          :to="{ name: 'customer_order' }"
+          class="btn rounded btn-primary btn-lg btn-block"
         >
+          Xem hóa đơn
+        </router-link>
       </div>
     </div>
   </div>

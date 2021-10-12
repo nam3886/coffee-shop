@@ -168,7 +168,7 @@ export default {
 
       try {
         await storeOrder(checkout);
-        router.push({ name: "checkout_success" });
+        router.push({ name: "order_success" });
       } catch (error) {
         errors.value = error.response.data.errors;
       } finally {
