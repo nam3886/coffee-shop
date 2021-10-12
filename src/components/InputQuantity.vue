@@ -26,6 +26,7 @@ import { updateCartQuantity, getCart } from "@/services/reuseable/useCart";
 import { useStore } from "vuex";
 import { SET_CART } from "@/store/actionTypes";
 import { inject } from "@vue/runtime-core";
+import { EV_OVERLAY_LOADING } from "@/constants";
 
 export default {
   props: {
@@ -50,7 +51,7 @@ export default {
     }
 
     async function updateQuantity(quantity) {
-      emitter.emit("overlay-loading", true);
+      emitter.emit(EV_OVERLAY_LOADING, true);
       try {
         await updateCartQuantity(props.cart.id, {
           product_id: props.cart.product.id,
@@ -61,7 +62,7 @@ export default {
       } catch (error) {
         console.log([error]);
       } finally {
-        emitter.emit("overlay-loading", false);
+        emitter.emit(EV_OVERLAY_LOADING, false);
       }
     }
 

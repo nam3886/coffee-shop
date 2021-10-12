@@ -134,12 +134,13 @@
 
 <script>
 import { reactive, ref } from "@vue/reactivity";
-import { onMounted } from "@vue/runtime-core";
+import { inject, onMounted } from "@vue/runtime-core";
 import { wait } from "@/helpers";
 import checkoutValidate from "@/validate/checkoutValidate";
 import { useRouter } from "vue-router";
 import { storeOrder } from "@/services/reuseable/useOrder";
 import FormGroup from "@/components/FormGroup";
+import { EV_OVERLAY_TRANSPARENT } from "@/constants";
 
 export default {
   components: { FormGroup },
@@ -149,6 +150,7 @@ export default {
     const isVisible = ref(false);
     const loading = ref(false);
     const errors = ref([]);
+    const emitter = inject("emitter");
     const { state: checkout, v$ } = checkoutValidate();
     const paymentMethods = reactive([
       { name: "Tại cửa hàng", id: "cash" },
@@ -162,6 +164,7 @@ export default {
       const result = await v$.value.$validate();
       if (!result) return;
       loading.value = true;
+      emitter.emit(EV_OVERLAY_TRANSPARENT, true);
 
       try {
         await storeOrder(checkout);
@@ -170,6 +173,7 @@ export default {
         errors.value = error.response.data.errors;
       } finally {
         loading.value = false;
+        emitter.emit(EV_OVERLAY_TRANSPARENT, false);
       }
     }
 

@@ -29,7 +29,7 @@
 import { inject, onUpdated, ref } from "@vue/runtime-core";
 import $ from "jquery";
 import "jquery-ui/ui/widgets/draggable";
-import "@/assets/vendor/jquery/jquery.ui.touch-punch.min.js";
+// import "@/assets/vendor/jquery/jquery.ui.touch-punch.min.js";
 import Table68 from "@/components/Table/table_68.vue";
 import Table4 from "@/components/Table/table_4.vue";
 import Table7 from "@/components/Table/table_7.vue";
@@ -41,7 +41,7 @@ import Table23 from "@/components/Table/table_23.vue";
 import Table24 from "@/components/Table/table_24.vue";
 import Table25 from "@/components/Table/table_25.vue";
 import { saveTableMap, getTableMap } from "@/services/reuseable/useTable";
-// import { useStore } from "vuex";
+import { EV_SHOW_ORDER_TABLE } from "@/constants";
 
 export default {
   components: {
@@ -66,7 +66,7 @@ export default {
     });
 
     function selectTable(table) {
-      emitter.emit("show-order-table", table);
+      emitter.emit(EV_SHOW_ORDER_TABLE, table);
     }
 
     function hanldeSaveTableMap() {
