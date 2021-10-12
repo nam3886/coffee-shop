@@ -5,14 +5,18 @@
   <!-- là phần body , nội dung sẽ thay đổi , header và footer là cố định, đảm nhiệm nội dung của body -->
   <layout-mobile-footer v-if="!ignoreHeaderAndFooter" />
   <layout-desktop-footer v-if="!ignoreHeaderAndFooter" />
-  <ModalOrderTable />
   <navigation />
   <layout-filter />
+  <modal-order-table />
+  <overlay-loading />
+  <toast />
 </template>
 
 <script>
 import "swiper/swiper-bundle.min.css";
 import "@/assets/css/app.css";
+import { useRouter } from "vue-router";
+import { computed } from "@vue/reactivity";
 import LayoutDesktopHeader from "@/layouts/Header/DesktopHeader.vue";
 import LayoutMobileHeader from "@/layouts/Header/MobileHeader.vue";
 import LayoutMobileFooter from "@/layouts/Footer/MobileFooter.vue";
@@ -20,19 +24,8 @@ import LayoutDesktopFooter from "@/layouts/Footer/DesktopFooter.vue";
 import ModalOrderTable from "@/components/ModalOrderTable.vue";
 import Navigation from "@/layouts/Navigation.vue";
 import LayoutFilter from "@/layouts/Filter.vue";
-import { useRouter } from "vue-router";
-import { computed } from "@vue/reactivity";
-import { getProfile } from "@/services/reuseable/useAuth";
-import { getCart } from "@/services/reuseable/useCart";
-import { useStore } from "vuex";
-import {
-  SET_CART,
-  SET_IS_AUTHENTICATED,
-  SET_PROFILE,
-} from "@/store/actionTypes";
-import { watchEffect } from "@vue/runtime-core";
-import { localRemoveItem } from "@/helpers/local_storage";
-import { TOKEN } from "@/constants";
+import OverlayLoading from "@/layouts/OverlayLoading.vue";
+import Toast from "@/layouts/Toast.vue";
 
 export default {
   components: {
@@ -43,40 +36,18 @@ export default {
     Navigation,
     LayoutFilter,
     ModalOrderTable,
+    OverlayLoading,
+    Toast,
   },
 
   setup() {
     const router = useRouter();
-    const store = useStore();
 
     const ignoreHeaderAndFooter = computed(() => {
       return ["login", "register", "forgot_password", "verification"].includes(
         router.currentRoute.value.name
       );
     });
-
-    getUserProfile();
-
-    watchEffect(() => {
-      const isAuthenticated = store.getters.getIsAuthenticated;
-      isAuthenticated && getUserProfile();
-    });
-
-    async function getUserProfile() {
-      console.log("run get user profile");
-      if (!store.getters.getIsAuthenticated) return;
-
-      try {
-        const { data: profile } = await getProfile();
-        const { data: cart } = await getCart();
-        store.dispatch(SET_PROFILE, profile.data);
-        store.dispatch(SET_CART, cart.data);
-      } catch (error) {
-        store.dispatch(SET_IS_AUTHENTICATED, false);
-        store.dispatch(SET_PROFILE, {});
-        localRemoveItem(TOKEN);
-      }
-    }
 
     return { ignoreHeaderAndFooter };
   },

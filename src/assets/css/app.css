@@ -40,3 +40,9 @@
   top: 0;
   bottom: 0;
 }
+.outline-none {
+  outline: none;
+}
+.outline-none:focus {
+  outline: none;
+}

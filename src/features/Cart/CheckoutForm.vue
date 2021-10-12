@@ -16,7 +16,8 @@
                 aria-expanded="true"
                 aria-controls="collapseOne"
               >
-                <i class="feather-credit-card mr-3"></i> Credit/Debit Card
+                <i class="feather-credit-card mr-3"></i>
+                Thông tin thanh toán
                 <i class="feather-chevron-down ml-auto"></i>
               </button>
             </h2>
@@ -28,165 +29,101 @@
             data-parent="#accordionExample"
           >
             <div class="osahan-card-body border-top p-3">
-              <h6 class="m-0">Add new card</h6>
-              <p class="small">
-                WE ACCEPT
-                <span class="osahan-card ml-2 font-weight-bold"
-                  >( Master Card / Visa Card / Rupay )</span
-                >
-              </p>
-              <form>
-                <div class="form-row">
-                  <div class="col-md-12 form-group">
-                    <label class="form-label font-weight-bold small"
-                      >Card number</label
-                    >
-                    <div class="input-group">
-                      <input
-                        placeholder="Card number"
-                        type="number"
-                        class="form-control"
-                      />
-                      <div class="input-group-append">
-                        <button type="button" class="btn btn-outline-secondary">
-                          <i class="feather-credit-card"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-8 form-group">
-                    <label class="form-label font-weight-bold small"
-                      >Valid through(MM/YY)</label
-                    ><input
-                      placeholder="Enter Valid through(MM/YY)"
-                      type="number"
-                      class="form-control"
-                    />
-                  </div>
-                  <div class="col-md-4 form-group">
-                    <label class="form-label font-weight-bold small">CVV</label
-                    ><input
-                      placeholder="Enter CVV Number"
-                      type="number"
-                      class="form-control"
-                    />
-                  </div>
-                  <div class="col-md-12 form-group">
-                    <label class="form-label font-weight-bold small"
-                      >Name on card</label
-                    ><input
-                      placeholder="Enter Card number"
+              <form class="form-row" @submit.prevent="handleSubmitCheckout">
+                <v-alert
+                  v-for="(error, index) in errors"
+                  :key="index"
+                  :counter="true"
+                  :message="error.join()"
+                  type="danger"
+                  class="col-md-12"
+                />
+                <form-group v-model="v$.name" class="col-md-12">
+                  <label class="form-label font-weight-bold small">
+                    Họ tên
+                  </label>
+                  <div class="input-group">
+                    <input
+                      v-model="v$.name.$model"
+                      placeholder="Vd: Nguyễn Văn A"
                       type="text"
                       class="form-control"
                     />
                   </div>
-                  <div class="col-md-12 form-group mb-0">
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        id="custom-checkbox1"
-                        type="checkbox"
-                        class="custom-control-input"
-                      /><label
-                        title=""
-                        type="checkbox"
-                        for="custom-checkbox1"
-                        class="custom-control-label small pt-1"
-                        >Securely save this card for a faster checkout next
-                        time.</label
-                      >
+                </form-group>
+                <form-group v-model="v$.phone" class="col-md-12">
+                  <label class="form-label font-weight-bold small">
+                    Số điện thoại
+                  </label>
+                  <input
+                    v-model="v$.phone.$model"
+                    placeholder="Vd: 0987654321"
+                    type="text"
+                    class="form-control"
+                  />
+                </form-group>
+                <form-group v-model="v$.payment_method" class="col-md-12">
+                  <label class="form-label font-weight-bold small">
+                    Phương thức thanh toán
+                  </label>
+                  <div
+                    v-for="method in paymentMethods"
+                    :key="method.id"
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      :id="method.id"
+                      v-model="v$.payment_method.$model"
+                      :value="method.id"
+                      type="radio"
+                      class="custom-control-input"
+                    />
+                    <label
+                      type="checkbox"
+                      :for="method.id"
+                      class="custom-control-label small pt-1"
+                    >
+                      {{ method.name }}
+                    </label>
+                  </div>
+                </form-group>
+                <div class="col-md-12 form-group mb-0">
+                  <span class="small pt-1">
+                    Vui lòng đến đúng hoặc trễ hơn không quá 10 phút so với thời
+                    gian đặt bàn.
+                  </span>
+                </div>
+                <teleport v-if="isVisible" to="#customerNote">
+                  <form-group v-model="v$.note" class="mb-0 input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"
+                        ><i class="feather-message-square"></i
+                      ></span>
                     </div>
-                  </div>
-                </div>
+                    <textarea
+                      v-model="v$.note.$model"
+                      placeholder="Ghi chú khách hàng..."
+                      class="form-control"
+                    ></textarea>
+                  </form-group>
+                </teleport>
+                <teleport v-if="isVisible" to="#btnSubmitCheckout">
+                  <v-button
+                    :loading="loading"
+                    type="submit"
+                    class="
+                      btn btn-success btn-block btn-lg
+                      d-flex
+                      align-items-center
+                      justify-content-center
+                    "
+                    @click.prevent="handleSubmitCheckout"
+                  >
+                    Thanh toán {{ $store.getters.getCart.total_format }}
+                    <i class="feather-arrow-right"></i>
+                  </v-button>
+                </teleport>
               </form>
-            </div>
-          </div>
-        </div>
-        <div class="osahan-card bg-white border-bottom overflow-hidden">
-          <div id="headingTwo" class="osahan-card-header">
-            <h2 class="mb-0">
-              <button
-                class="d-flex p-3 align-items-center btn btn-link w-100"
-                type="button"
-                data-toggle="collapse"
-                data-target="#collapseTwo"
-                aria-expanded="false"
-                aria-controls="collapseTwo"
-              >
-                <i class="feather-globe mr-3"></i> Net Banking
-                <i class="feather-chevron-down ml-auto"></i>
-              </button>
-            </h2>
-          </div>
-          <div
-            id="collapseTwo"
-            class="collapse"
-            aria-labelledby="headingTwo"
-            data-parent="#accordionExample"
-          >
-            <div class="osahan-card-body border-top p-3">
-              <form>
-                <div
-                  class="btn-group btn-group-toggle w-100"
-                  data-toggle="buttons"
-                >
-                  <label class="btn btn-outline-secondary active">
-                    <input id="option1" type="radio" name="options" checked />
-                    HDFC
-                  </label>
-                  <label class="btn btn-outline-secondary">
-                    <input id="option2" type="radio" name="options" />
-                    ICICI
-                  </label>
-                  <label class="btn btn-outline-secondary">
-                    <input id="option3" type="radio" name="options" />
-                    AXIS
-                  </label>
-                </div>
-                <hr />
-                <div class="form-row">
-                  <div class="col-md-12 form-group mb-0">
-                    <label class="form-label small font-weight-bold"
-                      >Select Bank</label
-                    ><br />
-                    <select class="custom-select form-control">
-                      <option>Bank</option>
-                      <option>KOTAK</option>
-                      <option>SBI</option>
-                      <option>UCO</option>
-                    </select>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="osahan-card bg-white overflow-hidden">
-          <div id="headingThree" class="osahan-card-header">
-            <h2 class="mb-0">
-              <button
-                class="d-flex p-3 align-items-center btn btn-link w-100"
-                type="button"
-                data-toggle="collapse"
-                data-target="#collapseThree"
-                aria-expanded="false"
-                aria-controls="collapseThree"
-              >
-                <i class="feather-dollar-sign mr-3"></i> Cash on Delivery
-                <i class="feather-chevron-down ml-auto"></i>
-              </button>
-            </h2>
-          </div>
-          <div
-            id="collapseThree"
-            class="collapse"
-            aria-labelledby="headingThree"
-            data-parent="#accordionExample"
-          >
-            <div class="card-body border-top">
-              <h6 class="mb-3 mt-0 mb-3 font-weight-bold">Cash</h6>
-              <p class="m-0">
-                Please keep exact change handy to help us serve you better
-              </p>
             </div>
           </div>
         </div>
@@ -194,3 +131,58 @@
     </div>
   </div>
 </template>
+
+<script>
+import { reactive, ref } from "@vue/reactivity";
+import { onMounted } from "@vue/runtime-core";
+import { wait } from "@/helpers";
+import checkoutValidate from "@/validate/checkoutValidate";
+import { useRouter } from "vue-router";
+import { storeOrder } from "@/services/reuseable/useOrder";
+import FormGroup from "@/components/FormGroup";
+
+export default {
+  components: { FormGroup },
+
+  setup() {
+    const router = useRouter();
+    const isVisible = ref(false);
+    const loading = ref(false);
+    const errors = ref([]);
+    const { state: checkout, v$ } = checkoutValidate();
+    const paymentMethods = reactive([
+      { name: "Tại cửa hàng", id: "cash" },
+      { name: "Thẻ ngân hàng", id: "vnpay" },
+      { name: "Ví điện tử Mono", id: "momo" },
+    ]);
+
+    onMounted(() => wait().then((isVisible.value = true)));
+
+    async function handleSubmitCheckout() {
+      const result = await v$.value.$validate();
+      if (!result) return;
+      loading.value = true;
+
+      try {
+        await storeOrder(checkout);
+        router.push({ name: "checkout_success" });
+      } catch (error) {
+        errors.value = error.response.data.errors;
+      } finally {
+        loading.value = false;
+      }
+    }
+
+    return {
+      paymentMethods,
+      checkout,
+      v$,
+      handleSubmitCheckout,
+      isVisible,
+      loading,
+      errors,
+    };
+  },
+};
+</script>
+// todo check loi be khi empty cart

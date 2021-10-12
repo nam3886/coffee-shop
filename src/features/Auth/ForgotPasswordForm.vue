@@ -7,7 +7,10 @@
         <h2>Quên mật khẩu?</h2>
         <p>
           Nhập địa chỉ Email của bạn ở phía dưới và chúng tôi sẽ gửi bạn Email
-          hướng dẫn cách thay đổi mật khẩu
+          hướng dẫn cách thay đổi mật khẩu.
+          <router-link :to="{ name: 'home' }" class="text-50">
+            Trở về trang chủ
+          </router-link>
         </p>
         <form action="login.html" class="mt-5 mb-4">
           <div class="form-group">
