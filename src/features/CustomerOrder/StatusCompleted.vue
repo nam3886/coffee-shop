@@ -26,14 +26,25 @@
                 <a href="trang-chu">Xem chi tiết</a>
               </p>
             </div>
-            <!-- <div class="ml-auto">
-              <p class="bg-success text-white py-1 px-2 rounded small mb-1">
+            <div class="ml-auto">
+              <p
+                class="
+                  bg-success
+                  text-white
+                  py-1
+                  px-2
+                  rounded
+                  small
+                  mb-1
+                  text-center
+                "
+              >
                 Delivered
               </p>
               <p class="small font-weight-bold text-center">
                 <i class="feather-clock"></i> 06/04/2020
               </p>
-            </div> -->
+            </div>
           </div>
           <div class="d-flex pt-3">
             <div class="small">
@@ -46,53 +57,7 @@
             </div>
             <div class="text-right">
               <a href="trang-chu" class="btn btn-primary px-3">Đặt lại</a>
-              <a href="contact-us.html" class="btn btn-outline-primary px-3"
-                >Trợ giúp</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pb-3">
-        <div class="p-3 rounded shadow-sm bg-white">
-          <div class="d-flex border-bottom pb-3">
-            <div class="text-muted mr-3">
-              <img
-                alt="#"
-                src="img/popular4.png"
-                class="img-fluid order_img rounded"
-              />
-            </div>
-            <div>
-              <p class="mb-0 font-weight-bold">
-                <a href="restaurant.html" class="text-dark">Capucchino</a>
-              </p>
-              <p class="mb-0">Nóng , ít sữa</p>
-              <p>Mã:002</p>
-              <p class="mb-0 small">
-                <a href="trang-chu">Xem chi tiết</a>
-              </p>
-            </div>
-            <!-- <div class="ml-auto">
-              <p class="bg-success text-white py-1 px-2 rounded small mb-1">
-                Delivered
-              </p>
-              <p class="small font-weight-bold text-center">
-                <i class="feather-clock"></i> 06/04/2020
-              </p>
-            </div> -->
-          </div>
-          <div class="d-flex pt-3">
-            <div class="small">
-              <p class="text- font-weight-bold mb-0">Capucchino x 1</p>
-              <p class="text- font-weight-bold mb-0">Khăn lạnh x 4</p>
-            </div>
-            <div class="text-muted m-0 ml-auto mr-3 small">
-              Tổng tiền<br />
-              <span class="text-dark font-weight-bold">35.000đ</span>
-            </div>
-            <div class="text-right">
-              <a href="trang-chu" class="btn btn-primary px-3">Đặt lại</a>
+              &nbsp;
               <a href="contact-us.html" class="btn btn-outline-primary px-3"
                 >Trợ giúp</a
               >

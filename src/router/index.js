@@ -29,6 +29,11 @@ const routes = [
         component: CustomerOrder,
       },
       {
+        path: "/hoa-don/:order_code",
+        name: "customer_order.show",
+        component: CustomerOrder,
+      },
+      {
         path: "/dat-ban",
         name: "booking_table",
         component: Table,
@@ -39,7 +44,7 @@ const routes = [
         component: FoodDetail,
       },
       {
-        path: "/dat-hang-thanh-cong",
+        path: "/dat-hang-thanh-cong/:order_code",
         name: "order_success",
         component: OrderSuccess,
       },

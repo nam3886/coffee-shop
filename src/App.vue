@@ -4,20 +4,17 @@
 
 <script>
 import { getProfile } from "@/services/reuseable/useAuth";
-import { getCart } from "@/services/reuseable/useCart";
 import { useStore } from "vuex";
-import {
-  SET_CART,
-  SET_IS_AUTHENTICATED,
-  SET_PROFILE,
-} from "@/store/actionTypes";
-import { watchEffect } from "@vue/runtime-core";
+import { SET_IS_AUTHENTICATED, SET_PROFILE } from "@/store/actionTypes";
+import { inject, watchEffect } from "@vue/runtime-core";
 import { localRemoveItem } from "@/helpers/local_storage";
 import { TOKEN } from "@/constants";
+import { EV_GET_CART } from "@/constants";
 
 export default {
   setup() {
     const store = useStore();
+    const emitter = inject("emitter");
 
     getUserProfile();
 
@@ -32,9 +29,8 @@ export default {
 
       try {
         const { data: profile } = await getProfile();
-        const { data: cart } = await getCart();
         store.dispatch(SET_PROFILE, profile.data);
-        store.dispatch(SET_CART, cart.data);
+        emitter.emit(EV_GET_CART);
       } catch (error) {
         store.dispatch(SET_IS_AUTHENTICATED, false);
         store.dispatch(SET_PROFILE, {});

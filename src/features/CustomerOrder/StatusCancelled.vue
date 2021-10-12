@@ -27,7 +27,18 @@
               </p>
             </div>
             <div class="ml-auto">
-              <p class="bg-danger text-white py-1 px-2 rounded small mb-1">
+              <p
+                class="
+                  bg-danger
+                  text-white
+                  py-1
+                  px-2
+                  rounded
+                  small
+                  mb-1
+                  text-center
+                "
+              >
                 Lỗi thanh toán
               </p>
               <p class="small font-weight-bold text-center">
@@ -43,52 +54,6 @@
             <div class="text-muted m-0 ml-auto mr-3 small">
               Tổng tiền<br />
               <span class="text-dark font-weight-bold">25.000đ</span>
-            </div>
-            <div class="text-right">
-              <a href="contact-us.html" class="btn btn-outline-primary px-3"
-                >Trợ giúp</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pb-3">
-        <div class="p-3 rounded shadow-sm bg-white">
-          <div class="d-flex border-bottom pb-3">
-            <div class="text-muted mr-3">
-              <img
-                alt="#"
-                src="img/popular6.png"
-                class="img-fluid order_img rounded"
-              />
-            </div>
-            <div>
-              <p class="mb-0 font-weight-bold">
-                <a href="restaurant.html" class="text-dark">Trà tắc</a>
-              </p>
-              <p class="mb-0">không đá , không đường</p>
-              <p>Mã:003</p>
-              <p class="mb-0 small">
-                <a href="status_canceled.html">Xem chi tiết</a>
-              </p>
-            </div>
-            <div class="ml-auto">
-              <p class="bg-danger text-white py-1 px-2 rounded small mb-1">
-                Bị hủy
-              </p>
-              <p class="small font-weight-bold text-center">
-                <i class="feather-clock"></i> 01/10/2021
-              </p>
-            </div>
-          </div>
-          <div class="d-flex pt-3">
-            <div class="small">
-              <p class="text- font-weight-bold mb-0">Trà đào x 1</p>
-              <p class="text- font-weight-bold mb-0">Khăn lạnh x 2</p>
-            </div>
-            <div class="text-muted m-0 ml-auto mr-3 small">
-              Tổng tiền<br />
-              <span class="text-dark font-weight-bold">20.000đ</span>
             </div>
             <div class="text-right">
               <a href="contact-us.html" class="btn btn-outline-primary px-3"

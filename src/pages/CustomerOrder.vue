@@ -8,12 +8,11 @@
   <section class="py-4 osahan-main-body">
     <div class="container">
       <div class="row">
-        <!-- @update:status="status = $event"  -->
         <OrderProgress v-model="status" />
         <div id="myTabContent" class="tab-content col-md-9">
-          <StatusCompleted v-if="status == 'completed'" />
-          <StatusProgress v-if="status == 'progress'" />
-          <StatusCancelled v-if="status == 'cancelled'" />
+          <StatusCompleted v-if="status == 'completed'" :orders="orders" />
+          <StatusProgress v-if="status == 'progress'" :orders="orders" />
+          <StatusCancelled v-if="status == 'cancelled'" :orders="orders" />
         </div>
       </div>
     </div>
@@ -26,6 +25,8 @@ import StatusCompleted from "@/features/CustomerOrder/StatusCompleted.vue";
 import StatusProgress from "@/features/CustomerOrder/StatusProgress.vue";
 import StatusCancelled from "@/features/CustomerOrder/StatusCancelled.vue";
 import { ref } from "@vue/reactivity";
+import { getListOrder } from "@/services/reuseable/useOrder";
+
 export default {
   components: {
     OrderProgress,
@@ -34,11 +35,11 @@ export default {
     StatusCancelled,
   },
   setup() {
-    let status = ref("cancelled");
-    console.log(status);
-    return { status };
+    const status = ref("progress");
+
+    const { data: orders, loading } = getListOrder();
+
+    return { status, orders, loading };
   },
 };
 </script>
-
-<style></style>

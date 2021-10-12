@@ -1,5 +1,5 @@
 import API from "@/services/api";
-import { handleCallApi } from "@/services/reuseable/handleCallApi";
+import handleCallApi from "@/services/reuseable/handleCallApi";
 
 export function signIn(user) {
   return handleCallApi("post", "/auth/login", { ...user }, false);

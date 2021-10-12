@@ -5,11 +5,9 @@
 </template>
 
 <script>
-import { deleteCartItem, getCart } from "@/services/reuseable/useCart";
-import { useStore } from "vuex";
-import { SET_CART } from "@/store/actionTypes";
+import { deleteCartItem } from "@/services/reuseable/useCart";
 import { inject } from "@vue/runtime-core";
-import { EV_OVERLAY_LOADING } from "@/constants";
+import { EV_OVERLAY_LOADING, EV_GET_CART } from "@/constants";
 
 export default {
   props: {
@@ -20,7 +18,6 @@ export default {
   },
 
   setup(props) {
-    const store = useStore();
     const emitter = inject("emitter");
 
     async function deleteCart() {
@@ -28,8 +25,7 @@ export default {
 
       try {
         await deleteCartItem(props.cartId);
-        const { data } = await getCart();
-        store.dispatch(SET_CART, data.data);
+        emitter.emit(EV_GET_CART);
       } catch (error) {
         console.log([error]);
       } finally {

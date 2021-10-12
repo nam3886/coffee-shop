@@ -22,11 +22,9 @@
 </template>
 
 <script>
-import { updateCartQuantity, getCart } from "@/services/reuseable/useCart";
-import { useStore } from "vuex";
-import { SET_CART } from "@/store/actionTypes";
+import { updateCartQuantity } from "@/services/reuseable/useCart";
 import { inject } from "@vue/runtime-core";
-import { EV_OVERLAY_LOADING } from "@/constants";
+import { EV_OVERLAY_LOADING, EV_GET_CART } from "@/constants";
 
 export default {
   props: {
@@ -39,7 +37,6 @@ export default {
   emits: ["update:modelValue"],
 
   setup(props) {
-    const store = useStore();
     const emitter = inject("emitter");
 
     function increase() {
@@ -57,8 +54,7 @@ export default {
           product_id: props.cart.product.id,
           quantity,
         });
-        const { data } = await getCart();
-        store.dispatch(SET_CART, data.data);
+        emitter.emit(EV_GET_CART);
       } catch (error) {
         console.log([error]);
       } finally {

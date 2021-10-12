@@ -1,7 +1,7 @@
 import API from "@/services/api";
 import { ref } from "vue-demi";
 
-export function handleCallApi(method, url, params, callOnInitialization) {
+export default function (method, url, params, callOnInitialization) {
   const loading = ref(false);
   const errors = ref(null);
   const data = ref(null);
