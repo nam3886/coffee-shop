@@ -97,6 +97,7 @@
 
 <script>
 import { DatePicker } from "v-calendar";
+import { EV_SHOW_ORDER_TABLE } from "@/constants";
 
 export default {
   components: {
@@ -125,7 +126,7 @@ export default {
   },
 
   mounted() {
-    this.$EMITTER.on("show-order-table", (table) => {
+    this.$EMITTER.on(EV_SHOW_ORDER_TABLE, (table) => {
       this.show = true;
       this.orderTable.table = table;
     });

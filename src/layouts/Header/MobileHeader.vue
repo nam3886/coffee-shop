@@ -10,7 +10,7 @@
           class="text-white font-weight-bold ml-auto"
           data-toggle="modal"
           href="#"
-          @click.prevent="$EMITTER.emit('show-filter')"
+          @click.prevent="$EMITTER.emit(EV_SHOW_FILTER)"
         >
           Lọc
         </a>
@@ -40,7 +40,13 @@
 </template>
 
 <script>
-export default {};
+import { EV_SHOW_FILTER } from "@/constants";
+
+export default {
+  setup() {
+    return { EV_SHOW_FILTER };
+  },
+};
 </script>
 
 <style></style>

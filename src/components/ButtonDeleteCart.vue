@@ -9,6 +9,7 @@ import { deleteCartItem, getCart } from "@/services/reuseable/useCart";
 import { useStore } from "vuex";
 import { SET_CART } from "@/store/actionTypes";
 import { inject } from "@vue/runtime-core";
+import { EV_OVERLAY_LOADING } from "@/constants";
 
 export default {
   props: {
@@ -23,7 +24,7 @@ export default {
     const emitter = inject("emitter");
 
     async function deleteCart() {
-      emitter.emit("overlay-loading", true);
+      emitter.emit(EV_OVERLAY_LOADING, true);
 
       try {
         await deleteCartItem(props.cartId);
@@ -32,7 +33,7 @@ export default {
       } catch (error) {
         console.log([error]);
       } finally {
-        emitter.emit("overlay-loading", false);
+        emitter.emit(EV_OVERLAY_LOADING, false);
       }
     }
 

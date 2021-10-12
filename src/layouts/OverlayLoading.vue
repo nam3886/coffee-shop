@@ -9,6 +9,7 @@
 <script>
 import { ref } from "@vue/reactivity";
 import { inject, onMounted } from "@vue/runtime-core";
+import { EV_OVERLAY_LOADING } from "@/constants";
 
 export default {
   setup() {
@@ -16,7 +17,7 @@ export default {
     const emitter = inject("emitter");
 
     onMounted(() => {
-      emitter.on("overlay-loading", (isVis) => (isVisible.value = isVis));
+      emitter.on(EV_OVERLAY_LOADING, (isVis) => (isVisible.value = isVis));
     });
 
     return { isVisible };

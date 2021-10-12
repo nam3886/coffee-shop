@@ -191,6 +191,8 @@
 </template>
 
 <script>
+import { EV_SHOW_FILTER } from "@/constants";
+
 export default {
   data() {
     return {
@@ -207,7 +209,7 @@ export default {
   },
 
   mounted() {
-    this.$EMITTER.on("show-filter", () => (this.show = true));
+    this.$EMITTER.on(EV_SHOW_FILTER, () => (this.show = true));
   },
 };
 </script>

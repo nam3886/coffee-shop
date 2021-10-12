@@ -9,6 +9,7 @@
   <layout-filter />
   <modal-order-table />
   <overlay-loading />
+  <overlay-transparent />
   <toast />
 </template>
 
@@ -25,6 +26,7 @@ import ModalOrderTable from "@/components/ModalOrderTable.vue";
 import Navigation from "@/layouts/Navigation.vue";
 import LayoutFilter from "@/layouts/Filter.vue";
 import OverlayLoading from "@/layouts/OverlayLoading.vue";
+import OverlayTransparent from "@/layouts/OverlayTransparent.vue";
 import Toast from "@/layouts/Toast.vue";
 
 export default {
@@ -37,6 +39,7 @@ export default {
     LayoutFilter,
     ModalOrderTable,
     OverlayLoading,
+    OverlayTransparent,
     Toast,
   },
 
