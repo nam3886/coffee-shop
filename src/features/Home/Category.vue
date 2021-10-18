@@ -25,7 +25,7 @@
       type="button"
       style=""
     >
-      Previous
+      Trước
     </button>
     <button
       class="slick-next slick-arrow"
@@ -33,7 +33,7 @@
       type="button"
       style=""
     >
-      Next
+      Tiếp
     </button>
   </div>
 </template>
@@ -52,20 +52,20 @@ export default {
 
   setup() {
     const categories = [
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Pizza", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Fizza", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
+      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
     ];
 
     const swiperOptions = {

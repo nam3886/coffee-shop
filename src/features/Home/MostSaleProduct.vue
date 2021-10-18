@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="pt-2 pb-3 title d-flex align-items-center">
-      <h5 class="m-0">Most sales</h5>
+      <h5 class="m-0">Bán chạy nhất</h5>
       <a class="font-weight-bold ml-auto" href="#"
-        >View all <i class="feather-chevrons-right"></i
+        >Xem tất cả <i class="feather-chevrons-right"></i
       ></a>
     </div>
     <div class="most_sale">
@@ -40,7 +40,7 @@
                 </button-add-cart>
               </div>
               <div class="member-plan position-absolute">
-                <span class="badge badge-dark">Promoted</span>
+                <span class="badge badge-dark">Đặc biệt</span>
               </div>
               <a href="#">
                 <img
@@ -61,14 +61,16 @@
                 <p class="text-gray mb-3 time">
                   <span
                     class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"
-                    ><i class="feather-clock"></i> 15–25 min</span
+                    ><i class="feather-clock"></i> 15–25 phút</span
                   >
-                  <span class="float-right text-black-50"> $500 FOR TWO</span>
+                  <span class="float-right text-black-50">
+                    50.000đ cho 2 người</span
+                  >
                 </p>
               </div>
               <div class="list-card-badge">
-                <span class="badge badge-danger">OFFER</span>&nbsp;
-                <small>65% OSAHAN50</small>
+                <span class="badge badge-danger">Giảm giá</span>&nbsp;
+                <small>65% </small>
               </div>
             </div>
           </div>

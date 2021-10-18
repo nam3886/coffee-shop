@@ -22,7 +22,7 @@
         type="button"
         style=""
       >
-        Previous
+        Trước
       </button>
       <button
         class="slick-next slick-arrow"
@@ -30,7 +30,7 @@
         type="button"
         style=""
       >
-        Next
+        Tiếp
       </button>
     </div>
   </div>

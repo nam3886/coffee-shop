@@ -7,6 +7,7 @@ import CustomerOrder from "@/pages/CustomerOrder.vue";
 import Table from "@/pages/Table.vue";
 import FoodDetail from "@/pages/FoodDetail.vue";
 import OrderSuccess from "@/pages/OrderSuccess.vue";
+import Trending from "@/pages/Trending.vue";
 const routes = [
   {
     path: "/",
@@ -42,6 +43,11 @@ const routes = [
         path: "/chi-tiet-san-pham",
         name: "food_detail",
         component: FoodDetail,
+      },
+      {
+        path: "/dang-thinh-hanh",
+        name: "trending",
+        component: Trending,
       },
       {
         path: "/dat-hang-thanh-cong/:order_code",

@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="py-3 title d-flex align-items-center">
-      <h5 class="m-0">Most popular</h5>
+      <h5 class="m-0">Phổ biến nhất</h5>
       <a class="font-weight-bold ml-auto" href="most_popular.html"
-        >View all <i class="feather-chevrons-right"></i
+        >Xem tất cả <i class="feather-chevrons-right"></i
       ></a>
     </div>
     <div class="most_popular">
@@ -38,7 +38,7 @@
                 </button-add-cart>
               </div>
               <div class="member-plan position-absolute">
-                <span class="badge badge-dark">Promoted</span>
+                <span class="badge badge-dark">Đặc biệt</span>
               </div>
               <a href="restaurant.html">
                 <img
@@ -69,8 +69,8 @@
                 <p></p>
               </div>
               <div class="list-card-badge">
-                <span class="badge badge-danger">OFFER</span>&nbsp;
-                <small>65% OSAHAN50</small>
+                <span class="badge badge-danger">Giảm giá</span>&nbsp;
+                <small>65% </small>
               </div>
             </div>
           </div>

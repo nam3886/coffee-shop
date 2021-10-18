@@ -1,9 +1,9 @@
 <template>
   <div class="container position-relative week-trending">
     <div class="pt-4 pb-2 title d-flex align-items-center">
-      <h5 class="m-0">Trending this week</h5>
+      <h5 class="m-0">Tiêu biểu nhất tuần</h5>
       <a class="font-weight-bold ml-auto" href="trending.html"
-        >View all <i class="feather-chevrons-right"></i
+        >Xem tất cả <i class="feather-chevrons-right"></i
       ></a>
     </div>
     <swiper v-bind="swiperOptions" class="trending-slider">
@@ -37,7 +37,7 @@
               </button-add-cart>
             </div>
             <div class="member-plan position-absolute">
-              <span class="badge badge-dark">Promoted</span>
+              <span class="badge badge-dark">Đặc biệt</span>
             </div>
             <a href="restaurant.html">
               <img
@@ -57,14 +57,16 @@
               <p class="text-gray mb-3">{{ product.price_format }}</p>
               <p class="text-gray mb-3 time">
                 <span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"
-                  ><i class="feather-clock"></i> 15–30 min</span
+                  ><i class="feather-clock"></i> 15–30 phút</span
                 >
-                <span class="float-right text-black-50"> $350 FOR TWO</span>
+                <span class="float-right text-black-50">
+                  50.000đ cho 2 người</span
+                >
               </p>
             </div>
             <div class="list-card-badge">
               <span class="badge badge-danger">OFFER</span>&nbsp;
-              <small> Use Coupon OSAHAN50</small>
+              <small> Sử dụng mã giảm giá A01</small>
             </div>
           </div>
         </div>
@@ -76,7 +78,7 @@
       type="button"
       style=""
     >
-      Previous
+      Trước
     </button>
     <button
       class="slick-next slick-arrow"
@@ -84,7 +86,7 @@
       type="button"
       style=""
     >
-      Next
+      Tiếp
     </button>
   </div>
 </template>
