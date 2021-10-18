@@ -39,10 +39,9 @@
             <div class="member-plan position-absolute">
               <span class="badge badge-dark">Đặc biệt</span>
             </div>
-            <a href="restaurant.html">
-              <img
-                :alt="product.image"
-                :src="product.image"
+            <a href="#">
+              <v-product-img
+                :product="product"
                 class="img-fluid item-img w-100"
               />
             </a>
