@@ -205,7 +205,12 @@
               >
                 <div class="icon d-flex align-items-center">
                   <i class="feather-shopping-cart h6 mr-2 mb-0"></i>
-                  <span>Giỏ hàng x {{ $store.getters.getCart.count }}</span>
+                  <span>
+                    Giỏ hàng
+                    <span v-if="$store.getters.getCart.count">
+                      x {{ $store.getters.getCart.count }}
+                    </span>
+                  </span>
                 </div>
               </router-link>
               <a class="toggle-navigation" href="#">

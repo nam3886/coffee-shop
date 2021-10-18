@@ -8,11 +8,7 @@
           class="cat-item px-1 py-3"
         >
           <a class="d-block text-center shadow-sm" :href="product.url">
-            <img
-              :alt="product.image"
-              :src="product.image"
-              class="img-fluid rounded"
-            />
+            <v-product-img :product="product" class="img-fluid rounded" />
           </a>
         </swiper-slide>
       </swiper>

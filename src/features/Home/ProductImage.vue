@@ -1,0 +1,15 @@
+<template>
+  <img
+    :alt="product.image?.name"
+    :src="product.image?.url"
+    class="img-fluid item-img w-100"
+  />
+</template>
+
+<script>
+export default {
+  props: {
+    product: { type: Object, required: true },
+  },
+};
+</script>
