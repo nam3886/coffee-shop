@@ -1,7 +1,6 @@
 <template>
-  <div
-    class="d-flex align-items-center justify-content-center flex-column vh-100"
-  >
+  <div class="d-flex align-items-center justify-content-center vh-100">
+    <img src="/img/bg6copy.jpg" class="rounded float-start" alt="..." />
     <div class="px-5 col-md-6 ml-auto">
       <div class="px-5 col-10 mx-auto">
         <h2 class="text-dark my-0">Xin chào bạn</h2>
