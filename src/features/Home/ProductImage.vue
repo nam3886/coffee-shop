@@ -1,7 +1,7 @@
 <template>
   <img
-    :alt="product.image?.name"
-    :src="product.image?.url"
+    :alt="product.image"
+    :src="product.image"
     class="img-fluid item-img w-100"
   />
 </template>

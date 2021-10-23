@@ -169,7 +169,7 @@
                 >
                   <img
                     alt="#"
-                    :src="$store.getters.getProfile.avatar?.url"
+                    :src="$store.getters.getProfile.avatar"
                     class="
                       img-fluid
                       rounded-circle
@@ -211,6 +211,16 @@
                       x {{ $store.getters.getCart.count }}
                     </span>
                   </span>
+                </div>
+              </router-link>
+
+              <router-link
+                :to="{ name: 'booking_table' }"
+                class="widget-header mr-4 text-dark"
+              >
+                <div class="icon d-flex align-items-center">
+                  <i class="feather-award h6 mr-2 mb-0"></i>
+                  <span>Đặt bàn</span>
                 </div>
               </router-link>
               <a class="toggle-navigation" href="#">
