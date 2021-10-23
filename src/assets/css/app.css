@@ -21,6 +21,7 @@
     display: none;
   }
 }
+.modal-open.fixed-bottom-bar,
 .modal-open.fixed-bottom-bar .osahan-menu-fotter.fixed-bottom {
   padding-right: 4px !important;
 }
@@ -45,4 +46,14 @@
 }
 .outline-none:focus {
   outline: none;
+}
+#map {
+  display: inline-block;
+  position: relative;
+}
+#map .draggable {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

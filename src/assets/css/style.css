@@ -1265,7 +1265,7 @@ footer .text-muted {
   }
   .fixed-bottom-bar {
     padding-right: 4px;
-    padding-bottom: 56px;
+    /* padding-bottom: 56px; */
   }
   .hc-nav-trigger {
     top: 18px;

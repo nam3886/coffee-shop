@@ -204,7 +204,6 @@ export default {
     show(show) {
       const body = document.querySelector("body");
       body.classList.toggle("modal-open", show);
-      body.classList.toggle("fixed-bottom-bar", show);
     },
   },
 

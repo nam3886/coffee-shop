@@ -86,9 +86,9 @@
             class="rounded btn btn-secondary"
             @click="show = false"
           >
-            Đóng
+            Hủy
           </button>
-          <button type="submit" class="rounded btn btn-primary">Lưu</button>
+          <button type="submit" class="rounded btn btn-primary">Đặt bàn</button>
         </div>
       </form>
     </div>
@@ -119,9 +119,9 @@ export default {
 
   watch: {
     show(show) {
+      console.log("trigger show");
       const body = document.querySelector("body");
       body.classList.toggle("modal-open", show);
-      body.classList.toggle("fixed-bottom-bar", show);
     },
   },
 
