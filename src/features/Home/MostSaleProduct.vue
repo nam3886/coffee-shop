@@ -9,7 +9,7 @@
     <div class="most_sale">
       <div class="row mb-3">
         <div
-          v-for="(product, index) in products"
+          v-for="(product, index) in listProduct"
           :key="index"
           class="col-md-4 mb-3"
         >
@@ -80,21 +80,18 @@
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
-import getListProduct from "@/services/reuseable/getListProduct.js";
+import useProduct from "@/services/reuseable/useProduct.js";
 import ButtonAddCart from "@/components/ButtonAddCart";
 
 export default {
   components: { ButtonAddCart },
 
   setup() {
-    const products = ref([]);
+    const { listProduct, loading, error, getListProduct } = useProduct();
 
-    getListProduct("", function (listProduct) {
-      products.value = listProduct;
-    });
+    getListProduct();
 
-    return { products };
+    return { listProduct, loading, error };
   },
 };
 </script>

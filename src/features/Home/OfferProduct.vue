@@ -3,7 +3,7 @@
     <div class="container position-relative offer">
       <swiper v-bind="swiperOptions" class="offer-slider">
         <swiper-slide
-          v-for="(product, index) in products"
+          v-for="(product, index) in listProduct"
           :key="index"
           class="cat-item px-1 py-3"
         >
@@ -35,8 +35,7 @@
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import SwiperCore, { Navigation } from "swiper";
-import { ref } from "@vue/reactivity";
-import getListProduct from "@/services/reuseable/getListProduct.js";
+import useProduct from "@/services/reuseable/useProduct.js";
 SwiperCore.use(Navigation);
 
 export default {
@@ -46,10 +45,9 @@ export default {
   },
 
   setup() {
-    const products = ref([]);
-    getListProduct("", function (listProduct) {
-      products.value = listProduct;
-    });
+    const { listProduct, loading, error, getListProduct } = useProduct();
+
+    getListProduct();
 
     const swiperOptions = {
       slidesPerView: 4,
@@ -71,9 +69,7 @@ export default {
       },
     };
 
-    return { products, swiperOptions };
+    return { listProduct, loading, error, swiperOptions };
   },
 };
 </script>
-
-<style></style>

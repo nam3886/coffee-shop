@@ -41,6 +41,7 @@ const routes = [
         path: "/gio-hang",
         name: "cart",
         component: Cart,
+        beforeEnter: isAuth,
       },
       {
         path: "/dat-hang-thanh-cong/:order_code",
