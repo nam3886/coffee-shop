@@ -47,7 +47,7 @@ export default {
   setup() {
     const { listProduct, loading, error, getListProduct } = useProduct();
 
-    getListProduct();
+    getListProduct({ feature: "offer" });
 
     const swiperOptions = {
       slidesPerView: 4,

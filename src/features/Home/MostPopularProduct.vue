@@ -89,7 +89,7 @@ export default {
   setup() {
     const { listProduct, loading, error, getListProduct } = useProduct();
 
-    getListProduct();
+    getListProduct({ feature: "popular" });
 
     return { listProduct, loading, error };
   },

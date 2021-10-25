@@ -2,7 +2,7 @@
   <div class="container position-relative category">
     <swiper v-bind="swiperOptions" class="cat-slider">
       <swiper-slide
-        v-for="(category, index) in categories"
+        v-for="(category, index) in listCategory"
         :key="index"
         class="cat-item px-1 py-3"
       >
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import useCategory from "@/services/reuseable/useCategory.js";
 import { AUTOPLAY_TIME } from "@/constants";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import SwiperCore, { Navigation, Autoplay } from "swiper";
@@ -51,22 +52,9 @@ export default {
   },
 
   setup() {
-    const categories = [
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-      { image: "img/icons/Pizza.png", name: "Món...", url: "#" },
-    ];
+    const { listCategory, loading, error, getListCategory } = useCategory();
+
+    getListCategory();
 
     const swiperOptions = {
       slidesPerView: 8,
@@ -92,8 +80,10 @@ export default {
     };
 
     return {
-      categories,
       swiperOptions,
+      listCategory,
+      loading,
+      error,
     };
   },
 };

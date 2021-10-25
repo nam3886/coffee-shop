@@ -11,7 +11,7 @@ export default function () {
     loading.value = true;
 
     try {
-      const res = await API.get("/product", { ...params });
+      const res = await API.get("/product", { params });
       listProduct.value = res.data.data;
     } catch (e) {
       error.value = e.response.data.message;
