@@ -1,20 +1,25 @@
 import Auth from "@/pages/Auth.vue";
+import { fromLogin } from "@/middleware";
+import { isGuest } from "@/middleware";
 
 const authRoutes = [
   {
     path: "/dang-nhap",
     name: "login",
     component: Auth,
+    beforeEnter: isGuest,
   },
   {
     path: "/dang-ky",
     name: "register",
     component: Auth,
+    beforeEnter: isGuest,
   },
   {
     path: "/quen-mat-khau",
     name: "forgot_password",
     component: Auth,
+    beforeEnter: isGuest,
   },
   {
     path: "/xac-nhan-dang-nhap",
@@ -25,8 +30,3 @@ const authRoutes = [
 ];
 
 export default authRoutes;
-
-function fromLogin(to, from, next) {
-  if (from.name === "login") next();
-  else next({ name: "login" });
-}
