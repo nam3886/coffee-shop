@@ -107,7 +107,7 @@ export default {
   setup() {
     const { listProduct, loading, error, getListProduct } = useProduct();
 
-    getListProduct({ "filter[feature]": "week-trending" });
+    getListProduct({ "filter[feature]": "week-trending", paginate: 6 });
 
     const swiperOptions = {
       slidesPerView: 3,

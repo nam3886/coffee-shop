@@ -89,7 +89,7 @@ export default {
   setup() {
     const { listProduct, loading, error, getListProduct } = useProduct();
 
-    getListProduct({ "filter[feature]": "most-sale" });
+    getListProduct({ "filter[feature]": "most-sale", paginate: 6 });
 
     return { listProduct, loading, error };
   },
