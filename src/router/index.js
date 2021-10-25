@@ -2,12 +2,11 @@ import { createRouter, createWebHistory } from "vue-router";
 import Layout from "@/layouts/Layout.vue";
 import Home from "@/pages/Home.vue";
 import authRoutes from "@/features/Auth/routes/index.js";
+import productRoutes from "@/router/productRoutes.js";
 import Cart from "@/pages/Cart.vue";
 import CustomerOrder from "@/pages/CustomerOrder.vue";
 import Table from "@/pages/Table.vue";
-import FoodDetail from "@/pages/FoodDetail.vue";
 import OrderSuccess from "@/pages/OrderSuccess.vue";
-import Trending from "@/pages/Trending.vue";
 import { isAuth } from "@/middleware";
 
 const routes = [
@@ -20,16 +19,6 @@ const routes = [
         path: "/trang-chu",
         name: "home",
         component: Home,
-      },
-      {
-        path: "/chi-tiet-san-pham",
-        name: "food_detail",
-        component: FoodDetail,
-      },
-      {
-        path: "/dang-thinh-hanh",
-        name: "trending",
-        component: Trending,
       },
       {
         path: "/dat-ban",
@@ -59,6 +48,7 @@ const routes = [
         component: CustomerOrder,
       },
       ...authRoutes,
+      ...productRoutes,
     ],
   },
 ];

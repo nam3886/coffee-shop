@@ -8,7 +8,7 @@
     </div>
     <swiper v-bind="swiperOptions" class="trending-slider">
       <swiper-slide
-        v-for="(product, index) in listProduct"
+        v-for="(product, index) in listProduct.data"
         :key="index"
         class="osahan-slider-item"
       >
@@ -107,7 +107,7 @@ export default {
   setup() {
     const { listProduct, loading, error, getListProduct } = useProduct();
 
-    getListProduct({ feature: "week-trending" });
+    getListProduct({ "filter[feature]": "week-trending" });
 
     const swiperOptions = {
       slidesPerView: 3,

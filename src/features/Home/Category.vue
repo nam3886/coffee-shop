@@ -6,9 +6,12 @@
         :key="index"
         class="cat-item px-1 py-3"
       >
-        <a
+        <router-link
           class="bg-white rounded d-block p-2 text-center shadow-sm"
-          :href="category.url"
+          :to="{
+            name: 'product',
+            query: { 'filter[category.slug]': category.slug },
+          }"
         >
           <img
             :alt="category.name"
@@ -16,7 +19,7 @@
             class="img-fluid mb-2"
           />
           <p class="m-0 small">{{ category.name }}</p>
-        </a>
+        </router-link>
       </swiper-slide>
     </swiper>
     <button

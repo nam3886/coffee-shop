@@ -3,7 +3,7 @@
     <div class="container position-relative offer">
       <swiper v-bind="swiperOptions" class="offer-slider">
         <swiper-slide
-          v-for="(product, index) in listProduct"
+          v-for="(product, index) in listProduct.data"
           :key="index"
           class="cat-item px-1 py-3"
         >
@@ -47,7 +47,7 @@ export default {
   setup() {
     const { listProduct, loading, error, getListProduct } = useProduct();
 
-    getListProduct({ feature: "offer" });
+    getListProduct({ "filter[feature]": "offer" });
 
     const swiperOptions = {
       slidesPerView: 4,

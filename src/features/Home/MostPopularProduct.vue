@@ -9,7 +9,7 @@
     <div class="most_popular">
       <div class="row">
         <div
-          v-for="(product, index) in listProduct"
+          v-for="(product, index) in listProduct.data"
           :key="index"
           class="col-md-3 pb-3"
         >
@@ -89,7 +89,7 @@ export default {
   setup() {
     const { listProduct, loading, error, getListProduct } = useProduct();
 
-    getListProduct({ feature: "popular" });
+    getListProduct({ "filter[feature]": "popular" });
 
     return { listProduct, loading, error };
   },

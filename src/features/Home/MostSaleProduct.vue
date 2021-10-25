@@ -9,7 +9,7 @@
     <div class="most_sale">
       <div class="row mb-3">
         <div
-          v-for="(product, index) in listProduct"
+          v-for="(product, index) in listProduct.data"
           :key="index"
           class="col-md-4 mb-3"
         >
@@ -89,11 +89,9 @@ export default {
   setup() {
     const { listProduct, loading, error, getListProduct } = useProduct();
 
-    getListProduct({ feature: "most-sale" });
+    getListProduct({ "filter[feature]": "most-sale" });
 
     return { listProduct, loading, error };
   },
 };
 </script>
-
-// todo : price cần format
