@@ -8,7 +8,7 @@
     aria-hidden="true"
   >
     <div class="modal-dialog" role="document">
-      <form class="modal-content" @submit.prevent="submitOrderTable">
+      <form class="modal-content rounded-3" @submit.prevent="submitOrderTable">
         <div class="modal-header">
           <h5 id="exampleModalLabel" class="modal-title">ĐẶT BÀN</h5>
           <button
@@ -157,5 +157,10 @@ export default {
   margin-left: 36%;
   color: gray;
   font-size: 25px;
+}
+.modal-dialog {
+  border: 1.5px solid gray;
+  border-radius: 0.5em 0.5em 0.5em;
+  box-shadow: 0 5px 11px 0 rgb(0 0 0 / 50%), 0 4px 15px 0 rgb(0 0 0 / 50%);
 }
 </style>
