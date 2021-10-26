@@ -1,11 +1,5 @@
 <template>
   <div class="d-flex align-items-center justify-content-center vh-100">
-    <img
-      src="/img/bg3.svg.png"
-      class="rounded float-start"
-      alt="style"
-      style="width: 50%"
-    />
     <div class="px-5 col-md-6 ml-auto">
       <div class="px-5 col-10 mx-auto">
         <h2>Quên mật khẩu?</h2>

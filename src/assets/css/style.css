@@ -702,7 +702,8 @@ p {
 
 /* Login Page */
 
-.login-page video {
+.login-page video,
+.login-page .login-banner {
   width: 50%;
   position: absolute;
   bottom: 0;
@@ -1287,7 +1288,8 @@ footer .text-muted {
   .hc-nav-trigger span::after {
     background: #ffffff !important;
   }
-  .login-page video {
+  .login-page video,
+  .login-page .login-banner {
     display: none;
   }
   .login-page .px-5.col-10.mx-auto {
@@ -1362,7 +1364,8 @@ footer .text-muted {
   .hc-nav-trigger span::after {
     background: #ffffff !important;
   }
-  .login-page video {
+  .login-page video,
+  .login-page .login-banner {
     display: none;
   }
   .login-page .px-5.col-10.mx-auto {

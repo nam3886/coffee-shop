@@ -1,5 +1,5 @@
 <template>
-  <img src="" class="rounded float-start" />
+  <img src="/img/bg6copy.jpg" class="login-banner" />
 </template>
 
 <script>
