@@ -1,6 +1,11 @@
 <template>
   <div class="d-flex align-items-center justify-content-center vh-100">
-    <img src="/img/bg6copy.jpg" class="rounded float-start" alt="..." />
+    <img
+      src="/img/bg6copy.jpg"
+      class="rounded float-start"
+      alt="style"
+      style="width: 50%"
+    />
     <div class="px-5 col-md-6 ml-auto">
       <div class="px-5 col-10 mx-auto mb-4">
         <h2 class="mb-3">Xác thực số điện thoại của bạn</h2>
