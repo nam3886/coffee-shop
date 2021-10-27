@@ -1,5 +1,5 @@
 <template>
-  <img src="/img/bg6copy.jpg" class="login-banner" />
+  <img src="/img/bg15.jpg" class="login-banner" />
 </template>
 
 <script>
