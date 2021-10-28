@@ -8,6 +8,9 @@ import CustomerOrder from "@/pages/CustomerOrder.vue";
 import Table from "@/pages/Table.vue";
 import OrderSuccess from "@/pages/OrderSuccess.vue";
 import { isAuth } from "@/middleware";
+import OrderTable from "@/pages/OrderTable.vue";
+import OrderTableProgress from "@/pages/OrderTableProgress.vue";
+import OrderTableCancel from "@/pages/OrderTableCancel.vue";
 
 const routes = [
   {
@@ -41,6 +44,21 @@ const routes = [
         path: "/hoa-don",
         name: "customer_order",
         component: CustomerOrder,
+      },
+      {
+        path: "/order-dat-ban",
+        name: "order_table",
+        component: OrderTable,
+      },
+      {
+        path: "/order-dang-dat-ban",
+        name: "order_table_progress",
+        component: OrderTableProgress,
+      },
+      {
+        path: "/order-huy-ban",
+        name: "order_table_cancel",
+        component: OrderTableCancel,
       },
       {
         path: "/hoa-don/:order_code",
