@@ -18,9 +18,11 @@
                     aria-controls="collapseOne"
                   >
                     <i class="feather-credit-card mr-3"></i>
-                    Đặt bàn (nhấn vào bàn bên dưới để tiếp tục)
+                    Đặt bàn (chọn thời gian đặt bàn và nhấn vào bàn bên dưới sơ
+                    đồ để tiếp tục)
                     <i class="feather-chevron-down ml-auto"></i>
                   </button>
+                  <ModalTime></ModalTime>
                 </h2>
               </div>
               <div class="collapse show" aria-labelledby="headingOne">
@@ -70,8 +72,12 @@
 import { inject, ref } from "@vue/runtime-core";
 import { getTableMap } from "@/services/reuseable/useTable";
 import { EV_SHOW_ORDER_TABLE } from "@/constants";
+import ModalTime from "@/components/ModalTime.vue";
 
 export default {
+  components: {
+    ModalTime,
+  },
   setup() {
     const emitter = inject("emitter");
     const tables = ref({});

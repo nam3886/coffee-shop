@@ -35,7 +35,7 @@
             </select>
           </div>
 
-          <date-picker
+          <!-- <date-picker
             v-model="orderTable.date"
             mode="dateTime"
             :timezone="timezone"
@@ -69,7 +69,7 @@
                 />
               </div>
             </template>
-          </date-picker>
+          </date-picker> -->
           <label class="exampleFormControlInput1">Yêu cầu của khách hàng</label>
           <textarea
             v-model="orderTable.note"
@@ -96,12 +96,12 @@
 </template>
 
 <script>
-import { DatePicker } from "v-calendar";
+// import { DatePicker } from "v-calendar";
 import { EV_SHOW_ORDER_TABLE } from "@/constants";
 
 export default {
   components: {
-    DatePicker,
+    // DatePicker,
   },
 
   data() {
