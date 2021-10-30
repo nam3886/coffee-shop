@@ -70,6 +70,7 @@
             </div>
           </template>
         </date-picker>
+        <button type="submit" class="rounded btn btn-primary">Lưu</button>
         <!-- <label class="exampleFormControlInput1">Yêu cầu của khách hàng</label>
         <textarea
           v-model="orderTable.note"
@@ -88,7 +89,7 @@
         >
           Hủy
         </button>
-        <button type="submit" class="rounded btn btn-primary">Đặt bàn</button>
+        <button type="submit" class="rounded btn btn-primary">Lưu</button>
       </div> -->
     </form>
   </div>
@@ -109,10 +110,10 @@ export default {
       show: false,
       timezone: "",
       orderTable: {
-        date: null,
-        table: null,
-        note: null,
-        personNumber: null,
+        // date: null,
+        // table: null,
+        // note: null,
+        // personNumber: null,
       },
     };
   },
@@ -177,5 +178,13 @@ export default {
   color: #e23744;
   border: 1px solid #e23744;
   background-color: whitesmoke;
+}
+/* .modal-footer {
+  border-block-start: 1.5px solid orange;
+  border-radius: 0em 0em 0em;
+} */
+.rounded.btn.btn-primary {
+  width: 25%;
+  margin-inline-start: 38%;
 }
 </style>
