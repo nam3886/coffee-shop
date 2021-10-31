@@ -20,14 +20,9 @@
                 "
               >
                 <p class="m-0">
-                  <i class="feather-calendar text-primary"></i> 16 Tháng 6,
-                  11:30
+                  <i class="feather-calendar text-primary"></i>
+                  16 Tháng 6, 11:30
                 </p>
-                <a
-                  href="trang-chu"
-                  class="text-primary ml-auto text-decoration-none"
-                  >Chi tiết</a
-                >
               </div>
               <div class="p-3 border-bottom">
                 <h6 class="font-weight-bold">Trạng thái đặt bàn</h6>
@@ -74,20 +69,9 @@
                   src="img/logo_web.png"
                   class="img-fluid sc-osahan-logo mr-2"
                 />
-                <span class="small text-primary font-weight-bold"
-                  >Nhà hàng Nam & Khánh
+                <span class="small text-primary font-weight-bold">
+                  Nhà hàng Nam & Khánh
                 </span>
-              </div>
-              <!-- total price -->
-              <!-- Destination -->
-              <div class="p-3 bg-white">
-                <div class="d-flex align-items-center mb-2">
-                  <h6 class="font-weight-bold mb-1">Tổng tiền</h6>
-                  <h6 class="font-weight-bold ml-auto mb-1">50.000đ</h6>
-                </div>
-                <p class="m-0 small text-muted">
-                  Bạn có thể xem chi tiết ở đây,<br />Cảm ơn bạn đã ủng hộ !
-                </p>
               </div>
             </div>
           </div>
@@ -100,5 +84,3 @@
 <script>
 export default {};
 </script>
-
-<style></style>

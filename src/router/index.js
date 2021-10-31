@@ -9,8 +9,6 @@ import Table from "@/pages/Table.vue";
 import OrderSuccess from "@/pages/OrderSuccess.vue";
 import { isAuth } from "@/middleware";
 import OrderTable from "@/pages/OrderTable.vue";
-import OrderTableProgress from "@/pages/OrderTableProgress.vue";
-import OrderTableCancel from "@/pages/OrderTableCancel.vue";
 
 const routes = [
   {
@@ -46,25 +44,15 @@ const routes = [
         component: CustomerOrder,
       },
       {
-        path: "/order-dat-ban",
-        name: "order_table",
-        component: OrderTable,
-        beforeEnter: isAuth,
-      },
-      {
-        path: "/order-dang-dat-ban",
-        name: "order_table_progress",
-        component: OrderTableProgress,
-      },
-      {
-        path: "/order-huy-ban",
-        name: "order_table_cancel",
-        component: OrderTableCancel,
-      },
-      {
         path: "/hoa-don/:order_code",
         name: "customer_order.show",
         component: CustomerOrder,
+      },
+      {
+        path: "/danh-sach-dat-ban",
+        name: "order_table",
+        component: OrderTable,
+        beforeEnter: isAuth,
       },
       ...authRoutes,
       ...productRoutes,
