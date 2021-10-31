@@ -4,12 +4,18 @@ import { computed, defineComponent } from "vue";
 export default defineComponent({
   props: {
     src: { type: String, default: "" },
+
+    isUrl: { type: Boolean, default: false },
   },
 
   setup(props) {
-    const formatSrc = computed(() =>
-      validURL(props.src) ? props.src : "http://localhost:8080/" + props.src
-    );
+    const formatSrc = computed(() => {
+      if (props.isUrl) return props.src;
+
+      return validURL(props.src)
+        ? props.src
+        : "http://localhost:8080/" + props.src;
+    });
 
     function validURL(str) {
       const pattern = new RegExp(

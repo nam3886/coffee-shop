@@ -168,8 +168,9 @@
                   aria-expanded="false"
                 >
                   <VImg
-                    alt="#"
+                    :is-url="true"
                     :src="$store.getters.getProfile.avatar"
+                    alt="#"
                     class="
                       img-fluid
                       rounded-circle
