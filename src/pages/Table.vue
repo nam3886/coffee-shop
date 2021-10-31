@@ -69,8 +69,8 @@
 </template>
 
 <script>
-import { inject, ref } from "@vue/runtime-core";
-import { getTableMap } from "@/services/reuseable/useTable";
+import { inject } from "@vue/runtime-core";
+import useTable from "@/services/reuseable/useTable";
 import { EV_SHOW_ORDER_TABLE } from "@/constants";
 import ModalTime from "@/components/ModalTime.vue";
 
@@ -80,17 +80,15 @@ export default {
   },
   setup() {
     const emitter = inject("emitter");
-    const tables = ref({});
+    const { list: tables, loading, getList } = useTable();
 
-    getTableMap().then(({ data }) => {
-      tables.value = data.data;
-    });
+    getList();
 
     function selectTable(table) {
       emitter.emit(EV_SHOW_ORDER_TABLE, table);
     }
 
-    return { selectTable, tables };
+    return { selectTable, tables, loading };
   },
 };
 </script>
