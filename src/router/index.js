@@ -9,6 +9,7 @@ import Table from "@/pages/Table.vue";
 import OrderSuccess from "@/pages/OrderSuccess.vue";
 import { isAuth } from "@/middleware";
 import OrderTable from "@/pages/OrderTable.vue";
+import OrderTableDetail from "@/pages/OrderTableDetail.vue";
 
 const routes = [
   {
@@ -50,8 +51,14 @@ const routes = [
       },
       {
         path: "/danh-sach-dat-ban",
-        name: "order_table",
+        name: "order_table.index",
         component: OrderTable,
+        beforeEnter: isAuth,
+      },
+      {
+        path: "/danh-sach-dat-ban/:order_table_id",
+        name: "order_table.show",
+        component: OrderTableDetail,
         beforeEnter: isAuth,
       },
       ...authRoutes,

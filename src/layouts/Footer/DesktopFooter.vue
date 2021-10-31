@@ -6,7 +6,7 @@
           <aside class="col-md-4 footer-about">
             <article class="d-flex pb-3">
               <div>
-                <img alt="#" src="img/logo_web.png" class="logo-footer mr-3" />
+                <VImg alt="#" src="img/logo_web.png" class="logo-footer mr-3" />
               </div>
               <div>
                 <h6 class="title text-white">Về chúng tôi ...</h6>

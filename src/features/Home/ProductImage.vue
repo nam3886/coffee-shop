@@ -1,5 +1,5 @@
 <template>
-  <img
+  <VImg
     :alt="product.image"
     :src="product.image"
     class="img-fluid item-img w-100"

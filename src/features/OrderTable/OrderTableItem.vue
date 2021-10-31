@@ -23,7 +23,10 @@
                   16 Tháng 6, 11:30
                 </p>
                 <router-link
-                  to="#"
+                  :to="{
+                    name: 'order_table.show',
+                    params: { order_table_id: 1 },
+                  }"
                   class="text-primary ml-auto text-decoration-none"
                 >
                   chi tiết

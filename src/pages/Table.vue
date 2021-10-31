@@ -37,7 +37,7 @@
                   "
                 >
                   <div id="map">
-                    <img
+                    <VImg
                       src="/img/table5editremovebg.png"
                       alt="map"
                       class="img-fluid"
@@ -49,7 +49,7 @@
                         :style="`width: ${table.width}; height: ${table.height}; top: ${table.top}; left: ${table.left}`"
                         @click="selectTable(table.id)"
                       >
-                        <img
+                        <VImg
                           :src="table.image"
                           :alt="table.name"
                           class="w-100 h-100"

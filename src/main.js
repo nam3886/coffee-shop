@@ -5,13 +5,16 @@ import store from "@/store";
 import mitt from "mitt";
 import Button from "@/components/Button.vue";
 import Alert from "@/components/Alert.vue";
+import Image from "@/components/Image.vue";
 import ProductImage from "@/features/Home/ProductImage";
 
 const emitter = mitt();
 const app = createApp(App);
 app.config.globalProperties.$EMITTER = emitter;
+app.config.globalProperties.$BASE_URL = "http://localhost:8080";
 app.use(store);
 app.use(router);
+app.component("VImg", Image);
 app.component("VButton", Button);
 app.component("VAlert", Alert);
 app.component("VProductImg", ProductImage);

@@ -10,7 +10,7 @@
         <div class="p-3 rounded shadow-sm bg-white">
           <div class="d-flex border-bottom pb-3">
             <div class="text-muted mr-3">
-              <img
+              <VImg
                 alt="#"
                 src="img/popular5.png"
                 class="img-fluid order_img rounded"

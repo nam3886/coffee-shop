@@ -11,7 +11,7 @@
       "
     >
       <div class="d-flex border-bottom osahan-cart-item-profile bg-white p-3">
-        <img
+        <VImg
           alt="osahan"
           src="img/starter1.jpg"
           class="mr-3 rounded-circle img-fluid"

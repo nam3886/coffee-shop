@@ -46,7 +46,7 @@
                   <span class="badge badge-dark">Đặc biệt</span>
                 </div>
                 <a href="restaurant.html">
-                  <img
+                  <VImg
                     alt="#"
                     src="img/trending1.png"
                     class="img-fluid item-img w-100"
@@ -100,7 +100,7 @@
                   <span class="badge badge-dark">Đặc biệt</span>
                 </div>
                 <a href="restaurant.html">
-                  <img
+                  <VImg
                     alt="#"
                     src="img/trending2.png"
                     class="img-fluid item-img w-100"
@@ -154,7 +154,7 @@
                   <span class="badge badge-dark">Đặc biệt</span>
                 </div>
                 <a href="restaurant.html">
-                  <img
+                  <VImg
                     alt="#"
                     src="img/trending3.png"
                     class="img-fluid item-img w-100"
@@ -210,7 +210,7 @@
                   <span class="badge badge-dark">Đặc biệt</span>
                 </div>
                 <a href="restaurant.html">
-                  <img
+                  <VImg
                     alt="#"
                     src="img/trending4.png"
                     class="img-fluid item-img w-100"
@@ -264,7 +264,7 @@
                   <span class="badge badge-dark">Đặc biệt</span>
                 </div>
                 <a href="restaurant.html">
-                  <img
+                  <VImg
                     alt="#"
                     src="img/trending5.png"
                     class="img-fluid item-img w-100"
@@ -318,7 +318,7 @@
                   <span class="badge badge-dark">Đặc biệt</span>
                 </div>
                 <a href="restaurant.html">
-                  <img
+                  <VImg
                     alt="#"
                     src="img/trending6.png"
                     class="img-fluid item-img w-100"
@@ -374,7 +374,7 @@
                   <span class="badge badge-dark">Đặc biệt</span>
                 </div>
                 <a href="restaurant.html">
-                  <img
+                  <VImg
                     alt="#"
                     src="img/trending7.png"
                     class="img-fluid item-img w-100"
@@ -428,7 +428,7 @@
                   <span class="badge badge-dark">Đặc biệt</span>
                 </div>
                 <a href="restaurant.html">
-                  <img
+                  <VImg
                     alt="#"
                     src="img/trending8.png"
                     class="img-fluid item-img w-100"

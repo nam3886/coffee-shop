@@ -17,7 +17,7 @@
     >
       <li class="nav-item" role="presentation">
         <router-link
-          :to="{ name: 'order_table', query: { type: 'done' } }"
+          :to="{ name: 'order_table.index', query: { type: 'done' } }"
           :class="{ active: $route.query?.type === 'done' }"
           class="nav-link border-0 text-dark py-3"
           data-toggle="tab"
@@ -31,7 +31,7 @@
       </li>
       <li class="nav-item border-top" role="presentation">
         <router-link
-          :to="{ name: 'order_table', query: { type: 'processing' } }"
+          :to="{ name: 'order_table.index', query: { type: 'processing' } }"
           :class="{ active: $route.query?.type === 'processing' }"
           class="nav-link border-0 text-dark py-3"
           data-toggle="tab"
@@ -45,8 +45,8 @@
       </li>
       <li class="nav-item border-top" role="presentation">
         <router-link
-          :to="{ name: 'order_table', query: { type: 'cancel' } }"
-          :class="{ active: $route.query?.type === 'cancel' }"
+          :to="{ name: 'order_table.index', query: { type: 'cancel' } }"
+          :class="{ active: $route.query?.type === 'cancelorder_table' }"
           class="nav-link border-0 text-dark py-3"
           data-toggle="tab"
           role="tab"

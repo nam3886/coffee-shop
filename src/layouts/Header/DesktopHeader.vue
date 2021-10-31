@@ -5,7 +5,7 @@
         <div class="row align-items-center">
           <div class="col-1">
             <router-link :to="{ name: 'home' }" class="brand-wrap mb-0">
-              <img alt="#" class="img-fluid" src="img/logo_web.png" />
+              <VImg alt="#" class="img-fluid" src="img/logo_web.png" />
             </router-link>
             <!-- brand-wrap.// -->
           </div>
@@ -167,7 +167,7 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img
+                  <VImg
                     alt="#"
                     :src="$store.getters.getProfile.avatar"
                     class="

@@ -64,7 +64,7 @@
               </div>
               <div class="p-3 border-bottom">
                 <p class="font-weight-bold small mb-1"></p>
-                <img
+                <VImg
                   alt="#"
                   src="img/logo_web.png"
                   class="img-fluid sc-osahan-logo mr-2"

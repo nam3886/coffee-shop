@@ -13,7 +13,7 @@
             query: { 'filter[category.slug]': category.slug },
           }"
         >
-          <img
+          <VImg
             :alt="category.name"
             :src="category.image"
             class="img-fluid mb-2"
