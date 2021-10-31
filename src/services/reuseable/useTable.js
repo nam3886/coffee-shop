@@ -4,6 +4,7 @@ import { formatDate } from "@/helpers";
 
 export default function () {
   const list = ref([]);
+  const errors = ref([]);
   const form = reactive({
     table_id: null,
     date: new Date(),
@@ -19,19 +20,39 @@ export default function () {
     loading.value = false;
   }
 
-  async function store() {
+  async function store(date) {
     loading.value = true;
-    form.date = formatDate(form.date);
-    await API.post("/order/table", form);
-    loading.value = false;
+    errors.value = [];
+    form.date = formatDate(date);
+
+    try {
+      await API.post("/order/table", form);
+    } catch (e) {
+      errors.value =
+        e.response.status === 422
+          ? e.response.data.errors
+          : [e.response.data.message];
+    } finally {
+      loading.value = false;
+    }
   }
 
-  async function checkTable() {
+  async function checkTable(date) {
     loading.value = true;
-    form.date = formatDate(form.date);
-    await API.post("/order/check/table", form);
-    loading.value = false;
+    errors.value = [];
+    form.date = formatDate(date);
+
+    try {
+      await API.post("/order/check/table", form);
+    } catch (e) {
+      errors.value =
+        e.response.status === 422
+          ? e.response.data.errors
+          : [e.response.data.message];
+    } finally {
+      loading.value = false;
+    }
   }
 
-  return { list, loading, form, getList, checkTable, store };
+  return { list, loading, form, errors, getList, checkTable, store };
 }

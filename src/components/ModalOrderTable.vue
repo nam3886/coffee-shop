@@ -40,11 +40,7 @@
           >
             <template #default="{ inputValue, inputEvents }">
               <label class="exampleFormControlInput1">Thời gian đặt bàn</label>
-              <div
-                :class="{ 'mb-3': isValidTable }"
-                class="input-group"
-                @click="togglePopover"
-              >
+              <div class="input-group mb-3" @click="togglePopover">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
                     <svg
@@ -105,7 +101,13 @@
           >
             Hủy
           </button>
-          <button type="submit" class="rounded btn btn-primary">Đặt bàn</button>
+          <v-button
+            :loading="loading"
+            type="submit"
+            class="rounded btn btn-primary"
+          >
+            Đặt bàn
+          </v-button>
         </div>
       </form>
     </div>
@@ -124,11 +126,10 @@ export default {
 
   setup() {
     const isValidTable = ref(false);
-    const errors = ref([]);
     const date = ref("");
     const emitter = inject("emitter");
     const show = ref(false);
-    const { form, loading, store, checkTable } = useTable();
+    const { form, loading, store, checkTable, errors } = useTable();
 
     watch(date, handleCheckTable);
 
@@ -144,42 +145,26 @@ export default {
     });
 
     async function handleSubmitOrderTable() {
+      console.log(isValidTable.value);
       if (!isValidTable.value) return;
 
-      prepareData();
+      await store(date.value);
 
-      try {
-        await store();
-        alert("đặt bàn thành công");
-        show.value = false;
-      } catch (e) {
-        errors.value =
-          e.response.status === 422
-            ? e.response.data.errors
-            : [e.response.data.message];
-      }
+      if (errors.value.length) return;
+
+      alert("đặt bàn thành công");
+      show.value = false;
     }
 
     async function handleCheckTable() {
       if (!date.value) return;
-
       isValidTable.value = false;
-      prepareData();
 
-      try {
-        await checkTable();
-        isValidTable.value = true;
-      } catch (e) {
-        errors.value =
-          e.response.status === 422
-            ? e.response.data.errors
-            : [e.response.data.message];
-      }
-    }
+      await checkTable(date.value);
 
-    function prepareData() {
-      errors.value = [];
-      form.date = date.value;
+      if (errors.value.length) return;
+
+      isValidTable.value = true;
     }
 
     return {
