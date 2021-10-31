@@ -8,7 +8,10 @@
     aria-hidden="true"
   >
     <div class="modal-dialog" role="document">
-      <form class="modal-content rounded-3" @submit.prevent="submitOrderTable">
+      <form
+        class="modal-content rounded-3"
+        @submit.prevent="handleSubmitOrderTable"
+      >
         <div class="modal-header">
           <h5 id="exampleModalLabel" class="modal-title">ĐẶT BÀN</h5>
           <button
@@ -21,28 +24,27 @@
           </button>
         </div>
         <div class="modal-body">
-          <label class="exampleFormControlInput1">Số khách đặt bàn</label>
-          <div class="input-group mb-3">
-            <select
-              id="inputGroupSelect01"
-              v-model.number="orderTable.personNumber"
-              class="custom-select"
-              placeholder="Chọn số lượng"
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-          </div>
+          <v-alert
+            v-for="(error, index) in errors"
+            :key="index"
+            :counter="true"
+            :message="error.join()"
+            type="danger"
+          />
 
-          <!-- <date-picker
-            v-model="orderTable.date"
+          <date-picker
+            v-model="date"
+            :min-date="new Date()"
             mode="dateTime"
-            :timezone="timezone"
+            locale="vi"
           >
             <template #default="{ inputValue, inputEvents }">
               <label class="exampleFormControlInput1">Thời gian đặt bàn</label>
-              <div class="input-group mb-3" @click="togglePopover">
+              <div
+                :class="{ 'mb-3': isValidTable }"
+                class="input-group"
+                @click="togglePopover"
+              >
                 <div class="input-group-prepend">
                   <div class="input-group-text">
                     <svg
@@ -69,10 +71,25 @@
                 />
               </div>
             </template>
-          </date-picker> -->
+          </date-picker>
+
+          <label class="exampleFormControlInput1">Số khách đặt bàn</label>
+          <div class="input-group mb-3">
+            <select
+              id="inputGroupSelect01"
+              v-model.number="form.person_number"
+              class="custom-select"
+              placeholder="Chọn số lượng"
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+
           <label class="exampleFormControlInput1">Yêu cầu của khách hàng</label>
           <textarea
-            v-model="orderTable.note"
+            v-model="form.note"
             class="form-control"
             rows="3"
             placeholder="Yêu cầu thêm ..."
@@ -96,47 +113,84 @@
 </template>
 
 <script>
-// import { DatePicker } from "v-calendar";
+import { DatePicker } from "v-calendar";
 import { EV_SHOW_ORDER_TABLE } from "@/constants";
+import { ref } from "@vue/reactivity";
+import { inject, watch } from "@vue/runtime-core";
+import useTable from "@/services/reuseable/useTable";
 
 export default {
-  components: {
-    // DatePicker,
-  },
+  components: { DatePicker },
 
-  data() {
-    return {
-      show: false,
-      timezone: "",
-      orderTable: {
-        date: null,
-        table: null,
-        note: null,
-        personNumber: null,
-      },
-    };
-  },
+  setup() {
+    const isValidTable = ref(false);
+    const errors = ref([]);
+    const date = ref("");
+    const emitter = inject("emitter");
+    const show = ref(false);
+    const { form, loading, store, checkTable } = useTable();
 
-  watch: {
-    show(show) {
-      console.log("trigger show");
-      const body = document.querySelector("body");
-      body.classList.toggle("modal-open", show);
-    },
-  },
+    watch(date, handleCheckTable);
 
-  mounted() {
-    this.$EMITTER.on(EV_SHOW_ORDER_TABLE, (table) => {
-      this.show = true;
-      this.orderTable.table = table;
+    watch(show, (value) => {
+      document.querySelector("body").classList.toggle("modal-open", value);
+      isValidTable.value = value;
+      date.value = value ? new Date() : "";
     });
-  },
 
-  methods: {
-    submitOrderTable() {
-      this.show = false;
-      console.log(this.orderTable);
-    },
+    emitter.on(EV_SHOW_ORDER_TABLE, (table) => {
+      show.value = true;
+      form.table_id = table;
+    });
+
+    async function handleSubmitOrderTable() {
+      if (!isValidTable.value) return;
+
+      prepareData();
+
+      try {
+        await store();
+        alert("đặt bàn thành công");
+        show.value = false;
+      } catch (e) {
+        errors.value =
+          e.response.status === 422
+            ? e.response.data.errors
+            : [e.response.data.message];
+      }
+    }
+
+    async function handleCheckTable() {
+      if (!date.value) return;
+
+      isValidTable.value = false;
+      prepareData();
+
+      try {
+        await checkTable();
+        isValidTable.value = true;
+      } catch (e) {
+        errors.value =
+          e.response.status === 422
+            ? e.response.data.errors
+            : [e.response.data.message];
+      }
+    }
+
+    function prepareData() {
+      errors.value = [];
+      form.date = date.value;
+    }
+
+    return {
+      date,
+      show,
+      form,
+      loading,
+      isValidTable,
+      errors,
+      handleSubmitOrderTable,
+    };
   },
 };
 </script>

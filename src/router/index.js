@@ -49,6 +49,7 @@ const routes = [
         path: "/order-dat-ban",
         name: "order_table",
         component: OrderTable,
+        beforeEnter: isAuth,
       },
       {
         path: "/order-dang-dat-ban",
