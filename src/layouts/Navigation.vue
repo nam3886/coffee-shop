@@ -1,152 +1,123 @@
 <template>
-  <nav id="main-nav">
-    <ul class="second-nav">
-      <li>
-        <a href="home.html"><i class="feather-home mr-2"></i> Trang chủ</a>
-      </li>
-      <li>
-        <a href="my_order.html"><i class="feather-list mr-2"></i> Đơn hàng</a>
-      </li>
-      <li>
-        <a href="#"><i class="feather-edit-2 mr-2"></i> Xác thực</a>
-        <ul>
-          <li><a href="login.html">Đăng nhập</a></li>
-          <li><a href="signup.html">Đăng kí</a></li>
-          <li><a href="forgot_password.html">Quên mật khẩu</a></li>
-          <li><a href="verification.html">Xác nhận</a></li>
-          <li><a href="location.html">Địa chỉ</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="favorites.html"
-          ><i class="feather-heart mr-2"></i> Yêu thích</a
-        >
-      </li>
-      <li>
-        <a href="trending.html"
-          ><i class="feather-trending-up mr-2"></i> Nổi bật</a
-        >
-      </li>
-      <li>
-        <a href="most_popular.html"
-          ><i class="feather-award mr-2"></i> Phổ biến nhất</a
-        >
-      </li>
-      <li>
-        <a href="restaurant.html"
-          ><i class="feather-paperclip mr-2"></i> Chi tiết nhà hàng</a
-        >
-      </li>
-      <li>
-        <a href="checkout.html"><i class="feather-list mr-2"></i> Kiểm tra</a>
-      </li>
-      <li>
-        <a href="successful.html"
-          ><i class="feather-check-circle mr-2"></i> Đặt thành công</a
-        >
-      </li>
-      <li>
-        <a href="map.html"><i class="feather-map-pin mr-2"></i> Bản đồ</a>
-      </li>
-      <li>
-        <a href="#"><i class="feather-user mr-2"></i> Profile</a>
-        <ul>
-          <li><a href="profile.html">Hồ sơ</a></li>
-          <li><a href="favorites.html">Hỗ trợ giao hàng</a></li>
-          <li><a href="contact-us.html">Liên hệ chúng tôi</a></li>
-          <li><a href="terms.html">Thời hạn sử dụng</a></li>
-          <li><a href="privacy.html">Bảo mật & Chính sách</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#"><i class="feather-alert-triangle mr-2"></i> Error</a>
-        <ul>
-          <li><a href="not-found.html">Không tìm thấy</a></li>
-          <li><a href="maintence.html"> Bảo trì</a></li>
-          <li><a href="coming-soon.html">Quay lại sau</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#"
-          ><i class="feather-link mr-2"></i> Navigation Link Example</a
-        >
-        <ul>
-          <li>
-            <a href="#">Link Example 1</a>
-            <ul>
-              <li>
-                <a href="#">Link Example 1.1</a>
-                <ul>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Link Example 1.2</a>
-                <ul>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="#">Link Example 2</a></li>
-          <li><a href="#">Link Example 3</a></li>
-          <li><a href="#">Link Example 4</a></li>
-          <li data-nav-custom-content>
-            <div class="custom-message">
-              You can add any custom content to your navigation items. This text
-              is just an example.
-            </div>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <ul class="bottom-nav">
-      <li class="email">
-        <a class="text-danger" href="home.html">
-          <p class="h5 m-0"><i class="feather-home text-danger"></i></p>
-          Trang chủ
-        </a>
-      </li>
-      <li class="github">
-        <a href="faq.html">
-          <p class="h5 m-0"><i class="feather-message-circle"></i></p>
-          FAQ
-        </a>
-      </li>
-      <li class="ko-fi">
-        <a href="contact-us.html">
-          <p class="h5 m-0"><i class="feather-phone"></i></p>
-          Hỗ trợ
-        </a>
-      </li>
-    </ul>
+  <nav
+    role="navigation"
+    class="
+      hc-offcanvas-nav hc-nav-1
+      nav-levels-overlap nav-position-left
+      disable-body
+    "
+    aria-hidden="false"
+    aria-labelledby="hc-nav-1"
+  >
+    <div class="nav-container" style="width: 280px">
+      <div class="nav-wrapper nav-wrapper-0" data-level="0" data-index="0">
+        <div class="nav-content">
+          <h2>Mở rộng</h2>
+          <ul
+            role="menu"
+            aria-level="1"
+            class="second-nav"
+            aria-label="Mở rộng"
+          >
+            <li v-for="(item, index) in menuItems" :key="index">
+              <div class="nav-item-wrapper">
+                <router-link
+                  :to="{ name: item.route }"
+                  class="nav-item"
+                  :tabindex="index"
+                  role="menuitem"
+                >
+                  <i class="feather-home mr-2"></i>
+                  {{ item.name }}
+                </router-link>
+              </div>
+            </li>
+          </ul>
+          <ul role="menu" aria-level="1" class="bottom-nav">
+            <li class="email">
+              <div class="nav-item-wrapper">
+                <router-link
+                  :to="{ name: 'home' }"
+                  class="text-danger nav-item"
+                  tabindex="0"
+                  role="menuitem"
+                  ><p class="h5 m-0">
+                    <i class="feather-home text-danger"></i>
+                  </p>
+                  Trang chủ
+                </router-link>
+              </div>
+            </li>
+            <li class="github">
+              <div class="nav-item-wrapper">
+                <router-link
+                  to="/"
+                  class="router-link-active nav-item"
+                  tabindex="0"
+                  role="menuitem"
+                  ><p class="h5 m-0"><i class="feather-message-circle"></i></p>
+                  FAQ
+                </router-link>
+              </div>
+            </li>
+            <li class="ko-fi">
+              <div class="nav-item-wrapper">
+                <router-link
+                  to="/"
+                  class="router-link-active nav-item"
+                  tabindex="0"
+                  role="menuitem"
+                  ><p class="h5 m-0"><i class="feather-phone"></i></p>
+                  Hỗ trợ
+                </router-link>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </nav>
 </template>
 
 <script>
+import { inject, onMounted, ref } from "@vue/runtime-core";
 import $ from "jquery";
-import "@/assets/vendor/sidebar/hc-offcanvas-nav.js";
 
 export default {
-  mounted() {
-    // init menu navigation
-    $("#main-nav").hcOffcanvasNav({
-      disableAt: false,
-      customToggle: $(".toggle-navigation"),
-      levelSpacing: 40,
-      navTitle: "Mở rộng",
-      levelTitles: true,
-      levelTitleAsBack: true,
-      pushContent: "#container",
-      insertClose: 2,
+  setup() {
+    const emitter = inject("emitter");
+    const menuItems = ref([
+      { name: "Trang chủ", route: "home" },
+      { name: "Sản phẩm", route: "product" },
+      { name: "Đặt bàn", route: "booking_table" },
+      { name: "Giỏ hàng", route: "cart" },
+      { name: "Hóa đơn", route: "customer_order" },
+      { name: "Danh sách đặt bàn", route: "order_table.index" },
+      { name: "Đăng nhập", route: "login" },
+      { name: "Đăng ký", route: "register" },
+      { name: "Quên mật khẩu", route: "forgot_password" },
+    ]);
+
+    onMounted(() => {
+      $("nav.hc-offcanvas-nav").on("click", function (e) {
+        if ($(e.target).closest(".nav-container").length) return;
+        emitter.emit("toggle-navigation", false);
+      });
     });
+
+    emitter.on("toggle-navigation", handleToggleNav);
+
+    function handleToggleNav(isShow) {
+      $("nav.hc-offcanvas-nav").toggleClass("nav-open d-block", isShow);
+      $("html").toggleClass("hc-nav-yscroll", isShow);
+      $("body").toggleClass("hc-nav-open", isShow);
+      $("nav.hc-offcanvas-nav").css(
+        "visibility",
+        isShow ? "visible" : "hidden"
+      );
+    }
+
+    return { menuItems };
   },
 };
 </script>

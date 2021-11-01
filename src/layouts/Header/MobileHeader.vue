@@ -2,9 +2,7 @@
   <div class="bg-primary p-3 d-none">
     <div class="text-white">
       <div class="title d-flex align-items-center">
-        <a class="toggle-navigation" href="#">
-          <span></span>
-        </a>
+        <ButtonToggleNavigation />
         <h4 class="font-weight-bold m-0 pl-5">Tìm kiếm</h4>
         <a
           class="text-white font-weight-bold ml-auto"
@@ -41,8 +39,11 @@
 
 <script>
 import { EV_SHOW_FILTER } from "@/constants";
+import ButtonToggleNavigation from "@/layouts/ButtonToggleNavigation";
 
 export default {
+  components: { ButtonToggleNavigation },
+
   setup() {
     return { EV_SHOW_FILTER };
   },

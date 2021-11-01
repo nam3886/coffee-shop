@@ -224,9 +224,7 @@
                   <span>Đặt bàn</span>
                 </div>
               </router-link>
-              <a class="toggle-navigation" href="#">
-                <span></span>
-              </a>
+              <ButtonToggleNavigation />
             </div>
             <!-- widgets-wrap.// -->
           </div>
@@ -242,8 +240,9 @@
 
 <script>
 import ButtonLogout from "@/components/ButtonLogout";
+import ButtonToggleNavigation from "@/layouts/ButtonToggleNavigation";
 
 export default {
-  components: { ButtonLogout },
+  components: { ButtonLogout, ButtonToggleNavigation },
 };
 </script>
