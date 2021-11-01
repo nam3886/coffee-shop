@@ -21,38 +21,26 @@
               >
                 <p class="m-0">
                   <i class="feather-calendar text-primary"></i>
-                  16 Tháng 6, 11:30
+                  {{ formatDate(orderTableDetail.date) }}
                 </p>
               </div>
               <div class="p-3 border-bottom">
-                <h6 class="font-weight-bold">Trạng thái đặt bàn</h6>
+                <h6 class="font-weight-bold">
+                  Bàn số {{ orderTableDetail.table_id }}
+                </h6>
                 <div class="tracking-wrap">
                   <div class="my-1 step active">
-                    <span class="icon text-success"
-                      ><i class="feather-check"></i
-                    ></span>
-                    <span class="text small">Đang chuẩn bị bàn</span>
+                    <span class="text small">
+                      Xem bản đồ đặt bàn
+                      <router-link :to="{ name: 'booking_table' }">
+                        chi tiết
+                      </router-link>
+                    </span>
                   </div>
-                  <!-- step.// -->
-                  <div class="my-1 step active">
-                    <span class="icon text-success"
-                      ><i class="feather-check"></i
-                    ></span>
-                    <span class="text small"> Sẵn sàng đón khách</span>
-                  </div>
-                  <!-- step.// -->
                   <div class="my-1 step">
-                    <span class="icon text-success"
-                      ><i class="feather-check"></i
-                    ></span>
-                    <span class="text small"> Đang chờ khách </span>
-                  </div>
-                  <!-- step.// -->
-                  <div class="my-1 step">
-                    <span class="icon text-success"
-                      ><i class="feather-check"></i
-                    ></span>
-                    <span class="text small">Có vận chuyển</span>
+                    <span class="text small">
+                      Vui lòng không đến sau 15 phút so với thời gian đặt bàn
+                    </span>
                   </div>
                   <!-- step.// -->
                 </div>
@@ -82,5 +70,18 @@
 </template>
 
 <script>
-export default {};
+import useTable from "@/services/reuseable/useTable.js";
+import { formatDate } from "@/helpers";
+import { useRoute } from "vue-router";
+
+export default {
+  setup() {
+    const route = useRoute();
+    const { getOrderTableDetail, orderTableDetail, loading } = useTable();
+
+    getOrderTableDetail(route.params.order_table_id);
+
+    return { orderTableDetail, loading, formatDate };
+  },
+};
 </script>

@@ -4,6 +4,8 @@ import { formatDate } from "@/helpers";
 
 export default function () {
   const list = ref([]);
+  const listOrderTable = ref([]);
+  const orderTableDetail = ref({});
   const errors = ref([]);
   const form = reactive({
     table_id: null,
@@ -17,6 +19,20 @@ export default function () {
     loading.value = true;
     const res = await API.get("/table");
     list.value = res.data.data;
+    loading.value = false;
+  }
+
+  async function getListOrderTable() {
+    loading.value = true;
+    const res = await API.get("/order/table");
+    listOrderTable.value = res.data.data;
+    loading.value = false;
+  }
+
+  async function getOrderTableDetail(id) {
+    loading.value = true;
+    const res = await API.get(`/order/table/${id}`);
+    orderTableDetail.value = res.data.data;
     loading.value = false;
   }
 
@@ -54,5 +70,17 @@ export default function () {
     }
   }
 
-  return { list, loading, form, errors, getList, checkTable, store };
+  return {
+    list,
+    loading,
+    form,
+    errors,
+    getList,
+    checkTable,
+    store,
+    getListOrderTable,
+    listOrderTable,
+    getOrderTableDetail,
+    orderTableDetail,
+  };
 }
