@@ -22,7 +22,7 @@
                     đồ để tiếp tục)
                     <i class="feather-chevron-down ml-auto"></i>
                   </button>
-                  <ModalTime></ModalTime>
+                  <!-- <ModalTime></ModalTime> -->
                 </h2>
               </div>
               <div class="collapse show" aria-labelledby="headingOne">
@@ -72,11 +72,11 @@
 import { inject } from "@vue/runtime-core";
 import useTable from "@/services/reuseable/useTable";
 import { EV_SHOW_ORDER_TABLE } from "@/constants";
-import ModalTime from "@/components/ModalTime.vue";
+// import ModalTime from "@/components/ModalTime.vue";
 
 export default {
   components: {
-    ModalTime,
+    // ModalTime,
   },
   setup() {
     const emitter = inject("emitter");

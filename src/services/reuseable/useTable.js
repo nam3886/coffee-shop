@@ -6,7 +6,7 @@ export default function () {
   const list = ref([]);
   const listOrderTable = ref([]);
   const orderTableDetail = ref({});
-  const errors = ref([]);
+  const errors = ref(null);
   const form = reactive({
     table_id: null,
     date: new Date(),
@@ -38,7 +38,7 @@ export default function () {
 
   async function store(date) {
     loading.value = true;
-    errors.value = [];
+    errors.value = null;
     form.date = formatDate(date);
 
     try {
@@ -55,7 +55,7 @@ export default function () {
 
   async function checkTable(date) {
     loading.value = true;
-    errors.value = [];
+    errors.value = null;
     form.date = formatDate(date);
 
     try {

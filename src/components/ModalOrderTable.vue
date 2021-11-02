@@ -145,12 +145,11 @@ export default {
     });
 
     async function handleSubmitOrderTable() {
-      console.log(isValidTable.value);
       if (!isValidTable.value) return;
 
       await store(date.value);
 
-      if (errors.value.length) return;
+      if (errors.value) return;
 
       alert("đặt bàn thành công");
       show.value = false;
@@ -162,7 +161,7 @@ export default {
 
       await checkTable(date.value);
 
-      if (errors.value.length) return;
+      if (errors.value) return;
 
       isValidTable.value = true;
     }
