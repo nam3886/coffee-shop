@@ -13,6 +13,7 @@ export default createStore({
     isAuthenticated,
     profile: {},
     cart: {},
+    tables: [],
   },
   getters,
   actions,

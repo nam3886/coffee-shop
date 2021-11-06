@@ -10,4 +10,8 @@ export default {
   setCart(state, payload) {
     state.cart = { ...payload };
   },
+
+  setTables(state, payload) {
+    state.tables = [...payload];
+  },
 };

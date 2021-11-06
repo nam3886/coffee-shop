@@ -20,9 +20,16 @@
                     <i class="feather-credit-card mr-3"></i>
                     Đặt bàn (chọn thời gian đặt bàn và nhấn vào bàn bên dưới sơ
                     đồ để tiếp tục)
-                    <i class="feather-chevron-down ml-auto"></i>
+                    <a
+                      href="#"
+                      class="ml-auto"
+                      @click.prevent="
+                        $EMITTER.emit(EV_SHOW_ORDER_TABLE_TIME, true)
+                      "
+                    >
+                      chọn lại thời gian
+                    </a>
                   </button>
-                  <!-- <ModalTime></ModalTime> -->
                 </h2>
               </div>
               <div class="collapse show" aria-labelledby="headingOne">
@@ -42,12 +49,18 @@
                       alt="map"
                       class="img-fluid"
                     />
-                    <template v-for="(table, key) in tables" :key="key">
+                    <template
+                      v-for="(table, key) in $store.getters.getTables"
+                      :key="key"
+                    >
                       <div
                         class="table-item draggable ui-widget-content"
-                        :class="{ disabled: table.unavailable }"
+                        :class="{
+                          disabled: table.unavailable,
+                          'not-available': table.isNotAvailable,
+                        }"
                         :style="`width: ${table.width}; height: ${table.height}; top: ${table.top}; left: ${table.left}`"
-                        @click="selectTable(table.id)"
+                        @click="selectTable(table)"
                       >
                         <VImg
                           :src="table.image"
@@ -69,26 +82,28 @@
 </template>
 
 <script>
-import { inject } from "@vue/runtime-core";
-import useTable from "@/services/reuseable/useTable";
-import { EV_SHOW_ORDER_TABLE } from "@/constants";
-// import ModalTime from "@/components/ModalTime.vue";
+import { inject, onMounted } from "@vue/runtime-core";
+import { EV_SHOW_ORDER_TABLE, EV_SHOW_ORDER_TABLE_TIME } from "@/constants";
 
 export default {
-  components: {
-    // ModalTime,
-  },
   setup() {
     const emitter = inject("emitter");
-    const { list: tables, loading, getList } = useTable();
 
-    getList();
+    onMounted(() => emitter.emit(EV_SHOW_ORDER_TABLE_TIME, true));
 
     function selectTable(table) {
-      emitter.emit(EV_SHOW_ORDER_TABLE, table);
+      if (table.isNotAvailable) return alert("table is not available");
+      emitter.emit(EV_SHOW_ORDER_TABLE, table.id);
     }
 
-    return { selectTable, tables, loading };
+    return { selectTable, EV_SHOW_ORDER_TABLE_TIME };
   },
 };
 </script>
+
+<style scoped>
+.not-available {
+  opacity: 0.3;
+  cursor: not-allowed !important;
+}
+</style>

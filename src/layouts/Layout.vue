@@ -7,6 +7,7 @@
   <layout-desktop-footer v-if="!ignoreHeaderAndFooter" />
   <navigation />
   <layout-filter />
+  <modal-order-table-time />
   <modal-order-table />
   <overlay-loading />
   <overlay-transparent />
@@ -24,6 +25,7 @@ import LayoutMobileHeader from "@/layouts/Header/MobileHeader.vue";
 import LayoutMobileFooter from "@/layouts/Footer/MobileFooter.vue";
 import LayoutDesktopFooter from "@/layouts/Footer/DesktopFooter.vue";
 import ModalOrderTable from "@/components/ModalOrderTable.vue";
+import ModalOrderTableTime from "@/components/ModalOrderTableTime.vue";
 import Navigation from "@/layouts/Navigation.vue";
 import LayoutFilter from "@/layouts/Filter.vue";
 import OverlayLoading from "@/layouts/OverlayLoading.vue";
@@ -40,6 +42,7 @@ export default {
     Navigation,
     LayoutFilter,
     ModalOrderTable,
+    ModalOrderTableTime,
     OverlayLoading,
     OverlayTransparent,
     Toast,

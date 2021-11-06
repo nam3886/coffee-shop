@@ -4,4 +4,6 @@ export default {
   getProfile: (state) => state.profile,
 
   getCart: (state) => state.cart,
+
+  getTables: (state) => state.tables,
 };

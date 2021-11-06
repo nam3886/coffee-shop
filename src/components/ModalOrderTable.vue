@@ -24,50 +24,18 @@
           </button>
         </div>
         <div class="modal-body">
-          <v-alert
-            v-for="(error, index) in errors"
-            :key="index"
-            :counter="true"
-            :message="error.join()"
-            type="danger"
-          />
-
-          <date-picker
-            v-model="date"
-            :min-date="new Date()"
-            mode="dateTime"
-            locale="vi"
-          >
-            <template #default="{ inputValue, inputEvents }">
-              <label class="exampleFormControlInput1">Thời gian đặt bàn</label>
-              <div class="input-group mb-3" @click="togglePopover">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <svg
-                      class="datepicker"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  aria-label="Text input with checkbox"
-                  :value="inputValue"
-                  v-on="inputEvents"
-                />
-              </div>
-            </template>
-          </date-picker>
+          <template v-if="typeof errors === 'object'">
+            <v-alert
+              v-for="(error, index) in errors"
+              :key="index"
+              :counter="true"
+              :message="error.join()"
+              type="danger"
+            />
+          </template>
+          <template v-if="typeof errors === 'string'">
+            <v-alert :counter="true" :message="errors" type="danger" />
+          </template>
 
           <label class="exampleFormControlInput1">Số khách đặt bàn</label>
           <div class="input-group mb-3">
@@ -115,29 +83,23 @@
 </template>
 
 <script>
-import { DatePicker } from "v-calendar";
-import { EV_SHOW_ORDER_TABLE } from "@/constants";
+import { EV_SHOW_ORDER_TABLE, EV_ORDER_TABLE_TIME } from "@/constants";
 import { ref } from "@vue/reactivity";
 import { inject, watch } from "@vue/runtime-core";
 import useTable from "@/services/reuseable/useTable";
 
 export default {
-  components: { DatePicker },
-
   setup() {
-    const isValidTable = ref(false);
-    const date = ref("");
     const emitter = inject("emitter");
     const show = ref(false);
-    const { form, loading, store, checkTable, errors } = useTable();
-
-    watch(date, handleCheckTable);
+    const date = ref(null);
+    const { form, loading, store, errors } = useTable();
 
     watch(show, (value) => {
       document.querySelector("body").classList.toggle("modal-open", value);
-      isValidTable.value = value;
-      date.value = value ? new Date() : "";
     });
+
+    emitter.on(EV_ORDER_TABLE_TIME, (val) => (date.value = val));
 
     emitter.on(EV_SHOW_ORDER_TABLE, (table) => {
       show.value = true;
@@ -145,8 +107,7 @@ export default {
     });
 
     async function handleSubmitOrderTable() {
-      if (!isValidTable.value) return;
-
+      console.log(date.value);
       await store(date.value);
 
       if (errors.value) return;
@@ -155,23 +116,10 @@ export default {
       show.value = false;
     }
 
-    async function handleCheckTable() {
-      if (!date.value) return;
-      isValidTable.value = false;
-
-      await checkTable(date.value);
-
-      if (errors.value) return;
-
-      isValidTable.value = true;
-    }
-
     return {
-      date,
       show,
       form,
       loading,
-      isValidTable,
       errors,
       handleSubmitOrderTable,
     };

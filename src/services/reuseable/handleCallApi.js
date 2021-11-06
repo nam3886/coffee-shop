@@ -26,3 +26,25 @@ export default function (method, url, params, callOnInitialization) {
 
   return { data, loading, errors, reCallApi };
 }
+
+export function handleCallApi() {
+  const errors = ref(null);
+  const response = ref(null);
+  const loading = ref(false);
+
+  async function action(method, url, params) {
+    errors.value = null;
+    loading.value = true;
+
+    try {
+      const res = await API[method](url, { ...params });
+      response.value = res.data.data;
+    } catch (error) {
+      errors.value = error.response.data.errors || error.response.data.message;
+    } finally {
+      loading.value = false;
+    }
+  }
+
+  return { response, errors, loading, action };
+}

@@ -12,4 +12,8 @@ export default {
   setCart({ commit }, payload) {
     commit(ACTION.SET_CART, payload);
   },
+
+  setTables({ commit }, payload) {
+    commit(ACTION.SET_TABLES, payload);
+  },
 };
