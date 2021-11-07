@@ -87,9 +87,11 @@ import { EV_SHOW_ORDER_TABLE, EV_ORDER_TABLE_TIME } from "@/constants";
 import { ref } from "@vue/reactivity";
 import { inject, watch } from "@vue/runtime-core";
 import useTable from "@/services/reuseable/useTable";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
+    const router = useRouter();
     const emitter = inject("emitter");
     const show = ref(false);
     const date = ref(null);
@@ -107,13 +109,13 @@ export default {
     });
 
     async function handleSubmitOrderTable() {
-      console.log(date.value);
       await store(date.value);
 
       if (errors.value) return;
 
       alert("đặt bàn thành công");
       show.value = false;
+      router.push({ name: "order_table.index" });
     }
 
     return {

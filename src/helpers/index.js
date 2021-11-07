@@ -17,5 +17,5 @@ export const formatDate = (date) => {
     if (t[key] < 10) t[key] = "0" + t[key];
   }
 
-  return `${t.d}/${t.m}/${t.y} ${t.H}:${t.i}:${t.s}`;
+  return `${t.H}:${t.i}:${t.s} ${t.d}/${t.m}/${t.y}`;
 };

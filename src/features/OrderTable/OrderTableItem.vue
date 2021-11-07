@@ -23,7 +23,7 @@
                 <p class="m-0">
                   <i class="feather-calendar text-primary"></i>
                   &nbsp;
-                  {{ formatDate(table.date) }}
+                  {{ table.date_format }}
                 </p>
                 <router-link
                   :to="{
@@ -45,7 +45,6 @@
 
 <script>
 import useTable from "@/services/reuseable/useTable.js";
-import { formatDate } from "@/helpers";
 
 export default {
   setup() {
@@ -53,7 +52,7 @@ export default {
 
     getListOrderTable();
 
-    return { listOrderTable, loading, formatDate };
+    return { listOrderTable, loading };
   },
 };
 </script>

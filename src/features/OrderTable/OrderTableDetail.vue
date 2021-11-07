@@ -21,7 +21,7 @@
               >
                 <p class="m-0">
                   <i class="feather-calendar text-primary"></i>
-                  {{ formatDate(orderTableDetail.date) }}
+                  {{ orderTableDetail.date_format }}
                 </p>
               </div>
               <div class="p-3 border-bottom">
@@ -31,15 +31,37 @@
                 <div class="tracking-wrap">
                   <div class="my-1 step active">
                     <span class="text small">
+                      Số khách: {{ orderTableDetail.person_number }}
+                    </span>
+                  </div>
+                  <div class="my-1 step active">
+                    <span class="text small">
+                      Ghi chú: {{ orderTableDetail.note }}
+                    </span>
+                  </div>
+                  <div class="my-1 step active">
+                    <span class="text small">
                       Xem bản đồ đặt bàn
-                      <router-link :to="{ name: 'booking_table' }">
+                      <router-link
+                        :to="{
+                          name: 'booking_table',
+                          query: {
+                            ordered: true,
+                            date: orderTableDetail.date,
+                            table_id: orderTableDetail.table_id,
+                          },
+                        }"
+                      >
                         chi tiết
                       </router-link>
                     </span>
                   </div>
                   <div class="my-1 step">
                     <span class="text small">
-                      Vui lòng không đến sau 15 phút so với thời gian đặt bàn
+                      Vui lòng không đến sau
+                      <b class="text-info">
+                        {{ orderTableDetail.over_date_format }}
+                      </b>
                     </span>
                   </div>
                   <!-- step.// -->
@@ -71,7 +93,6 @@
 
 <script>
 import useTable from "@/services/reuseable/useTable.js";
-import { formatDate } from "@/helpers";
 import { useRoute } from "vue-router";
 
 export default {
@@ -81,7 +102,7 @@ export default {
 
     getOrderTableDetail(route.params.order_table_id);
 
-    return { orderTableDetail, loading, formatDate };
+    return { orderTableDetail, loading };
   },
 };
 </script>
