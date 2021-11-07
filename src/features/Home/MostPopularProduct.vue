@@ -40,7 +40,7 @@
               <div class="member-plan position-absolute">
                 <span class="badge badge-dark">Đặc biệt</span>
               </div>
-              <a href="restaurant.html">
+              <a href="#" @click.prevent="">
                 <v-product-img
                   :product="product"
                   class="img-fluid item-img w-100"
@@ -50,7 +50,7 @@
             <div class="p-3 position-relative">
               <div class="list-card-body">
                 <h6 class="mb-1">
-                  <a href="restaurant.html" class="text-black"
+                  <a href="#" class="text-black" @click.prevent=""
                     >{{ product.name }}
                   </a>
                 </h6>

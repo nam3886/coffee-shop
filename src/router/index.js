@@ -1,3 +1,4 @@
+import qs from "qs";
 import { createRouter, createWebHistory } from "vue-router";
 import Layout from "@/layouts/Layout.vue";
 import Home from "@/pages/Home.vue";
@@ -70,6 +71,15 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  // set custom query resolver
+  parseQuery(query) {
+    return qs.parse(query);
+  },
+  stringifyQuery(query) {
+    var result = qs.stringify(query);
+
+    return result || "";
+  },
 });
 
 export default router;

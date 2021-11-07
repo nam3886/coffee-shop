@@ -1,5 +1,5 @@
 import FoodDetail from "@/pages/FoodDetail.vue";
-import Trending from "@/pages/Trending.vue";
+import Product from "@/pages/Product.vue";
 
 export default [
   {
@@ -10,6 +10,6 @@ export default [
   {
     path: "/san-pham",
     name: "product",
-    component: Trending,
+    component: Product,
   },
 ];

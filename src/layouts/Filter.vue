@@ -1,5 +1,5 @@
 <template>
-  <div
+  <form
     ref="modalFilter"
     :class="{ 'd-block show': show }"
     class="modal fade"
@@ -7,11 +7,12 @@
     role="dialog"
     aria-labelledby="modalFilterLabel"
     aria-hidden="true"
+    @submit.prevent="handleSubmitFilter"
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Filter</h5>
+          <h5 class="modal-title">Bộ lọc</h5>
           <button
             type="button"
             class="close"
@@ -28,71 +29,25 @@
               <div class="p-3 bg-light border-bottom">
                 <h6 class="m-0">Sắp xếp theo:</h6>
               </div>
-              <div class="custom-control border-bottom px-0 custom-radio">
+              <div
+                v-for="(sort, index) in sorts"
+                :key="index"
+                class="custom-control border-bottom px-0 custom-radio"
+              >
                 <input
-                  id="customRadio1f"
+                  :id="`sort${index}`"
+                  v-model="filters.sort"
+                  :value="sort.id"
                   type="radio"
-                  name="location"
-                  class="custom-control-input"
-                  checked
-                />
-                <label
-                  class="custom-control-label py-3 w-100 px-3"
-                  for="customRadio1f"
-                  >Được đánh giá cao</label
-                >
-              </div>
-              <div class="custom-control border-bottom px-0 custom-radio">
-                <input
-                  id="customRadio2f"
-                  type="radio"
-                  name="location"
+                  name="sort"
                   class="custom-control-input"
                 />
                 <label
                   class="custom-control-label py-3 w-100 px-3"
-                  for="customRadio2f"
-                  >Gần tôi nhất</label
+                  :for="`sort${index}`"
                 >
-              </div>
-              <div class="custom-control border-bottom px-0 custom-radio">
-                <input
-                  id="customRadio3f"
-                  type="radio"
-                  name="location"
-                  class="custom-control-input"
-                />
-                <label
-                  class="custom-control-label py-3 w-100 px-3"
-                  for="customRadio3f"
-                  >Giá từ cao tới thấp</label
-                >
-              </div>
-              <div class="custom-control border-bottom px-0 custom-radio">
-                <input
-                  id="customRadio4f"
-                  type="radio"
-                  name="location"
-                  class="custom-control-input"
-                />
-                <label
-                  class="custom-control-label py-3 w-100 px-3"
-                  for="customRadio4f"
-                  >Giá từ thấp tới cao</label
-                >
-              </div>
-              <div class="custom-control border-bottom px-0 custom-radio">
-                <input
-                  id="customRadio5f"
-                  type="radio"
-                  name="location"
-                  class="custom-control-input"
-                />
-                <label
-                  class="custom-control-label py-3 w-100 px-3"
-                  for="customRadio5f"
-                  >Phổ biến nhất</label
-                >
+                  {{ sort.name }}
+                </label>
               </div>
               <!-- Filter -->
               <div class="p-3 bg-light border-bottom">
@@ -140,31 +95,7 @@
                 <h6 class="m-0">Lọc thông thường</h6>
               </div>
               <div class="px-3 pt-3">
-                <input
-                  type="range"
-                  class="custom-range"
-                  min="0"
-                  max="100"
-                  name="minmax"
-                />
-                <div class="form-row">
-                  <div class="form-group col-6">
-                    <label>Thấp nhất</label>
-                    <input
-                      class="form-control"
-                      placeholder="$0"
-                      type="number"
-                    />
-                  </div>
-                  <div class="form-group text-right col-6">
-                    <label>Cao nhất</label>
-                    <input
-                      class="form-control"
-                      placeholder="$1,0000"
-                      type="number"
-                    />
-                  </div>
-                </div>
+                <RangerPrice v-model="filters.price" />
               </div>
             </div>
           </div>
@@ -180,35 +111,54 @@
             </button>
           </div>
           <div class="col-6 m-0 p-0">
-            <button type="button" class="btn btn-primary btn-lg btn-block">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
               Xác nhận
             </button>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
 import { EV_SHOW_FILTER } from "@/constants";
+import { inject, ref, watch } from "@vue/runtime-core";
+import RangerPrice from "@/components/RangerPrice";
+import { useRouter } from "vue-router";
 
 export default {
-  data() {
-    return {
-      show: false,
-    };
-  },
+  components: { RangerPrice },
 
-  watch: {
-    show(show) {
+  setup() {
+    const router = useRouter();
+    const emitter = inject("emitter");
+    const show = ref(false);
+
+    emitter.on(EV_SHOW_FILTER, () => (show.value = true));
+
+    watch(show, (val) => {
       const body = document.querySelector("body");
-      body.classList.toggle("modal-open", show);
-    },
-  },
+      body.classList.toggle("modal-open", val);
+    });
 
-  mounted() {
-    this.$EMITTER.on(EV_SHOW_FILTER, () => (this.show = true));
+    const sorts = ref([
+      { id: "-price", name: "Giá từ cao tới thấp" },
+      { id: "price", name: "Giá từ thấp tới cao" },
+      { id: "name", name: "Tên A-Z" },
+      { id: "-name", name: "Tên Z-A" },
+      // { id: "popular", name: "Phổ biến nhất" },
+      // { id: "most_sale", name: "Được đánh giá cao" },
+    ]);
+
+    const filters = ref({ price: [0, 30] });
+
+    function handleSubmitFilter() {
+      show.value = false;
+      router.push({ name: "product", query: filters.value });
+    }
+
+    return { show, sorts, filters, handleSubmitFilter };
   },
 };
 </script>

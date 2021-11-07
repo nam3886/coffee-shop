@@ -7333,6 +7333,13 @@ qs@6.7.0:
   resolved "https://registry.npm.taobao.org/qs/download/qs-6.7.0.tgz?cache=0&sync_timestamp=1616385248556&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fqs%2Fdownload%2Fqs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha1-QdwaAV49WB8WIXdr4xr7KHapsbw=
 
+qs@^6.10.1:
+  version "6.10.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.10.1.tgz#4931482fa8d647a5aab799c5271d2133b981fb6a"
+  integrity sha512-M528Hph6wsSVOBiYUnGf+K/7w0hNshs/duGsNXPUCLH5XAqjEtiPGwNONLV0tBH8NoGb0mvD5JubnUTrujKDTg==
+  dependencies:
+    side-channel "^1.0.4"
+
 qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.npm.taobao.org/qs/download/qs-6.5.2.tgz?cache=0&sync_timestamp=1616385248556&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fqs%2Fdownload%2Fqs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
@@ -8949,12 +8956,25 @@ vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-property-decorator@^9.0.2:
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/vue-property-decorator/-/vue-property-decorator-9.1.2.tgz#266a2eac61ba6527e2e68a6933cfb98fddab5457"
+  integrity sha512-xYA8MkZynPBGd/w5QFJ2d/NM0z/YeegMqYTphy7NJQXbZcuU6FC6AOdUAcy4SXP+YnkerC6AfH+ldg7PDk9ESQ==
+
 vue-router@^4.0.0-0:
   version "4.0.11"
   resolved "https://registry.nlark.com/vue-router/download/vue-router-4.0.11.tgz#cd649a0941c635281763a20965b599643ddc68ed"
   integrity sha1-zWSaCUHGNSgXY6IJZbWZZD3caO0=
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.14"
+
+vue-slider-component@^4.0.0-beta.4:
+  version "4.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/vue-slider-component/-/vue-slider-component-4.0.0-beta.4.tgz#b72d7964f3c1e6368c3f1eece726a73066e0f567"
+  integrity sha512-ooKDv/FKLPR4N2O8BL3QvMoAvrSwSjj2+tx38dgvGRQaYYr0lpfH8vd175Hb1ayr6JRlnea7PYAeVtlg/jvTbQ==
+  dependencies:
+    core-js "^3.6.5"
+    vue-property-decorator "^9.0.2"
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.3"

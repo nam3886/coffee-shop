@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import API from "@/services/api.js";
+import qs from "qs";
 
 export default function () {
   const listProduct = ref([]);
@@ -11,7 +12,7 @@ export default function () {
     loading.value = true;
 
     try {
-      const res = await API.get("/product", { params });
+      const res = await API.get(`/product?${qs.stringify(params)}`);
       listProduct.value = res.data.data;
     } catch (e) {
       error.value = e.response.data.message;

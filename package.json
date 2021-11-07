@@ -14,9 +14,11 @@
     "axios": "^0.21.4",
     "core-js": "^3.6.5",
     "jquery-ui": "^1.12.1",
+    "qs": "^6.10.1",
     "v-calendar": "^3.0.0-alpha.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
+    "vue-slider-component": "^4.0.0-beta.4",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {

@@ -10,7 +10,7 @@
           class="bg-white rounded d-block p-2 text-center shadow-sm"
           :to="{
             name: 'product',
-            query: { 'filter[category.slug]': category.slug },
+            query: { 'filter[categories.slug]': category.slug },
           }"
         >
           <VImg

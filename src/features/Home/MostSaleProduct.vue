@@ -42,7 +42,7 @@
               <div class="member-plan position-absolute">
                 <span class="badge badge-dark">Đặc biệt</span>
               </div>
-              <a href="#">
+              <a href="#" @click.prevent="">
                 <v-product-img
                   :product="product"
                   class="img-fluid item-img w-100"

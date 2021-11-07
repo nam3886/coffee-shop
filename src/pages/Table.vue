@@ -124,9 +124,10 @@ export default {
     const isOrdered = computed(() => route.query.ordered);
     const orderedDate = computed(() => route.query.date);
     const orderedTableId = computed(() => route.query.table_id);
-    getList(orderedDate.value).then(() => {
-      store.dispatch(SET_TABLES, tables.value);
-    });
+    isOrdered.value &&
+      getList(orderedDate.value).then(() => {
+        store.dispatch(SET_TABLES, tables.value);
+      });
 
     watch(isOrdered, triggerShowOrderTableTime);
     onMounted(() => triggerShowOrderTableTime(isOrdered.value));
