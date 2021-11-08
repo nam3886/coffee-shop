@@ -78,7 +78,12 @@
                 <h6 class="m-0">Lọc thông thường</h6>
               </div>
               <div class="px-3 pt-3">
-                <RangerPrice v-model="filters.price" />
+                <RangerPrice
+                  v-model="filters.price"
+                  :max-price="rangePrice.max_price"
+                  :min-price="rangePrice.min_price"
+                  :step="rangePrice.steps"
+                />
               </div>
             </div>
           </div>
@@ -109,6 +114,7 @@ import { EV_SHOW_FILTER } from "@/constants";
 import { inject, ref, watch } from "@vue/runtime-core";
 import RangerPrice from "@/components/RangerPrice";
 import { useRouter } from "vue-router";
+import useProduct from "@/services/reuseable/useProduct.js";
 
 export default {
   components: { RangerPrice },
@@ -145,7 +151,17 @@ export default {
       router.push({ name: "product", query: filters.value });
     }
 
-    return { show, sorts, filters, handleSubmitFilter };
+    const { getRangePrice, rangePrice } = useProduct();
+
+    getRangePrice();
+
+    return {
+      show,
+      sorts,
+      filters,
+      handleSubmitFilter,
+      rangePrice,
+    };
   },
 };
 </script>

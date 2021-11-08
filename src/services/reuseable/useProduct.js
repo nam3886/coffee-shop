@@ -36,6 +36,12 @@ export default function () {
     }
   }
 
+  const rangePrice = ref({});
+  async function getRangePrice() {
+    const res = await API.get("product-range-price");
+    rangePrice.value = res.data.data;
+  }
+
   return {
     listProduct,
     productDetail,
@@ -43,5 +49,7 @@ export default function () {
     error,
     getListProduct,
     getProductDetail,
+    getRangePrice,
+    rangePrice,
   };
 }

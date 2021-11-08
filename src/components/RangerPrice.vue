@@ -2,9 +2,10 @@
   <vue-slider
     v-model="ranger"
     :enable-cross="false"
-    :marks="marks"
     :min="minPrice"
     :max="maxPrice"
+    :marks="marks"
+    :adsorb="true"
   ></vue-slider>
   <div class="form-row mt-5">
     <div class="form-group col-6">
@@ -19,7 +20,7 @@
 </template>
 
 <script>
-import { computed, ref, toRefs } from "@vue/reactivity";
+import { computed, toRefs } from "@vue/reactivity";
 import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/material.css";
 
@@ -30,12 +31,13 @@ export default {
     modelValue: { type: Array, required: true },
     minPrice: { type: Number, default: 0 },
     maxPrice: { type: Number, default: 100 },
+    step: { type: Array, default: () => [] },
   },
 
   emits: ["update:modelValue"],
 
   setup(props, { emit }) {
-    const marks = ref([0, 20, 40, 60, 80, 100]);
+    const marks = computed(() => props.step);
     const { minPrice, maxPrice } = toRefs(props);
     const ranger = computed({
       get: () => props.modelValue,
