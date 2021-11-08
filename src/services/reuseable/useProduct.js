@@ -12,7 +12,9 @@ export default function () {
     loading.value = true;
 
     try {
-      const res = await API.get(`/product?${qs.stringify(params)}`);
+      const res = await API.get(
+        `/product?${qs.stringify(params, { arrayFormat: "comma" })}`
+      );
       listProduct.value = res.data.data;
     } catch (e) {
       error.value = e.response.data.message;

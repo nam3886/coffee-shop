@@ -6,4 +6,6 @@ export default {
   getCart: (state) => state.cart,
 
   getTables: (state) => state.tables,
+
+  getCategories: (state) => state.categories,
 };

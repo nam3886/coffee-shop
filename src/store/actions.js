@@ -16,4 +16,8 @@ export default {
   setTables({ commit }, payload) {
     commit(ACTION.SET_TABLES, payload);
   },
+
+  setCategories({ commit }, payload) {
+    commit(ACTION.SET_CATEGORIES, payload);
+  },
 };

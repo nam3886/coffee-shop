@@ -2,7 +2,7 @@
   <div class="container position-relative category">
     <swiper v-bind="swiperOptions" class="cat-slider">
       <swiper-slide
-        v-for="(category, index) in listCategory"
+        v-for="(category, index) in $store.getters.getCategories"
         :key="index"
         class="cat-item px-1 py-3"
       >
@@ -42,7 +42,6 @@
 </template>
 
 <script>
-import useCategory from "@/services/reuseable/useCategory.js";
 import { AUTOPLAY_TIME } from "@/constants";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import SwiperCore, { Navigation, Autoplay } from "swiper";
@@ -55,10 +54,6 @@ export default {
   },
 
   setup() {
-    const { listCategory, loading, error, getListCategory } = useCategory();
-
-    getListCategory();
-
     const swiperOptions = {
       slidesPerView: 8,
       spaceBetween: 0,
@@ -82,12 +77,7 @@ export default {
       },
     };
 
-    return {
-      swiperOptions,
-      listCategory,
-      loading,
-      error,
-    };
+    return { swiperOptions };
   },
 };
 </script>

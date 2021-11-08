@@ -4,12 +4,16 @@
 
 <script>
 import { getProfile } from "@/services/reuseable/useAuth";
+import useCategory from "@/services/reuseable/useCategory.js";
 import { useStore } from "vuex";
-import { SET_IS_AUTHENTICATED, SET_PROFILE } from "@/store/actionTypes";
+import {
+  SET_IS_AUTHENTICATED,
+  SET_PROFILE,
+  SET_CATEGORIES,
+} from "@/store/actionTypes";
 import { inject, watchEffect } from "@vue/runtime-core";
 import { localRemoveItem } from "@/helpers/local_storage";
-import { TOKEN } from "@/constants";
-import { EV_GET_CART } from "@/constants";
+import { TOKEN, EV_GET_CART } from "@/constants";
 
 export default {
   setup() {
@@ -37,6 +41,12 @@ export default {
         localRemoveItem(TOKEN);
       }
     }
+
+    const { listCategory, getListCategory } = useCategory();
+
+    getListCategory().then(() =>
+      store.dispatch(SET_CATEGORIES, listCategory.value)
+    );
   },
 };
 </script>

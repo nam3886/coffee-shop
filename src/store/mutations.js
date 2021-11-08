@@ -14,4 +14,8 @@ export default {
   setTables(state, payload) {
     state.tables = [...payload];
   },
+
+  setCategories(state, payload) {
+    state.categories = [...payload];
+  },
 };

@@ -14,6 +14,7 @@ export default createStore({
     profile: {},
     cart: {},
     tables: [],
+    categories: [],
   },
   getters,
   actions,

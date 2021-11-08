@@ -49,47 +49,30 @@
                   {{ sort.name }}
                 </label>
               </div>
-              <!-- Filter -->
+              <!-- CATEGORIES -->
               <div class="p-3 bg-light border-bottom">
-                <h6 class="m-0">Lọc thêm</h6>
+                <h6 class="m-0">Danh mục</h6>
               </div>
-              <div class="custom-control border-bottom px-0 custom-checkbox">
+              <div
+                v-for="category in $store.getters.getCategories"
+                :key="category.id"
+                class="custom-control border-bottom px-0 custom-checkbox"
+              >
                 <input
-                  id="defaultCheck1"
-                  type="checkbox"
-                  class="custom-control-input"
-                  checked
-                />
-                <label
-                  class="custom-control-label py-3 w-100 px-3"
-                  for="defaultCheck1"
-                  >Đang mở</label
-                >
-              </div>
-              <div class="custom-control border-bottom px-0 custom-checkbox">
-                <input
-                  id="defaultCheck2"
+                  :id="`category${category.id}`"
+                  v-model="filters['filter[categories.id]']"
+                  :value="category.id"
                   type="checkbox"
                   class="custom-control-input"
                 />
                 <label
                   class="custom-control-label py-3 w-100 px-3"
-                  for="defaultCheck2"
-                  >Thanh toán bằng thẻ tín dụng</label
+                  :for="`category${category.id}`"
                 >
+                  {{ category.name }}
+                </label>
               </div>
-              <div class="custom-control border-bottom px-0 custom-checkbox">
-                <input
-                  id="defaultCheck3"
-                  type="checkbox"
-                  class="custom-control-input"
-                />
-                <label
-                  class="custom-control-label py-3 w-100 px-3"
-                  for="defaultCheck3"
-                  >Có phục vụ rượu</label
-                >
-              </div>
+
               <!-- Filter -->
               <div class="p-3 bg-light border-bottom">
                 <h6 class="m-0">Lọc thông thường</h6>
@@ -151,7 +134,11 @@ export default {
       // { id: "most_sale", name: "Được đánh giá cao" },
     ]);
 
-    const filters = ref({ price: [0, 30] });
+    const filters = ref({
+      price: [0, 30],
+      "filter[categories.id]": [],
+      sort: "",
+    });
 
     function handleSubmitFilter() {
       show.value = false;
