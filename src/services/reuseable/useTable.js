@@ -52,5 +52,6 @@ export default function () {
     getOrderTableDetail,
     orderTableDetail,
     checkin,
+    response,
   };
 }
