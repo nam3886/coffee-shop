@@ -26,6 +26,9 @@ import StatusProgress from "@/features/CustomerOrder/StatusProgress.vue";
 // import StatusCancelled from "@/features/CustomerOrder/StatusCancelled.vue";
 import { ref } from "@vue/reactivity";
 import { getListOrder } from "@/services/reuseable/useOrder";
+import { useStore } from "vuex";
+import { watchEffect } from "@vue/runtime-core";
+import { useRouter } from "vue-router";
 
 export default {
   components: {
@@ -35,9 +38,15 @@ export default {
     // StatusCancelled,
   },
   setup() {
+    const store = useStore();
+    const router = useRouter();
     const status = ref("progress");
-
     const { data: orders, loading } = getListOrder();
+
+    watchEffect(() => {
+      const { getIsNotCustomer: isNotCustomer } = store.getters;
+      !isNotCustomer && router.push({ name: "home" });
+    });
 
     return { status, orders, loading };
   },

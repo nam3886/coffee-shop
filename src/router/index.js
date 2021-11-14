@@ -1,14 +1,15 @@
 import qs from "qs";
 import { createRouter, createWebHistory } from "vue-router";
+import authRoutes from "@/features/Auth/routes/index.js";
+import staffRoutes from "@/features/Staff/routes/index.js";
+import productRoutes from "@/router/productRoutes.js";
+import { isAuth } from "@/middleware";
 import Layout from "@/layouts/Layout.vue";
 import Home from "@/pages/Home.vue";
-import authRoutes from "@/features/Auth/routes/index.js";
-import productRoutes from "@/router/productRoutes.js";
 import Cart from "@/pages/Cart.vue";
 import CustomerOrder from "@/pages/CustomerOrder.vue";
 import Table from "@/pages/Table.vue";
 import OrderSuccess from "@/pages/OrderSuccess.vue";
-import { isAuth } from "@/middleware";
 import OrderTable from "@/pages/OrderTable.vue";
 import OrderTableDetail from "@/pages/OrderTableDetail.vue";
 
@@ -70,6 +71,7 @@ const routes = [
       },
       ...authRoutes,
       ...productRoutes,
+      ...staffRoutes,
     ],
   },
 ];
