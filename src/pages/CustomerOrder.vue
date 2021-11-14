@@ -9,10 +9,8 @@
     <div class="container">
       <div class="row">
         <OrderProgress v-model="status" />
-        <div id="myTabContent" class="tab-content col-md-9">
-          <StatusCompleted v-if="status == 'completed'" :orders="orders" />
-          <StatusProgress v-if="status == 'progress'" :orders="orders" />
-          <!-- <StatusCancelled v-if="status == 'cancelled'" :orders="orders" /> -->
+        <div class="tab-content col-md-9">
+          <ListOrder :status="status" />
         </div>
       </div>
     </div>
@@ -21,25 +19,19 @@
 
 <script>
 import OrderProgress from "@/features/CustomerOrder/OrderProgress.vue";
-import StatusCompleted from "@/features/CustomerOrder/StatusCompleted.vue";
-import StatusProgress from "@/features/CustomerOrder/StatusProgress.vue";
-// import StatusCancelled from "@/features/CustomerOrder/StatusCancelled.vue";
+import ListOrder from "@/features/CustomerOrder/ListOrder.vue";
 import { ref } from "@vue/reactivity";
-import { getListOrder } from "@/services/reuseable/useOrder";
 
 export default {
   components: {
     OrderProgress,
-    StatusCompleted,
-    StatusProgress,
-    // StatusCancelled,
+    ListOrder,
   },
+
   setup() {
     const status = ref("progress");
 
-    const { data: orders, loading } = getListOrder();
-
-    return { status, orders, loading };
+    return { status };
   },
 };
 </script>

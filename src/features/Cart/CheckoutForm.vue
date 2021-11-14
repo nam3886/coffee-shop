@@ -138,7 +138,7 @@ import { inject, onMounted } from "@vue/runtime-core";
 import { wait } from "@/helpers";
 import checkoutValidate from "@/validate/checkoutValidate";
 import { useRouter } from "vue-router";
-import { storeOrder } from "@/services/reuseable/useOrder";
+import useOrder from "@/services/reuseable/useOrder";
 import FormGroup from "@/components/FormGroup";
 import { EV_OVERLAY_TRANSPARENT, EV_GET_CART } from "@/constants";
 
@@ -148,8 +148,6 @@ export default {
   setup() {
     const router = useRouter();
     const isVisible = ref(false);
-    const loading = ref(false);
-    const errors = ref([]);
     const emitter = inject("emitter");
     const { state: checkout, v$ } = checkoutValidate();
     const paymentMethods = reactive([
@@ -157,25 +155,22 @@ export default {
       { name: "Thẻ ngân hàng", id: "vnpay" },
       { name: "Ví điện tử Mono", id: "momo" },
     ]);
+    const { response, errors, loading, store } = useOrder();
 
     onMounted(() => wait().then((isVisible.value = true)));
 
     async function handleSubmitCheckout() {
       const result = await v$.value.$validate();
       if (!result) return;
-      loading.value = true;
       emitter.emit(EV_OVERLAY_TRANSPARENT, true);
 
-      try {
-        const res = await storeOrder(checkout);
+      await store(checkout);
+      if (!errors.value) {
         checkoutMethods[checkout.payment_method] &&
-          checkoutMethods[checkout.payment_method](res);
-      } catch (error) {
-        errors.value = error.response.data.errors;
-      } finally {
-        loading.value = false;
-        emitter.emit(EV_OVERLAY_TRANSPARENT, false);
+          checkoutMethods[checkout.payment_method](response.value);
       }
+
+      emitter.emit(EV_OVERLAY_TRANSPARENT, false);
     }
 
     const checkoutMethods = {

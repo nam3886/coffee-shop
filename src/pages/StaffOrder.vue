@@ -1,29 +1,29 @@
 <template>
-  <div class="d-none">
-    <div class="bg-primary border-bottom p-3 d-flex align-items-center">
-      <a class="toggle togglew toggle-2" href="#"><span></span></a>
-      <h4 class="font-weight-bold m-0 text-white">Đơn hàng</h4>
-    </div>
-  </div>
-  <section class="py-4 osahan-main-body">
-    <div class="container">
-      <div class="row">
-        <OrderProgress v-model="status" />
-        <div id="myTabContent" class="tab-content col-md-9">
-          <StatusCompleted v-if="status == 'completed'" :orders="orders" />
-          <StatusProgress v-if="status == 'progress'" :orders="orders" />
-          <!-- <StatusCancelled v-if="status == 'cancelled'" :orders="orders" /> -->
-        </div>
+  <template
+    v-if="$store.getters.getProfile.role && $store.getters.getIsNotCustomer"
+  >
+    <div class="d-none">
+      <div class="bg-primary border-bottom p-3 d-flex align-items-center">
+        <a class="toggle togglew toggle-2" href="#"><span></span></a>
+        <h4 class="font-weight-bold m-0 text-white">Đơn hàng</h4>
       </div>
     </div>
-  </section>
+    <section class="py-4 osahan-main-body">
+      <div class="container">
+        <div class="row">
+          <OrderProgress v-model="status" />
+          <div id="myTabContent" class="tab-content col-md-9">
+            <ListOrder :status="status" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
 </template>
 
 <script>
 import OrderProgress from "@/features/CustomerOrder/OrderProgress.vue";
-import StatusCompleted from "@/features/CustomerOrder/StatusCompleted.vue";
-import StatusProgress from "@/features/CustomerOrder/StatusProgress.vue";
-// import StatusCancelled from "@/features/CustomerOrder/StatusCancelled.vue";
+import ListOrder from "@/features/CustomerOrder/ListOrder.vue";
 import { ref } from "@vue/reactivity";
 import { getListOrder } from "@/services/reuseable/useOrder";
 import { useStore } from "vuex";
@@ -33,10 +33,9 @@ import { useRouter } from "vue-router";
 export default {
   components: {
     OrderProgress,
-    StatusCompleted,
-    StatusProgress,
-    // StatusCancelled,
+    ListOrder,
   },
+
   setup() {
     const store = useStore();
     const router = useRouter();
@@ -44,8 +43,10 @@ export default {
     const { data: orders, loading } = getListOrder();
 
     watchEffect(() => {
-      const { getIsNotCustomer: isNotCustomer } = store.getters;
-      !isNotCustomer && router.push({ name: "home" });
+      const { getIsNotCustomer: isNotCustomer, getProfile: profile } =
+        store.getters;
+      // has profile and has role customer => redirect to home
+      profile.role && !isNotCustomer && router.push({ name: "home" });
     });
 
     return { status, orders, loading };

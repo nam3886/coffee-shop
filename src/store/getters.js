@@ -3,8 +3,9 @@ export default {
 
   getProfile: (state) => state.profile,
 
-  getIsNotCustomer: (state) =>
-    [("staff", "manager")].includes(state.profile.role),
+  getIsNotCustomer: (state) => {
+    return ["staff", "manager"].includes(state.profile.role);
+  },
 
   getCart: (state) => state.cart,
 

@@ -92,7 +92,22 @@
 </template>
 
 <script>
+import useOrder from "@/services/reuseable/useOrder";
+import { watchEffect } from "@vue/runtime-core";
+
 export default {
-  props: { orders: { type: Array, default: () => [] } },
+  props: {
+    status: { type: String, required: true },
+  },
+
+  setup(props) {
+    const { list: orders, loading, getList } = useOrder();
+
+    getList({ status: props.status });
+
+    watchEffect(() => getList({ status: props.status }));
+
+    return { orders, loading };
+  },
 };
 </script>

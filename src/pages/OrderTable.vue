@@ -9,7 +9,7 @@
   </section>
 
   <modal-checkin
-    v-if="isCheckin"
+    v-if="isCheckin && tableId"
     v-model="isVisibleModal"
     :show-confirm="!errors"
     @comfirmed="!loading && $router.push({ name: 'home' })"
@@ -84,7 +84,15 @@ export default {
       }
     }
 
-    return { errors, loading, isVisibleModal, response, isCheckin, formatDate };
+    return {
+      errors,
+      loading,
+      isVisibleModal,
+      response,
+      isCheckin,
+      formatDate,
+      tableId,
+    };
   },
 };
 </script>

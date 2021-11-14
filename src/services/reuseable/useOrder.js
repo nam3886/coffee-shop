@@ -1,10 +1,27 @@
 import API from "@/services/api";
-import handleCallApi from "@/services/reuseable/handleCallApi";
+import { handleCallApi } from "@/services/reuseable/handleCallApi";
+import { ref } from "vue";
 
-export function storeOrder(params) {
-  return API.post("/checkout", { ...params });
-}
+export default function () {
+  const { response, errors, loading, action } = handleCallApi();
+  const list = ref([]);
 
-export function getListOrder(params) {
-  return handleCallApi("get", "/checkout", { ...params }, true);
+  async function getList(params) {
+    await action("get", "/checkout", { params });
+    list.value = response.value;
+  }
+
+  async function store(params) {
+    const res = await API.post("/checkout", params);
+    response.value = res;
+  }
+
+  return {
+    response,
+    errors,
+    loading,
+    list,
+    getList,
+    store,
+  };
 }
