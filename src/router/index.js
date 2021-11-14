@@ -62,6 +62,12 @@ const routes = [
         component: OrderTableDetail,
         beforeEnter: isAuth,
       },
+      {
+        path: "/check-in",
+        name: "check_in",
+        component: OrderTable,
+        beforeEnter: isAuth,
+      },
       ...authRoutes,
       ...productRoutes,
     ],

@@ -10,7 +10,7 @@ export default function () {
     loading.value = true;
 
     try {
-      const res = await API.get("/category/");
+      const res = await API.get("/category");
       listCategory.value = res.data.data;
     } catch (e) {
       error.value = e.response.data.message;

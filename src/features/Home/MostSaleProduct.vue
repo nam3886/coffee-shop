@@ -81,7 +81,7 @@
 
 <script>
 import useProduct from "@/services/reuseable/useProduct.js";
-import ButtonAddCart from "@/components/ButtonAddCart";
+import ButtonAddCart from "@/components/buttons/ButtonAddCart";
 
 export default {
   components: { ButtonAddCart },

@@ -141,7 +141,7 @@
 </template>
 
 <script>
-import ButtonLogout from "@/components/ButtonLogout";
+import ButtonLogout from "@/components/buttons/ButtonLogout";
 import ButtonToggleNavigation from "@/layouts/ButtonToggleNavigation";
 import { EV_SHOW_FILTER } from "@/constants";
 

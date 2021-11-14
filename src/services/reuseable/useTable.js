@@ -34,6 +34,12 @@ export default function () {
     await action("post", "/order/table", form);
   }
 
+  async function checkin(tableId) {
+    const params = { table_id: tableId };
+
+    await action("get", "/checkin", { params });
+  }
+
   return {
     list,
     loading,
@@ -45,5 +51,6 @@ export default function () {
     listOrderTable,
     getOrderTableDetail,
     orderTableDetail,
+    checkin,
   };
 }

@@ -102,7 +102,7 @@
 </template>
 
 <script>
-import ButtonDeleteCart from "@/components/ButtonDeleteCart";
+import ButtonDeleteCart from "@/components/buttons/ButtonDeleteCart";
 import InputQuantity from "@/components/InputQuantity";
 
 export default {

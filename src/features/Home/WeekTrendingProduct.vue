@@ -94,7 +94,7 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import SwiperCore, { Navigation } from "swiper";
 import useProduct from "@/services/reuseable/useProduct.js";
-import ButtonAddCart from "@/components/ButtonAddCart";
+import ButtonAddCart from "@/components/buttons/ButtonAddCart";
 SwiperCore.use(Navigation);
 
 export default {

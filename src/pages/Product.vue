@@ -90,7 +90,7 @@
 import { useRoute } from "vue-router";
 import useProduct from "@/services/reuseable/useProduct.js";
 import { watch } from "@vue/runtime-core";
-import ButtonAddCart from "@/components/ButtonAddCart";
+import ButtonAddCart from "@/components/buttons/ButtonAddCart";
 import { EV_SHOW_FILTER } from "@/constants";
 
 export default {

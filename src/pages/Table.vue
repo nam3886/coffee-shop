@@ -110,8 +110,8 @@ import { useStore } from "vuex";
 import { SET_TABLES } from "@/store/actionTypes";
 import useTable from "@/services/reuseable/useTable";
 import Marker from "@/components/Marker";
-import ModalOrderTable from "@/components/ModalOrderTable.vue";
-import ModalOrderTableTime from "@/components/ModalOrderTableTime.vue";
+import ModalOrderTable from "@/components/modals/ModalOrderTable.vue";
+import ModalOrderTableTime from "@/components/modals/ModalOrderTableTime.vue";
 
 export default {
   components: { Marker, ModalOrderTable, ModalOrderTableTime },

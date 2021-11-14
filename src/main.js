@@ -3,7 +3,7 @@ import App from "@/App.vue";
 import router from "@/router";
 import store from "@/store";
 import mitt from "mitt";
-import Button from "@/components/Button.vue";
+import Button from "@/components/buttons/Button.vue";
 import Alert from "@/components/Alert.vue";
 import Image from "@/components/Image.vue";
 import ProductImage from "@/features/Home/ProductImage";
