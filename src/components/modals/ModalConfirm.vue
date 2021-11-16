@@ -4,7 +4,7 @@ import { computed, defineComponent, watch } from "vue";
 export default defineComponent({
   props: {
     modelValue: { type: Boolean, default: false },
-    showConfirm: { type: Boolean, default: true },
+    title: { type: String, default: "Bạn có chắc chắn?" },
   },
 
   emits: ["update:modelValue", "confirmed"],
@@ -61,7 +61,6 @@ export default defineComponent({
             Đóng
           </button>
           <button
-            v-if="showConfirm"
             type="button"
             class="rounded btn btn-primary"
             @click="$emit('confirmed')"

@@ -12,7 +12,7 @@
     v-if="isCheckin && tableId"
     v-model="isVisibleModal"
     :show-confirm="!errors"
-    @comfirmed="!loading && $router.push({ name: 'home' })"
+    @confirmed="!loading && $router.push({ name: 'home' })"
   >
     <template #title>
       <span v-if="errors">Có lỗi</span>

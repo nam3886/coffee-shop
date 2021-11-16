@@ -96,7 +96,7 @@
             <button
               v-if="!item.order.is_paid"
               class="btn btn-primary px-3"
-              @click="handleConfirmPaid(item.order.id)"
+              @click="handleShowModalPaid(item.order.id)"
             >
               Xác nhận đã thanh toán
             </button>
@@ -104,7 +104,7 @@
             <button
               v-if="item.status !== 'received'"
               class="btn btn-outline-primary px-3"
-              @click="handleConfirmReceived(item.id)"
+              @click="handleShowModalReceived(item.id)"
             >
               Xác nhận đã hoàn thành
             </button>
@@ -113,13 +113,40 @@
       </div>
     </div>
   </div>
+  <modal-confirm v-model="isVisibleModal" @confirmed="handleConfirmed">
+    <template #title>
+      <template v-if="step === 'confirm_paid'">
+        Xác nhận đã thanh toán
+      </template>
+      <template v-if="step === 'confirm_received'">
+        Xác nhận đã hoàn thành đơn
+      </template>
+    </template>
+
+    <template #default>
+      <template v-if="step === 'confirm_paid'">
+        <span class="text-danger">
+          Bạn có chắc chắn xác nhận đơn hàng đã <b>thanh toán</b>?
+        </span>
+      </template>
+      <template v-if="step === 'confirm_received'">
+        <span class="text-danger">
+          Bạn có chắc chắn xác nhận đơn hàng đã <b>hoàn thành</b>?
+        </span>
+      </template>
+    </template>
+  </modal-confirm>
 </template>
 
 <script>
 import useStaff from "@/services/reuseable/useStaff";
-import { ref, watch, watchEffect } from "@vue/runtime-core";
+import { inject, ref, watch, watchEffect } from "@vue/runtime-core";
+import ModalConfirm from "@/components/modals/ModalConfirm.vue";
+import { EV_OVERLAY_LOADING } from "@/constants";
 
 export default {
+  components: { ModalConfirm },
+
   props: {
     status: { type: String, required: true },
   },
@@ -133,28 +160,48 @@ export default {
       confirmPaid,
     } = useStaff();
     const countNotifications = ref(0);
+    const isVisibleModal = ref(false);
+    const step = ref("");
+    const tempId = ref("");
+    const emitter = inject("emitter");
 
     getListOrderForStaff({ status: props.status });
     watchEffect(() => getListOrderForStaff({ status: props.status }));
     // recall api each 5s
-    setInterval(() => getListOrderForStaff({ status: props.status }), 2000);
+    setInterval(() => getListOrderForStaff({ status: props.status }), 5000);
 
     watch(listNotifications, (val) => (countNotifications.value = val.length));
     watch(countNotifications, (val) => console.log(val, "toast"));
 
-    async function handleConfirmReceived(notificationId) {
-      await confirmReceived(notificationId);
+    function handleShowModalReceived(notificationId) {
+      step.value = "confirm_received";
+      tempId.value = notificationId;
+      isVisibleModal.value = true;
     }
 
-    async function handleConfirmPaid(orderId) {
-      await confirmPaid(orderId);
+    function handleShowModalPaid(orderId) {
+      step.value = "confirm_paid";
+      tempId.value = orderId;
+      isVisibleModal.value = true;
+    }
+
+    async function handleConfirmed() {
+      const action =
+        step.value === "confirm_paid" ? confirmPaid : confirmReceived;
+      emitter.emit(EV_OVERLAY_LOADING, true);
+      await action(tempId.value);
+      emitter.emit(EV_OVERLAY_LOADING, false);
+      isVisibleModal.value = false;
     }
 
     return {
       listNotifications,
       loading,
-      handleConfirmReceived,
-      handleConfirmPaid,
+      handleShowModalReceived,
+      handleShowModalPaid,
+      isVisibleModal,
+      step,
+      handleConfirmed,
     };
   },
 };
