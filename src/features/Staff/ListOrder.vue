@@ -6,13 +6,13 @@
     aria-labelledby="progress-tab"
   >
     <div class="order-body">
-      <div v-for="order in orders" :key="order.id" class="pb-3">
+      <div v-for="item in listNotifications" :key="item.id" class="pb-3">
         <div class="p-3 rounded shadow-sm bg-white">
           <div class="d-flex border-bottom pb-3">
             <div class="text-muted mr-3">
               <VImg
                 alt="#"
-                :src="order.items[0].product.image"
+                :src="item.order.items[0].product.image"
                 class="img-fluid order_img rounded"
               />
             </div>
@@ -21,30 +21,42 @@
                 <router-link
                   :to="{
                     name: 'customer_order.show',
-                    params: { order_code: order.order_code },
+                    params: { order_code: item.order.order_code },
                   }"
                   class="text-dark"
                 >
                   Đơn hàng
                 </router-link>
               </p>
-              <p class="mb-0">
-                {{ order.is_paid ? "đã thanh toán" : "chưa thanh toán" }}
+              <p v-if="item.order.is_paid" class="mb-0 badge badge-success">
+                đã thanh toán
               </p>
-              <p>Mã: {{ order.order_code }}</p>
+              <p v-else class="mb-0 badge badge-danger">chưa thanh toán</p>
+              <p class="mb-0 small">Mã: {{ item.order.order_code }}</p>
+              <p class="mb-0 small">Khách hàng: {{ item.order.name }}</p>
               <p class="mb-0 small">
-                <router-link
-                  :to="{
-                    name: 'customer_order.show',
-                    params: { order_code: order.order_code },
-                  }"
-                >
-                  Xem chi tiết
-                </router-link>
+                SĐT khách hàng:
+                <a :href="`tel:${item.order.phone}`">{{ item.order.phone }}</a>
               </p>
             </div>
             <div class="ml-auto">
               <p
+                v-if="item.received"
+                class="
+                  bg-success
+                  text-white
+                  py-1
+                  px-2
+                  rounded
+                  small
+                  mb-1
+                  text-center
+                "
+              >
+                Đã hoàn thành
+              </p>
+              <p
+                v-else
                 class="
                   bg-warning
                   text-white
@@ -56,34 +68,45 @@
                   text-center
                 "
               >
-                Đang làm
+                Chưa hoàn thành
               </p>
               <p class="small font-weight-bold text-center">
-                <i class="feather-clock"></i> {{ order.created_at }}
+                <i class="feather-clock"></i> {{ item.order.created_at }}
               </p>
             </div>
           </div>
           <div class="d-flex pt-3">
             <div class="small">
               <p
-                v-for="(item, index) in order.items"
+                v-for="(itemOrder, index) in item.order.items"
                 :key="index"
                 class="text- font-weight-bold mb-0"
               >
-                {{ item.product.name }} x {{ item.quantity }}
+                {{ itemOrder.product.name }} x {{ itemOrder.quantity }}
               </p>
             </div>
             <div class="text-muted m-0 ml-auto mr-3 small">
               Tổng tiền<br />
               <span class="text-dark font-weight-bold">
-                {{ order.total_format }}
+                {{ item.order.total_format }}
               </span>
             </div>
-            <div class="text-right">
-              <a href="#" class="btn btn-primary px-3"> Theo dõi </a>
-              &nbsp;
-              <a href="#" class="btn btn-outline-primary px-3"> Trợ giúp </a>
-            </div>
+          </div>
+          <div class="text-right">
+            <router-link
+              v-if="!item.order.is_paid"
+              :to="{
+                name: 'customer_order.show',
+                params: { order_code: item.order.order_code },
+              }"
+              class="btn btn-primary px-3"
+            >
+              Xác nhận đã thanh toán
+            </router-link>
+            &nbsp;
+            <a href="#" class="btn btn-outline-primary px-3">
+              Xác nhận đã hoàn thành
+            </a>
           </div>
         </div>
       </div>
@@ -93,7 +116,7 @@
 
 <script>
 import useOrder from "@/services/reuseable/useOrder";
-import { watchEffect } from "@vue/runtime-core";
+import { ref, watch, watchEffect } from "@vue/runtime-core";
 
 export default {
   props: {
@@ -101,13 +124,22 @@ export default {
   },
 
   setup(props) {
-    const { list: orders, loading, getList } = useOrder();
+    const {
+      listOrderForStaff: listNotifications,
+      loading,
+      getListOrderForStaff,
+    } = useOrder();
+    const countNotifications = ref(0);
 
-    getList({ status: props.status });
+    getListOrderForStaff({ status: props.status });
+    watchEffect(() => getListOrderForStaff({ status: props.status }));
+    // recall api each 5s
+    setInterval(() => getListOrderForStaff({ status: props.status }), 5000);
 
-    watchEffect(() => getList({ status: props.status }));
+    watch(listNotifications, (val) => (countNotifications.value = val.length));
+    watch(countNotifications, (val) => console.log(val, "toast"));
 
-    return { orders, loading };
+    return { listNotifications, loading };
   },
 };
 </script>

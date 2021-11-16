@@ -25,8 +25,8 @@
           role="tab"
           aria-controls="completed"
           aria-selected="true"
-          :class="{ active: status == 'completed' }"
-          @click.prevent="status = 'completed'"
+          :class="{ active: status == 'received' }"
+          @click.prevent="status = 'received'"
         >
           <i class="feather-check mr-2 text-success mb-0"></i> Đã xong</a
         >
@@ -40,27 +40,12 @@
           role="tab"
           aria-controls="progress"
           aria-selected="false"
-          :class="{ active: status == 'progress' }"
-          @click.prevent="status = 'progress'"
+          :class="{ active: status == 'non_received' }"
+          @click.prevent="status = 'non_received'"
         >
           <i class="feather-clock mr-2 text-warning mb-0"></i> Đang làm</a
         >
       </li>
-      <!-- <li class="nav-item border-top" role="presentation">
-        <a
-          id="canceled-tab"
-          class="nav-link border-0 text-dark py-3"
-          data-toggle="tab"
-          href="#canceled"
-          role="tab"
-          aria-controls="canceled"
-          aria-selected="false"
-          :class="{ active: status == 'cancelled' }"
-          @click.prevent="status = 'cancelled'"
-        >
-          <i class="feather-x-circle mr-2 text-danger mb-0"></i> Bị hủy</a
-        >
-      </li> -->
     </ul>
   </div>
 </template>

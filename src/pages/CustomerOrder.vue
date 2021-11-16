@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row">
         <OrderProgress v-model="status" />
-        <div class="tab-content col-md-9">
+        <div class="tab-content col-md-9 overflow-auto">
           <ListOrder :status="status" />
         </div>
       </div>

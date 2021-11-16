@@ -12,7 +12,7 @@
       <div class="container">
         <div class="row">
           <OrderProgress v-model="status" />
-          <div id="myTabContent" class="tab-content col-md-9">
+          <div class="tab-content col-md-9 overflow-auto">
             <ListOrder :status="status" />
           </div>
         </div>
@@ -22,10 +22,9 @@
 </template>
 
 <script>
-import OrderProgress from "@/features/CustomerOrder/OrderProgress.vue";
-import ListOrder from "@/features/CustomerOrder/ListOrder.vue";
+import OrderProgress from "@/features/Staff/OrderProgress.vue";
+import ListOrder from "@/features/Staff/ListOrder.vue";
 import { ref } from "@vue/reactivity";
-import { getListOrder } from "@/services/reuseable/useOrder";
 import { useStore } from "vuex";
 import { watchEffect } from "@vue/runtime-core";
 import { useRouter } from "vue-router";
@@ -39,8 +38,7 @@ export default {
   setup() {
     const store = useStore();
     const router = useRouter();
-    const status = ref("progress");
-    const { data: orders, loading } = getListOrder();
+    const status = ref("non_received");
 
     watchEffect(() => {
       const { getIsNotCustomer: isNotCustomer, getProfile: profile } =
@@ -49,7 +47,7 @@ export default {
       profile.role && !isNotCustomer && router.push({ name: "home" });
     });
 
-    return { status, orders, loading };
+    return { status };
   },
 };
 </script>
