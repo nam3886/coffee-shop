@@ -41,7 +41,7 @@
             </div>
             <div class="ml-auto">
               <p
-                v-if="item.received"
+                v-if="item.status === 'received'"
                 class="
                   bg-success
                   text-white
@@ -93,20 +93,21 @@
             </div>
           </div>
           <div class="text-right">
-            <router-link
+            <button
               v-if="!item.order.is_paid"
-              :to="{
-                name: 'customer_order.show',
-                params: { order_code: item.order.order_code },
-              }"
               class="btn btn-primary px-3"
+              @click="handleConfirmPaid(item.order.id)"
             >
               Xác nhận đã thanh toán
-            </router-link>
+            </button>
             &nbsp;
-            <a href="#" class="btn btn-outline-primary px-3">
+            <button
+              v-if="item.status !== 'received'"
+              class="btn btn-outline-primary px-3"
+              @click="handleConfirmReceived(item.id)"
+            >
               Xác nhận đã hoàn thành
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -115,7 +116,7 @@
 </template>
 
 <script>
-import useOrder from "@/services/reuseable/useOrder";
+import useStaff from "@/services/reuseable/useStaff";
 import { ref, watch, watchEffect } from "@vue/runtime-core";
 
 export default {
@@ -128,18 +129,33 @@ export default {
       listOrderForStaff: listNotifications,
       loading,
       getListOrderForStaff,
-    } = useOrder();
+      confirmReceived,
+      confirmPaid,
+    } = useStaff();
     const countNotifications = ref(0);
 
     getListOrderForStaff({ status: props.status });
     watchEffect(() => getListOrderForStaff({ status: props.status }));
     // recall api each 5s
-    setInterval(() => getListOrderForStaff({ status: props.status }), 5000);
+    setInterval(() => getListOrderForStaff({ status: props.status }), 2000);
 
     watch(listNotifications, (val) => (countNotifications.value = val.length));
     watch(countNotifications, (val) => console.log(val, "toast"));
 
-    return { listNotifications, loading };
+    async function handleConfirmReceived(notificationId) {
+      await confirmReceived(notificationId);
+    }
+
+    async function handleConfirmPaid(orderId) {
+      await confirmPaid(orderId);
+    }
+
+    return {
+      listNotifications,
+      loading,
+      handleConfirmReceived,
+      handleConfirmPaid,
+    };
   },
 };
 </script>
