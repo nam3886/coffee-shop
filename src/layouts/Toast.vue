@@ -9,10 +9,12 @@
         aria-live="assertive"
         aria-atomic="true"
       >
-        <div class="toast-header">
+        <div class="toast-header bg-primary text-dark">
           <i class="feather-shopping-bag h6 mr-2 mb-0"></i>
           <strong class="mr-auto">{{ message.title }}</strong>
-          <small class="ml-2 text-muted">{{ message.time }}</small>
+          <small class="ml-2 text-white" style="line-height: 0">
+            {{ message.time }}
+          </small>
           <button
             type="button"
             class="ml-2 mb-1 close outline-none"
@@ -20,10 +22,16 @@
             aria-label="Close"
             @click="removeMessage(index)"
           >
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true" class="text-white">&times;</span>
           </button>
         </div>
         <div class="toast-body">{{ message.content }}</div>
+        <!-- <hr class="m-0" />
+        <div class="toast-body text-right">
+          <router-link to="/" class="btn btn-outline-primary btn-sm">
+            thanh toán
+          </router-link>
+        </div> -->
       </div>
     </div>
   </div>
@@ -37,7 +45,7 @@ import { EV_TOAST } from "@/constants";
 
 export default {
   setup() {
-    const defaultTime = 2000; // seconds
+    const defaultTime = 5000; // seconds
     const messages = reactive([]);
     const emitter = inject("emitter");
     emitter.on(EV_TOAST, (message) => addMessage(message));

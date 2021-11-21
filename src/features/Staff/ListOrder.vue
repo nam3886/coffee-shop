@@ -1,116 +1,127 @@
 <template>
+  <VLoading :loading="loading" class="h-100" />
   <div
-    id="progress"
+    v-show="!loading"
     class="tab-pane fade show active"
     role="tabpanel"
     aria-labelledby="progress-tab"
   >
     <div class="order-body">
-      <div v-for="item in listNotifications" :key="item.id" class="pb-3">
-        <div class="p-3 rounded shadow-sm bg-white">
-          <div class="d-flex border-bottom pb-3">
-            <div class="text-muted mr-3">
-              <VImg
-                alt="#"
-                :src="item.order.items[0].product.image"
-                class="img-fluid order_img rounded"
-              />
-            </div>
-            <div>
-              <p class="mb-0 font-weight-bold">
-                <router-link
-                  :to="{
-                    name: 'customer_order.show',
-                    params: { order_code: item.order.order_code },
-                  }"
-                  class="text-dark"
+      <div
+        v-if="!listNotifications.length"
+        class="d-flex justify-content-center"
+      >
+        Danh sách trống.
+      </div>
+      <template v-else>
+        <div v-for="item in listNotifications" :key="item.id" class="pb-3">
+          <div class="p-3 rounded shadow-sm bg-white">
+            <div class="d-flex border-bottom pb-3">
+              <div class="text-muted mr-3">
+                <VImg
+                  alt="#"
+                  :src="item.order.items[0].product.image"
+                  class="img-fluid order_img rounded"
+                />
+              </div>
+              <div>
+                <p class="mb-0 font-weight-bold">
+                  <router-link
+                    :to="{
+                      name: 'customer_order.show',
+                      params: { order_code: item.order.order_code },
+                    }"
+                    class="text-dark"
+                  >
+                    Đơn hàng
+                  </router-link>
+                </p>
+                <p v-if="item.order.is_paid" class="mb-0 badge badge-success">
+                  đã thanh toán
+                </p>
+                <p v-else class="mb-0 badge badge-danger">chưa thanh toán</p>
+                <p class="mb-0 small">Mã: {{ item.order.order_code }}</p>
+                <p class="mb-0 small">Khách hàng: {{ item.order.name }}</p>
+                <p class="mb-0 small">
+                  SĐT khách hàng:
+                  <a :href="`tel:${item.order.phone}`">{{
+                    item.order.phone
+                  }}</a>
+                </p>
+              </div>
+              <div class="ml-auto">
+                <p
+                  v-if="item.status === 'received'"
+                  class="
+                    bg-success
+                    text-white
+                    py-1
+                    px-2
+                    rounded
+                    small
+                    mb-1
+                    text-center
+                  "
                 >
-                  Đơn hàng
-                </router-link>
-              </p>
-              <p v-if="item.order.is_paid" class="mb-0 badge badge-success">
-                đã thanh toán
-              </p>
-              <p v-else class="mb-0 badge badge-danger">chưa thanh toán</p>
-              <p class="mb-0 small">Mã: {{ item.order.order_code }}</p>
-              <p class="mb-0 small">Khách hàng: {{ item.order.name }}</p>
-              <p class="mb-0 small">
-                SĐT khách hàng:
-                <a :href="`tel:${item.order.phone}`">{{ item.order.phone }}</a>
-              </p>
+                  Đã hoàn thành
+                </p>
+                <p
+                  v-else
+                  class="
+                    bg-warning
+                    text-white
+                    py-1
+                    px-2
+                    rounded
+                    small
+                    mb-1
+                    text-center
+                  "
+                >
+                  Chưa hoàn thành
+                </p>
+                <p class="small font-weight-bold text-center">
+                  <i class="feather-clock"></i> {{ item.order.created_at }}
+                </p>
+              </div>
             </div>
-            <div class="ml-auto">
-              <p
-                v-if="item.status === 'received'"
-                class="
-                  bg-success
-                  text-white
-                  py-1
-                  px-2
-                  rounded
-                  small
-                  mb-1
-                  text-center
-                "
+            <div class="d-flex pt-3">
+              <div class="small">
+                <p
+                  v-for="(itemOrder, index) in item.order.items"
+                  :key="index"
+                  class="text- font-weight-bold mb-0"
+                >
+                  {{ itemOrder.product.name }} x {{ itemOrder.quantity }}
+                </p>
+              </div>
+              <div class="text-muted m-0 ml-auto mr-3 small">
+                Tổng tiền<br />
+                <span class="text-dark font-weight-bold">
+                  {{ item.order.total_format }}
+                </span>
+              </div>
+            </div>
+            <div class="text-right">
+              <button
+                v-if="!item.order.is_paid"
+                class="btn btn-primary px-3"
+                @click="handleShowModalPaid(item.order.id)"
               >
-                Đã hoàn thành
-              </p>
-              <p
-                v-else
-                class="
-                  bg-warning
-                  text-white
-                  py-1
-                  px-2
-                  rounded
-                  small
-                  mb-1
-                  text-center
-                "
+                Xác nhận đã thanh toán
+              </button>
+              &nbsp;
+              <button
+                v-if="item.status !== 'received'"
+                class="btn btn-outline-primary px-3"
+                @click="handleShowModalReceived(item.id)"
               >
-                Chưa hoàn thành
-              </p>
-              <p class="small font-weight-bold text-center">
-                <i class="feather-clock"></i> {{ item.order.created_at }}
-              </p>
+                Xác nhận đã hoàn thành
+              </button>
             </div>
-          </div>
-          <div class="d-flex pt-3">
-            <div class="small">
-              <p
-                v-for="(itemOrder, index) in item.order.items"
-                :key="index"
-                class="text- font-weight-bold mb-0"
-              >
-                {{ itemOrder.product.name }} x {{ itemOrder.quantity }}
-              </p>
-            </div>
-            <div class="text-muted m-0 ml-auto mr-3 small">
-              Tổng tiền<br />
-              <span class="text-dark font-weight-bold">
-                {{ item.order.total_format }}
-              </span>
-            </div>
-          </div>
-          <div class="text-right">
-            <button
-              v-if="!item.order.is_paid"
-              class="btn btn-primary px-3"
-              @click="handleShowModalPaid(item.order.id)"
-            >
-              Xác nhận đã thanh toán
-            </button>
-            &nbsp;
-            <button
-              v-if="item.status !== 'received'"
-              class="btn btn-outline-primary px-3"
-              @click="handleShowModalReceived(item.id)"
-            >
-              Xác nhận đã hoàn thành
-            </button>
           </div>
         </div>
-      </div>
+      </template>
     </div>
   </div>
   <modal-confirm v-model="isVisibleModal" @confirmed="handleConfirmed">
@@ -142,7 +153,7 @@
 import useStaff from "@/services/reuseable/useStaff";
 import { inject, ref, watch, watchEffect } from "@vue/runtime-core";
 import ModalConfirm from "@/components/modals/ModalConfirm.vue";
-import { EV_OVERLAY_LOADING } from "@/constants";
+import { EV_TOAST } from "@/constants";
 
 export default {
   components: { ModalConfirm },
@@ -159,19 +170,23 @@ export default {
       confirmReceived,
       confirmPaid,
     } = useStaff();
-    const countNotifications = ref(0);
     const isVisibleModal = ref(false);
     const step = ref("");
     const tempId = ref("");
     const emitter = inject("emitter");
+    const isCallingApi = ref(false);
 
     getListOrderForStaff({ status: props.status });
     watchEffect(() => getListOrderForStaff({ status: props.status }));
     // recall api each 5s
-    setInterval(() => getListOrderForStaff({ status: props.status }), 5000);
+    setInterval(() => {
+      if (isCallingApi.value) return;
+      getListOrderForStaff({ status: props.status });
+      // disable loading
+      loading.value = false;
+    }, 5000);
 
-    watch(listNotifications, (val) => (countNotifications.value = val.length));
-    watch(countNotifications, (val) => console.log(val, "toast"));
+    watch(listNotifications, handleToastMessage);
 
     function handleShowModalReceived(notificationId) {
       step.value = "confirm_received";
@@ -188,10 +203,35 @@ export default {
     async function handleConfirmed() {
       const action =
         step.value === "confirm_paid" ? confirmPaid : confirmReceived;
-      emitter.emit(EV_OVERLAY_LOADING, true);
+      const message =
+        step.value === "confirm_paid"
+          ? "Xác nhận thanh toán thành công."
+          : "Xác nhận hoàn thành đơn thành công.";
+
+      isCallingApi.value = true;
       await action(tempId.value);
-      emitter.emit(EV_OVERLAY_LOADING, false);
+      await getListOrderForStaff({ status: props.status });
       isVisibleModal.value = false;
+      isCallingApi.value = false;
+
+      emitter.emit(EV_TOAST, {
+        title: "Thành công",
+        content: message,
+      });
+    }
+
+    function handleToastMessage(listNotifications) {
+      listNotifications.forEach((notification) => {
+        const now = new Date();
+        const notificationTime = new Date(notification.check_in_time);
+        // nếu now - checkin time <= 5s (5000) => toast message
+        if (now.getTime() - notificationTime.getTime() > 5000) return;
+
+        emitter.emit(EV_TOAST, {
+          title: "Đơn hàng mới",
+          content: `Mã đơn: ${notification.order?.order_code}`,
+        });
+      });
     }
 
     return {

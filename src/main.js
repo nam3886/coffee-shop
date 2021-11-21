@@ -5,6 +5,7 @@ import store from "@/store";
 import mitt from "mitt";
 import Button from "@/components/buttons/Button.vue";
 import Alert from "@/components/Alert.vue";
+import Loading from "@/components/Loading.vue";
 import Image from "@/components/Image.vue";
 import ProductImage from "@/features/Home/ProductImage";
 
@@ -18,5 +19,6 @@ app.component("VImg", Image);
 app.component("VButton", Button);
 app.component("VAlert", Alert);
 app.component("VProductImg", ProductImage);
+app.component("VLoading", Loading);
 app.provide("emitter", emitter);
 app.mount("#app");
