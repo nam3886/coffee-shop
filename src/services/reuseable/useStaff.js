@@ -24,8 +24,8 @@ export default function () {
     await action("post", "/confirm-paid/" + orderId);
   }
 
-  async function confirmCheckout(orderId) {
-    await action("post", "/confirm-paid/" + orderId);
+  async function confirmReturned(tableUser) {
+    await action("post", "/confirm-returned/" + tableUser);
   }
 
   return {
@@ -38,6 +38,6 @@ export default function () {
     confirmPaid,
     getListCheckinForStaff,
     checkinListForStaff,
-    confirmCheckout,
+    confirmReturned,
   };
 }

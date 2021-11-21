@@ -18,7 +18,7 @@
           <div class="p-3 rounded shadow-sm bg-white">
             <div
               class="d-flex pb-3"
-              :class="{ 'border-bottom': item.status !== 'received' }"
+              :class="{ 'border-bottom': !item.table_user.returned }"
             >
               <div>
                 <p class="mb-0 font-weight-bold"></p>
@@ -44,10 +44,10 @@
                 </p>
               </div>
             </div>
-            <div v-if="item.status !== 'received'" class="text-right mt-3">
+            <div v-if="!item.table_user.returned" class="text-right mt-3">
               <button
                 class="btn btn-outline-primary px-3"
-                @click="handleShowModalCheckout(item.id)"
+                @click="handleShowModalCheckout(item.table_user.id)"
               >
                 Xác nhận đã trả bàn
               </button>
@@ -83,7 +83,7 @@ export default {
       checkinListForStaff: listNotifications,
       loading,
       getListCheckinForStaff,
-      confirmCheckout,
+      confirmReturned,
     } = useStaff();
     const isVisibleModal = ref(false);
     const tempId = ref("");
@@ -108,7 +108,7 @@ export default {
 
     async function handleConfirmed() {
       isCallingApi.value = true;
-      await confirmCheckout(tempId.value);
+      await confirmReturned(tempId.value);
       await getListCheckinForStaff();
       isVisibleModal.value = false;
       isCallingApi.value = false;

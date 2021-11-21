@@ -13,7 +13,7 @@
         <div class="row">
           <CheckinProgress v-model="status" />
           <div class="tab-content col-md-9 overflow-auto">
-            <ListCheckin :status="status" />
+            <ListCheckin />
           </div>
         </div>
       </div>
