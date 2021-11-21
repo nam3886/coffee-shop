@@ -57,7 +57,7 @@
                   text-center
                 "
               >
-                Đã hoàn thành
+                Đã xong
               </p>
               <p
                 v-else
@@ -72,7 +72,7 @@
                   text-center
                 "
               >
-                Chưa hoàn thành
+                Đang làm
               </p>
               <p class="small font-weight-bold text-center">
                 <i class="feather-clock"></i> {{ order.created_at }}

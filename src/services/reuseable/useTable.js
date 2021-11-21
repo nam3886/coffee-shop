@@ -40,6 +40,10 @@ export default function () {
     await action("get", "/checkin", { params });
   }
 
+  async function getMap() {
+    await action("get", "/get-map");
+  }
+
   return {
     list,
     loading,
@@ -53,5 +57,6 @@ export default function () {
     orderTableDetail,
     checkin,
     response,
+    getMap,
   };
 }

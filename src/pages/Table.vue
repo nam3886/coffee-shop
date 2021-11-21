@@ -59,7 +59,7 @@
                 >
                   <div id="map">
                     <VImg
-                      src="/img/table5editremovebg.png"
+                      :src="response || '/img/table5editremovebg.png'"
                       alt="map"
                       class="img-fluid"
                     />
@@ -112,6 +112,7 @@ import useTable from "@/services/reuseable/useTable";
 import Marker from "@/components/Marker";
 import ModalOrderTable from "@/components/modals/ModalOrderTable.vue";
 import ModalOrderTableTime from "@/components/modals/ModalOrderTableTime.vue";
+import useTable from "@/services/reuseable/useTable";
 
 export default {
   components: { Marker, ModalOrderTable, ModalOrderTableTime },
@@ -145,7 +146,17 @@ export default {
       emitter.emit(EV_SHOW_ORDER_TABLE, table.id);
     }
 
-    return { selectTable, EV_SHOW_ORDER_TABLE_TIME, isOrdered, orderedTableId };
+    const { response, getMap } = useTable();
+
+    getMap();
+
+    return {
+      selectTable,
+      EV_SHOW_ORDER_TABLE_TIME,
+      isOrdered,
+      orderedTableId,
+      response,
+    };
   },
 };
 </script>
