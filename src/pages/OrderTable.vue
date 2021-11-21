@@ -66,7 +66,10 @@ export default {
     const isCheckin = computed(
       () => router.currentRoute.value.name === "check_in"
     );
-    const tableId = computed(() => route.query.table_id);
+    const tableId = computed(() => {
+      const test = route.query.table_id?.match(/[0-9]*/);
+      return Array.isArray(test) ? test[0] : null;
+    });
     const { response, errors, loading, checkin } = useTable();
     // nếu ko có tableId => 404
     if (isCheckin.value) {
