@@ -14,7 +14,7 @@ export default defineComponent({
 
       return validURL(props.src)
         ? props.src
-        : "http://localhost:8080/" + props.src;
+        : "https://coffee-shop-mu.vercel.app/" + props.src;
     });
 
     function validURL(str) {
