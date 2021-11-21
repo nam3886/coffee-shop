@@ -93,7 +93,7 @@
 
 <script>
 import useOrder from "@/services/reuseable/useOrder";
-import { watchEffect } from "@vue/runtime-core";
+import { computed, watchEffect } from "@vue/runtime-core";
 
 export default {
   props: {
@@ -102,10 +102,11 @@ export default {
 
   setup(props) {
     const { list: orders, loading, getList } = useOrder();
+    const status = computed(() => props.status === "completed");
 
-    getList({ status: props.status });
+    getList({ status: status.value });
 
-    watchEffect(() => getList({ status: props.status }));
+    watchEffect(() => getList({ status: status.value }));
 
     return { orders, loading };
   },
