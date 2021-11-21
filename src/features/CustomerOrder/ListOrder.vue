@@ -45,6 +45,22 @@
             </div>
             <div class="ml-auto">
               <p
+                v-if="order.received"
+                class="
+                  bg-success
+                  text-white
+                  py-1
+                  px-2
+                  rounded
+                  small
+                  mb-1
+                  text-center
+                "
+              >
+                Đã hoàn thành
+              </p>
+              <p
+                v-else
                 class="
                   bg-warning
                   text-white
@@ -56,7 +72,7 @@
                   text-center
                 "
               >
-                Đang làm
+                Chưa hoàn thành
               </p>
               <p class="small font-weight-bold text-center">
                 <i class="feather-clock"></i> {{ order.created_at }}
@@ -79,11 +95,11 @@
                 {{ order.total_format }}
               </span>
             </div>
-            <div class="text-right">
+            <!-- <div class="text-right">
               <a href="#" class="btn btn-primary px-3"> Theo dõi </a>
               &nbsp;
               <a href="#" class="btn btn-outline-primary px-3"> Trợ giúp </a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
