@@ -112,7 +112,6 @@ import useTable from "@/services/reuseable/useTable";
 import Marker from "@/components/Marker";
 import ModalOrderTable from "@/components/modals/ModalOrderTable.vue";
 import ModalOrderTableTime from "@/components/modals/ModalOrderTableTime.vue";
-import useTable from "@/services/reuseable/useTable";
 
 export default {
   components: { Marker, ModalOrderTable, ModalOrderTableTime },
@@ -121,7 +120,7 @@ export default {
     const route = useRoute();
     const store = useStore();
     const emitter = inject("emitter");
-    const { list: tables, getList } = useTable();
+    const { list: tables, getList, response, getMap } = useTable();
     const isOrdered = computed(() => route.query.ordered);
     const orderedDate = computed(() => route.query.date);
     const orderedTableId = computed(() => route.query.table_id);
@@ -145,8 +144,6 @@ export default {
 
       emitter.emit(EV_SHOW_ORDER_TABLE, table.id);
     }
-
-    const { response, getMap } = useTable();
 
     getMap();
 
