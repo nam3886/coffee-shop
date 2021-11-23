@@ -105,15 +105,14 @@
             <div class="text-right">
               <button
                 v-if="!item.order.is_paid"
-                class="btn btn-primary px-3"
+                class="btn btn-primary px-3 mb-2 mb-sm-0"
                 @click="handleShowModalPaid(item.order.id)"
               >
                 Xác nhận đã thanh toán
               </button>
-              &nbsp;
               <button
                 v-if="item.status !== 'received'"
-                class="btn btn-outline-primary px-3"
+                class="btn btn-outline-primary px-3 ml-sm-2"
                 @click="handleShowModalReceived(item.id)"
               >
                 Xác nhận đã hoàn thành

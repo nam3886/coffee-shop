@@ -3,7 +3,9 @@
     <div class="text-white">
       <div class="title d-flex align-items-center">
         <ButtonToggleNavigation />
-        <h4 class="font-weight-bold m-0 pl-5">Tìm kiếm</h4>
+        <router-link :to="{ name: 'home' }" class="text-light">
+          <h4 class="font-weight-bold m-0 pl-5">Coffee Shop</h4>
+        </router-link>
         <a
           class="text-white font-weight-bold ml-auto"
           data-toggle="modal"

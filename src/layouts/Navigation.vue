@@ -28,7 +28,7 @@
                     :tabindex="index"
                     role="menuitem"
                   >
-                    <i class="feather-home mr-2"></i>
+                    <i :class="`feather-${item.icon} mr-2`"></i>
                     {{ item.name }}
                   </router-link>
                 </div>
@@ -91,36 +91,41 @@ export default {
     const store = useStore();
     const emitter = inject("emitter");
     const menuItems = ref([
-      { name: "Trang chủ", route: "home" },
-      { name: "Sản phẩm", route: "product" },
-      { name: "Đặt bàn", route: "booking_table" },
-      { name: "Giỏ hàng", route: "cart" },
-      { name: "Hóa đơn", route: "customer_order" },
-      { name: "Danh sách đặt bàn", route: "order_table.index" },
+      { name: "Trang chủ", route: "home", icon: "home" },
+      { name: "Sản phẩm", route: "product", icon: "grid" },
+      { name: "Đặt bàn", route: "booking_table", icon: "award" },
+      { name: "Giỏ hàng", route: "cart", icon: "shopping-cart" },
+      { name: "Hóa đơn", route: "customer_order", icon: "clipboard" },
+      { name: "Danh sách đặt bàn", route: "order_table.index", icon: "server" },
       {
         name: "Đăng nhập",
         route: "login",
         condition: () => !store.getters.getIsAuthenticated,
+        icon: "log-in",
       },
       {
         name: "Đăng ký",
         route: "register",
         condition: () => !store.getters.getIsAuthenticated,
+        icon: "user-plus",
       },
       {
         name: "Quên mật khẩu",
         route: "forgot_password",
         condition: () => !store.getters.getIsAuthenticated,
+        icon: "clipboard",
       },
       {
         name: "Danh sách hóa đơn (nhân viên)",
         route: "staff.order_list.index",
         condition: () => store.getters.getIsNotCustomer,
+        icon: "home",
       },
       {
         name: "Danh sách check in (nhân viên)",
         route: "staff.order_table_list.index",
         condition: () => store.getters.getIsNotCustomer,
+        icon: "server",
       },
     ]);
 
