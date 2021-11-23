@@ -1,15 +1,5 @@
 <template>
-  <div
-    class="
-      osahan-menu-fotter
-      fixed-bottom
-      bg-white
-      px-3
-      py-2
-      text-center
-      d-none
-    "
-  >
+  <div class="osahan-menu-fotter fixed-bottom bg-white text-center d-none">
     <div class="row">
       <div class="col selected">
         <router-link :to="{ name: 'home' }">
@@ -18,13 +8,13 @@
         </router-link>
       </div>
       <div class="col">
-        <a
-          href="most_popular.html"
+        <router-link
+          :to="{ name: 'product', query: { 'filter[feature]': 'popular' } }"
           class="text-dark small font-weight-bold text-decoration-none"
         >
           <p class="h4 m-0"><i class="feather-map-pin"></i></p>
           Nổi bật
-        </a>
+        </router-link>
       </div>
       <div class="col bg-white rounded-circle mt-n4 px-3 py-2">
         <div class="bg-danger rounded-circle mt-n0 shadow">
@@ -37,27 +27,23 @@
         </div>
       </div>
       <div class="col">
-        <a
-          href="favorites.html"
+        <router-link
+          :to="{ name: 'booking_table' }"
           class="text-dark small font-weight-bold text-decoration-none"
         >
-          <p class="h4 m-0"><i class="feather-shopping-cart"></i></p>
-          Yêu thích
-        </a>
+          <p class="h4 m-0"><i class="feather-award"></i></p>
+          Đặt bàn
+        </router-link>
       </div>
       <div class="col">
-        <a
-          href="profile.html"
+        <router-link
+          :to="{ name: 'customer_order' }"
           class="text-dark small font-weight-bold text-decoration-none"
         >
-          <p class="h4 m-0"><i class="feather-user"></i></p>
-          Hồ sơ
-        </a>
+          <p class="h4 m-0"><i class="feather-clipboard"></i></p>
+          Đơn
+        </router-link>
       </div>
     </div>
   </div>
 </template>
-
-<script>
-export default {};
-</script>

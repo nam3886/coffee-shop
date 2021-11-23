@@ -1299,8 +1299,12 @@ footer .text-muted {
     flex: unset !important;
     max-width: 100%;
   }
-  .osahan-home-page {
-    padding-bottom: 50px;
+  .osahan-home-page,
+  .osahan-checkout,
+  .osahan-main-body,
+  .osahan-trending,
+  .osahan-coming-soon {
+    padding-bottom: 50px !important;
   }
 }
 
