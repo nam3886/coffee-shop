@@ -2,9 +2,7 @@
   <div class="container">
     <div class="pt-2 pb-3 title d-flex align-items-center">
       <h5 class="m-0">Bán chạy nhất</h5>
-      <a class="font-weight-bold ml-auto" href="#"
-        >Xem tất cả <i class="feather-chevrons-right"></i
-      ></a>
+      <ButtonViewAll product-type="most-sale" />
     </div>
     <div class="most_sale">
       <div class="row mb-3">
@@ -82,9 +80,10 @@
 <script>
 import useProduct from "@/services/reuseable/useProduct.js";
 import ButtonAddCart from "@/components/buttons/ButtonAddCart";
+import ButtonViewAll from "./ButtonViewAll.vue";
 
 export default {
-  components: { ButtonAddCart },
+  components: { ButtonAddCart, ButtonViewAll },
 
   setup() {
     const { listProduct, loading, error, getListProduct } = useProduct();

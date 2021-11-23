@@ -2,9 +2,7 @@
   <div class="container position-relative week-trending">
     <div class="pt-4 pb-2 title d-flex align-items-center">
       <h5 class="m-0">Tiêu biểu nhất tuần</h5>
-      <a class="font-weight-bold ml-auto" href="trending.html"
-        >Xem tất cả <i class="feather-chevrons-right"></i
-      ></a>
+      <ButtonViewAll product-type="week-trending" />
     </div>
     <swiper v-bind="swiperOptions" class="trending-slider">
       <swiper-slide
@@ -95,6 +93,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import SwiperCore, { Navigation } from "swiper";
 import useProduct from "@/services/reuseable/useProduct.js";
 import ButtonAddCart from "@/components/buttons/ButtonAddCart";
+import ButtonViewAll from "./ButtonViewAll.vue";
 SwiperCore.use(Navigation);
 
 export default {
@@ -102,6 +101,7 @@ export default {
     Swiper,
     SwiperSlide,
     ButtonAddCart,
+    ButtonViewAll,
   },
 
   setup() {
