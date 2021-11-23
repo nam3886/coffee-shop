@@ -125,7 +125,7 @@ export default {
     const orderedDate = computed(() => route.query.date);
     const orderedTableId = computed(() => route.query.table_id);
     isOrdered.value &&
-      getList(orderedDate.value).then(() => {
+      getList(orderedDate.value, true).then(() => {
         store.dispatch(SET_TABLES, tables.value);
       });
 

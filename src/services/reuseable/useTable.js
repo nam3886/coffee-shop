@@ -14,8 +14,10 @@ export default function () {
     person_number: null,
   });
 
-  async function getList(date) {
-    await action("get", "/table", { params: { date: formatDate(date) } });
+  async function getList(date, ordered = undefined) {
+    await action("get", "/table", {
+      params: { date: formatDate(date), ordered },
+    });
     list.value = response.value;
   }
 
