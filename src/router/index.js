@@ -12,6 +12,7 @@ import Table from "@/pages/Table.vue";
 import OrderSuccess from "@/pages/OrderSuccess.vue";
 import OrderTable from "@/pages/OrderTable.vue";
 import OrderTableDetail from "@/pages/OrderTableDetail.vue";
+import NotFound from "@/pages/NotFound.vue";
 
 const routes = [
   {
@@ -45,6 +46,11 @@ const routes = [
         path: "/hoa-don",
         name: "customer_order",
         component: CustomerOrder,
+      },
+      {
+        path: "/khong-tim-thay-trang",
+        name: "not_found",
+        component: NotFound,
       },
       {
         path: "/hoa-don/:order_code",
