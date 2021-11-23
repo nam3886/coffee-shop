@@ -64,6 +64,13 @@
           </date-picker>
         </div>
         <div class="modal-footer">
+          <button
+            type="button"
+            class="rounded btn btn-secondary"
+            @click="$router.go(-1)"
+          >
+            Trở lại
+          </button>
           <v-button
             :loading="loading"
             type="submit"
