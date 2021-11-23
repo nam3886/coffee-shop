@@ -58,11 +58,7 @@
                   "
                 >
                   <div id="map">
-                    <VImg
-                      :src="response || '/img/table5editremovebg.png'"
-                      alt="map"
-                      class="img-fluid"
-                    />
+                    <VImg :src="map" alt="map" class="img-fluid" />
                     <template
                       v-for="(table, key) in $store.getters.getTables"
                       :key="key"
@@ -103,7 +99,7 @@
 </template>
 
 <script>
-import { computed, inject, onMounted, watch } from "@vue/runtime-core";
+import { computed, inject, onMounted, ref, watch } from "@vue/runtime-core";
 import { EV_SHOW_ORDER_TABLE, EV_SHOW_ORDER_TABLE_TIME } from "@/constants";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
@@ -120,7 +116,7 @@ export default {
     const route = useRoute();
     const store = useStore();
     const emitter = inject("emitter");
-    const { list: tables, getList, response, getMap } = useTable();
+    const { list: tables, getList, getMap } = useTable();
     const isOrdered = computed(() => route.query.ordered);
     const orderedDate = computed(() => route.query.date);
     const orderedTableId = computed(() => route.query.table_id);
@@ -145,14 +141,15 @@ export default {
       emitter.emit(EV_SHOW_ORDER_TABLE, table.id);
     }
 
-    getMap();
+    const map = ref("/img/table5editremovebg.png");
+    getMap().then((data) => (map.value = data));
 
     return {
       selectTable,
       EV_SHOW_ORDER_TABLE_TIME,
       isOrdered,
       orderedTableId,
-      response,
+      map,
     };
   },
 };

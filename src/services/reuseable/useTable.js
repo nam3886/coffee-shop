@@ -43,7 +43,7 @@ export default function () {
   }
 
   async function getMap() {
-    await action("get", "/image-map");
+    return await action("get", "/image-map");
   }
 
   return {

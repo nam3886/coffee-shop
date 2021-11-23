@@ -39,6 +39,7 @@ export function handleCallApi() {
     try {
       const res = await API[method](url, { ...params });
       response.value = res.data.data;
+      return response.value;
     } catch (error) {
       errors.value = error.response.data.errors || error.response.data.message;
     } finally {
