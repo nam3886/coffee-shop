@@ -19,19 +19,21 @@
             class="second-nav"
             aria-label="Mở rộng"
           >
-            <li v-for="(item, index) in menuItems" :key="index">
-              <div class="nav-item-wrapper">
-                <router-link
-                  :to="{ name: item.route }"
-                  class="nav-item"
-                  :tabindex="index"
-                  role="menuitem"
-                >
-                  <i class="feather-home mr-2"></i>
-                  {{ item.name }}
-                </router-link>
-              </div>
-            </li>
+            <template v-for="(item, index) in menuItems" :key="index">
+              <li v-if="!item.condition || item.condition()">
+                <div class="nav-item-wrapper">
+                  <router-link
+                    :to="{ name: item.route }"
+                    class="nav-item"
+                    :tabindex="index"
+                    role="menuitem"
+                  >
+                    <i class="feather-home mr-2"></i>
+                    {{ item.name }}
+                  </router-link>
+                </div>
+              </li>
+            </template>
           </ul>
           <ul role="menu" aria-level="1" class="bottom-nav">
             <li class="email">
@@ -82,9 +84,11 @@
 <script>
 import { inject, onMounted, ref } from "@vue/runtime-core";
 import $ from "jquery";
+import { useStore } from "vuex";
 
 export default {
   setup() {
+    const store = useStore();
     const emitter = inject("emitter");
     const menuItems = ref([
       { name: "Trang chủ", route: "home" },
@@ -93,9 +97,31 @@ export default {
       { name: "Giỏ hàng", route: "cart" },
       { name: "Hóa đơn", route: "customer_order" },
       { name: "Danh sách đặt bàn", route: "order_table.index" },
-      { name: "Đăng nhập", route: "login" },
-      { name: "Đăng ký", route: "register" },
-      { name: "Quên mật khẩu", route: "forgot_password" },
+      {
+        name: "Đăng nhập",
+        route: "login",
+        condition: () => !store.getters.getIsAuthenticated,
+      },
+      {
+        name: "Đăng ký",
+        route: "register",
+        condition: () => !store.getters.getIsAuthenticated,
+      },
+      {
+        name: "Quên mật khẩu",
+        route: "forgot_password",
+        condition: () => !store.getters.getIsAuthenticated,
+      },
+      {
+        name: "Danh sách hóa đơn (nhân viên)",
+        route: "staff.order_list.index",
+        condition: () => store.getters.getIsNotCustomer,
+      },
+      {
+        name: "Danh sách check in (nhân viên)",
+        route: "staff.order_table_list.index",
+        condition: () => store.getters.getIsNotCustomer,
+      },
     ]);
 
     onMounted(() => {
