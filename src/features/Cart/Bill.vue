@@ -1,14 +1,7 @@
 <template>
   <div class="col-md-4">
     <div
-      class="
-        osahan-cart-item
-        rounded rounded
-        shadow-sm
-        overflow-hidden
-        bg-white
-        sticky_sidebar
-      "
+      class="osahan-cart-item rounded rounded shadow-sm overflow-hidden bg-white sticky_sidebar"
     >
       <div class="d-flex border-bottom osahan-cart-item-profile bg-white p-3">
         <VImg
@@ -27,14 +20,7 @@
         <div
           v-for="cart in $store.getters.getCart.items"
           :key="cart.id"
-          class="
-            gold-members
-            d-flex
-            align-items-center
-            justify-content-between
-            px-3
-            py-2
-          "
+          class="gold-members d-flex align-items-center justify-content-between px-3 py-2"
         >
           <div class="media align-items-center">
             <div class="mr-2 text-success">&middot;</div>

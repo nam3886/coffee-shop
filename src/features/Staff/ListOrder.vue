@@ -52,31 +52,13 @@
               <div class="ml-auto">
                 <p
                   v-if="item.status === 'received'"
-                  class="
-                    bg-success
-                    text-white
-                    py-1
-                    px-2
-                    rounded
-                    small
-                    mb-1
-                    text-center
-                  "
+                  class="bg-success text-white py-1 px-2 rounded small mb-1 text-center"
                 >
                   Đã hoàn thành
                 </p>
                 <p
                   v-else
-                  class="
-                    bg-warning
-                    text-white
-                    py-1
-                    px-2
-                    rounded
-                    small
-                    mb-1
-                    text-center
-                  "
+                  class="bg-warning text-white py-1 px-2 rounded small mb-1 text-center"
                 >
                   Chưa hoàn thành
                 </p>

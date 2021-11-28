@@ -2,11 +2,24 @@ FROM node:16-alpine
 
 WORKDIR /cache
 COPY package*.json ./
-RUN apk add yarn
-RUN yarn install
+# RUN apk add yarn
+# RUN yarn install
+RUN apk update && apk upgrade && apk --no-cache --virtual build-dependencies add \
+    python3 \
+    make \
+    g++ \
+    yarn \
+    && yarn install \
+    && apk del build-dependencies
 
 WORKDIR /app
 COPY . .
 EXPOSE 8080
+
+# Build an python app (or something else) and copy from the previous stage
+# FROM python:latest
+
+
+# ...
 
 ENTRYPOINT ["sh", "/app/entrypoint.sh"]

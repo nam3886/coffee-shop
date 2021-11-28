@@ -48,14 +48,7 @@
               </div>
               <div class="collapse show" aria-labelledby="headingOne">
                 <div
-                  class="
-                    osahan-card-body
-                    border-top
-                    p-3
-                    d-flex
-                    align-items-center
-                    justify-content-center
-                  "
+                  class="osahan-card-body border-top p-3 d-flex align-items-center justify-content-center"
                 >
                   <div id="map">
                     <VImg :src="map" alt="map" class="img-fluid" />

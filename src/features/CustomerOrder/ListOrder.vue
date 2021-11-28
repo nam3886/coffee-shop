@@ -46,31 +46,13 @@
             <div class="ml-auto">
               <p
                 v-if="order.received"
-                class="
-                  bg-success
-                  text-white
-                  py-1
-                  px-2
-                  rounded
-                  small
-                  mb-1
-                  text-center
-                "
+                class="bg-success text-white py-1 px-2 rounded small mb-1 text-center"
               >
                 Đã xong
               </p>
               <p
                 v-else
-                class="
-                  bg-warning
-                  text-white
-                  py-1
-                  px-2
-                  rounded
-                  small
-                  mb-1
-                  text-center
-                "
+                class="bg-warning text-white py-1 px-2 rounded small mb-1 text-center"
               >
                 Đang làm
               </p>

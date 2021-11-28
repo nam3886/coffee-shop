@@ -12,17 +12,7 @@
           class="col-md-4 mb-3"
         >
           <div
-            class="
-              d-flex
-              align-items-center
-              list-card
-              bg-white
-              h-100
-              rounded
-              overflow-hidden
-              position-relative
-              shadow-sm
-            "
+            class="d-flex align-items-center list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"
           >
             <div class="list-card-image">
               <div class="star position-absolute">

@@ -73,14 +73,7 @@
           <div class="left mr-3">
             <h6 class="font-weight-bold m-0 text-dark">
               <i
-                class="
-                  feather-truck
-                  bg-danger
-                  text-white
-                  p-2
-                  rounded-circle
-                  mr-2
-                "
+                class="feather-truck bg-danger text-white p-2 rounded-circle mr-2"
               ></i>
               Vận chuyển
             </h6>
@@ -98,14 +91,7 @@
           <div class="left mr-3">
             <h6 class="font-weight-bold m-0 text-dark">
               <i
-                class="
-                  feather-phone
-                  bg-primary
-                  text-white
-                  p-2
-                  rounded-circle
-                  mr-2
-                "
+                class="feather-phone bg-primary text-white p-2 rounded-circle mr-2"
               ></i>
               Liên hệ
             </h6>
@@ -123,14 +109,7 @@
           <div class="left mr-3">
             <h6 class="font-weight-bold m-0 text-dark">
               <i
-                class="
-                  feather-info
-                  bg-success
-                  text-white
-                  p-2
-                  rounded-circle
-                  mr-2
-                "
+                class="feather-info bg-success text-white p-2 rounded-circle mr-2"
               ></i>
               Hạn dùng Voucher
             </h6>
@@ -148,14 +127,7 @@
           <div class="left mr-3">
             <h6 class="font-weight-bold m-0 text-dark">
               <i
-                class="
-                  feather-lock
-                  bg-warning
-                  text-white
-                  p-2
-                  rounded-circle
-                  mr-2
-                "
+                class="feather-lock bg-warning text-white p-2 rounded-circle mr-2"
               ></i>
               Chính sách bảo mật
             </h6>

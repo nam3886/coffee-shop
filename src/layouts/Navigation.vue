@@ -1,11 +1,7 @@
 <template>
   <nav
     role="navigation"
-    class="
-      hc-offcanvas-nav hc-nav-1
-      nav-levels-overlap nav-position-left
-      disable-body
-    "
+    class="hc-offcanvas-nav hc-nav-1 nav-levels-overlap nav-position-left disable-body"
     aria-hidden="false"
     aria-labelledby="hc-nav-1"
   >

@@ -10,14 +10,7 @@
             <div class="osahan-status">
               <!-- status complete -->
               <div
-                class="
-                  p-3
-                  status-order
-                  bg-white
-                  border-bottom
-                  d-flex
-                  align-items-center
-                "
+                class="p-3 status-order bg-white border-bottom d-flex align-items-center"
               >
                 <p class="m-0">
                   <i class="feather-calendar text-primary"></i>

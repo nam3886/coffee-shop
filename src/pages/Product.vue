@@ -23,16 +23,7 @@
             class="col-lg-4 mb-3"
           >
             <div
-              class="
-                list-card
-                bg-white
-                h-100
-                rounded
-                overflow-hidden
-                position-relative
-                shadow-sm
-                grid-card
-              "
+              class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm grid-card"
             >
               <div class="list-card-image">
                 <div class="star position-absolute">

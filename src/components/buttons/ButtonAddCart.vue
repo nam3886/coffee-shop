@@ -42,6 +42,7 @@ export default {
         });
       } catch (error) {
         console.log([error]);
+        alert(error.response.data.message);
       } finally {
         emitter.emit(EV_OVERLAY_LOADING, false);
       }

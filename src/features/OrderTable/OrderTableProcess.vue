@@ -1,18 +1,7 @@
 <template>
   <div class="col-md-3 mb-3">
     <ul
-      class="
-        nav nav-tabsa
-        custom-tabsa
-        border-0
-        flex-column
-        bg-white
-        rounded
-        overflow-hidden
-        shadow-sm
-        p-2
-        c-t-order
-      "
+      class="nav nav-tabsa custom-tabsa border-0 flex-column bg-white rounded overflow-hidden shadow-sm p-2 c-t-order"
       role="tablist"
     >
       <li class="nav-item" role="presentation">

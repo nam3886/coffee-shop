@@ -6,14 +6,7 @@
     </div>
   </div>
   <div
-    class="
-      container
-      osahan-coming-soon
-      py-5
-      d-flex
-      justify-content-center
-      align-items-center
-    "
+    class="container osahan-coming-soon py-5 d-flex justify-content-center align-items-center"
   >
     <div class="osahan-text text-center">
       <div class="osahan-img px-5 pb-5">

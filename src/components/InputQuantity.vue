@@ -56,6 +56,7 @@ export default {
         });
         emitter.emit(EV_GET_CART);
       } catch (error) {
+        alert(error.response.data.message);
         console.log([error]);
       } finally {
         emitter.emit(EV_OVERLAY_LOADING, false);

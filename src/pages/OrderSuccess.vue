@@ -1,12 +1,6 @@
 <template>
   <div
-    class="
-      py-5
-      osahan-coming-soon
-      d-flex
-      justify-content-center
-      align-items-center
-    "
+    class="py-5 osahan-coming-soon d-flex justify-content-center align-items-center"
   >
     <div class="col-md-6">
       <div class="text-center pb-3">

@@ -111,12 +111,7 @@
                   <v-button
                     :loading="loading"
                     type="submit"
-                    class="
-                      btn btn-success btn-block btn-lg
-                      d-flex
-                      align-items-center
-                      justify-content-center
-                    "
+                    class="btn btn-success btn-block btn-lg d-flex align-items-center justify-content-center"
                     @click.prevent="handleSubmitCheckout"
                   >
                     Thanh toán {{ $store.getters.getCart.total_format }}

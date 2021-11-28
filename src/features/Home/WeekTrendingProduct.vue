@@ -11,15 +11,7 @@
         class="osahan-slider-item"
       >
         <div
-          class="
-            list-card
-            bg-white
-            h-100
-            rounded
-            overflow-hidden
-            position-relative
-            shadow-sm
-          "
+          class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"
         >
           <div class="list-card-image">
             <div class="star position-absolute">

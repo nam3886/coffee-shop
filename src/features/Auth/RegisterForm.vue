@@ -54,12 +54,7 @@
           <v-button
             :loading="loading"
             type="submit"
-            class="
-              btn btn-primary btn-lg btn-block
-              d-flex
-              align-items-center
-              justify-content-center
-            "
+            class="btn btn-primary btn-lg btn-block d-flex align-items-center justify-content-center"
           >
             Đăng kí
           </v-button>

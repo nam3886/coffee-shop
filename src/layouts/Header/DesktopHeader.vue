@@ -18,14 +18,7 @@
               >
                 <div>
                   <i
-                    class="
-                      feather-map-pin
-                      mr-2
-                      bg-light
-                      rounded-pill
-                      p-2
-                      icofont-size
-                    "
+                    class="feather-map-pin mr-2 bg-light rounded-pill p-2 icofont-size"
                   ></i>
                 </div>
                 <div>
@@ -73,13 +66,7 @@
                     :is-url="true"
                     :src="$store.getters.getProfile.avatar"
                     alt="#"
-                    class="
-                      img-fluid
-                      rounded-circle
-                      header-user
-                      mr-2
-                      header-user
-                    "
+                    class="img-fluid rounded-circle header-user mr-2 header-user"
                   />
                   {{ $store.getters.getProfile.name }}
                 </a>

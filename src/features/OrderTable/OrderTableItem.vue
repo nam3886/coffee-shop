@@ -11,14 +11,7 @@
               <div
                 v-for="table in listOrderTable"
                 :key="table.id"
-                class="
-                  p-3
-                  status-order
-                  bg-white
-                  border-bottom
-                  d-flex
-                  align-items-center
-                "
+                class="p-3 status-order bg-white border-bottom d-flex align-items-center"
               >
                 <p class="m-0">
                   <i class="feather-calendar text-primary"></i>

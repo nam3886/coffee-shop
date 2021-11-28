@@ -19,13 +19,7 @@
     <div class="input-group mt-3 rounded shadow-sm overflow-hidden">
       <div class="input-group-prepend">
         <button
-          class="
-            border-0
-            btn btn-outline-secondary
-            text-dark
-            bg-white
-            btn-block
-          "
+          class="border-0 btn btn-outline-secondary text-dark bg-white btn-block"
         >
           <i class="feather-search"></i>
         </button>
