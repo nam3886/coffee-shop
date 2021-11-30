@@ -8968,6 +8968,11 @@ vue-router@^4.0.0-0:
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.14"
 
+vue-select@^4.0.0-beta.1:
+  version "4.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/vue-select/-/vue-select-4.0.0-beta.1.tgz#70f0200d8322b179430fb9ad6ec749970fb946e3"
+  integrity sha512-lI3StIWbshBqvUHGZJds1BTpl2oUivtXFNK7tircBLHyAeXOPTaEyebITtODc7YBg4LkATvLvAqDAA9kzKovag==
+
 vue-slider-component@^4.0.0-beta.4:
   version "4.0.0-beta.4"
   resolved "https://registry.yarnpkg.com/vue-slider-component/-/vue-slider-component-4.0.0-beta.4.tgz#b72d7964f3c1e6368c3f1eece726a73066e0f567"

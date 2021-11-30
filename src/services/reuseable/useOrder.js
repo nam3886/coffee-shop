@@ -16,6 +16,10 @@ export default function () {
     response.value = res;
   }
 
+  async function calculateShippingFee(params) {
+    return await API.post("/location/calculate-fee", params);
+  }
+
   return {
     response,
     errors,
@@ -23,5 +27,6 @@ export default function () {
     list,
     getList,
     store,
+    calculateShippingFee,
   };
 }

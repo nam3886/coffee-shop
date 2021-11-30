@@ -8,6 +8,8 @@ import Alert from "@/components/Alert.vue";
 import Loading from "@/components/Loading.vue";
 import Image from "@/components/Image.vue";
 import ProductImage from "@/features/Home/ProductImage";
+import vSelect from "vue-select";
+import "vue-select/dist/vue-select.css";
 
 const emitter = mitt();
 const app = createApp(App);
@@ -20,5 +22,6 @@ app.component("VButton", Button);
 app.component("VAlert", Alert);
 app.component("VProductImg", ProductImage);
 app.component("VLoading", Loading);
+app.component("VSelect", vSelect);
 app.provide("emitter", emitter);
 app.mount("#app");

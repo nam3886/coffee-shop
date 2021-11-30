@@ -62,18 +62,14 @@
         <div id="customerNote"></div>
       </div>
       <div class="bg-white p-3 clearfix border-bottom">
-        <!-- <p class="mb-1">
+        <p class="mb-1">
           Tổng tiền <span class="float-right text-dark">$3140</span>
         </p>
         <p class="mb-1">
-          Phí dịch vụ
+          Phí vận chuyển
           <span class="float-right text-dark">$62.8</span>
         </p>
-
-        <p class="mb-1 text-success">
-          Tổng giảm giá<span class="float-right text-success">$1884</span>
-        </p>
-        <hr /> -->
+        <hr />
         <h6 class="font-weight-bold mb-0">
           Thực thu
           <span class="float-right">

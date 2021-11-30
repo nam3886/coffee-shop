@@ -23,6 +23,7 @@
 import { computed, toRefs } from "@vue/reactivity";
 import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/material.css";
+import { watch } from "@vue/runtime-core";
 
 export default {
   components: { VueSlider },
@@ -51,6 +52,9 @@ export default {
       get: () => ranger.value[1],
       set: (val) => updateRanger(val, 1),
     });
+
+    watch(min, (val) => (ranger.value = [val, ranger.value[1]]));
+    watch(max, (val) => (ranger.value = [ranger.value[0], val]));
 
     function updateRanger(val, index) {
       const newRanger = [...ranger.value];

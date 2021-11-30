@@ -6,14 +6,18 @@ const rules = {
   name: { required },
   phone: { required },
   payment_method: { required },
+  delivery_method: { required },
   note: {},
+  address_api: {},
 };
 
 const state = reactive({
   name: "",
   phone: "",
-  payment_method: "",
+  payment_method: "cash",
+  delivery_method: "shop",
   note: "",
+  address_api: {},
 });
 
 export default function () {

@@ -76,6 +76,7 @@
                       v-model="v$.payment_method.$model"
                       :value="method.id"
                       type="radio"
+                      name="payment_method"
                       class="custom-control-input"
                     />
                     <label
@@ -87,12 +88,45 @@
                     </label>
                   </div>
                 </form-group>
-                <div class="col-md-12 form-group mb-0">
+                <form-group v-model="v$.delivery_method" class="col-md-12">
+                  <label class="form-label font-weight-bold small">
+                    Phương thức nhận hàng
+                  </label>
+                  <div
+                    v-for="method in deliveryMethods"
+                    :key="method.id"
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      :id="method.id"
+                      v-model="v$.delivery_method.$model"
+                      :value="method.id"
+                      type="radio"
+                      name="delivery_method"
+                      class="custom-control-input"
+                    />
+                    <label
+                      type="checkbox"
+                      :for="method.id"
+                      class="custom-control-label small pt-1"
+                    >
+                      {{ method.name }}
+                    </label>
+                  </div>
+                </form-group>
+                <form-group
+                  v-show="v$.delivery_method.$model === 'ship'"
+                  v-model="v$.address_api"
+                  class="col-md-12"
+                >
+                  <input-address v-model="v$.address_api.$model" />
+                </form-group>
+                <!-- <div class="col-md-12 form-group mb-0">
                   <span class="small pt-1">
                     Vui lòng đến đúng hoặc trễ hơn không quá 10 phút so với thời
                     gian đặt bàn.
                   </span>
-                </div>
+                </div> -->
                 <teleport v-if="isVisible" to="#customerNote">
                   <form-group v-model="v$.note" class="mb-0 input-group">
                     <div class="input-group-prepend">
@@ -129,28 +163,34 @@
 
 <script>
 import { reactive, ref } from "@vue/reactivity";
-import { inject, onMounted } from "@vue/runtime-core";
+import { inject, onMounted, watchEffect } from "@vue/runtime-core";
 import { wait } from "@/helpers";
 import checkoutValidate from "@/validate/checkoutValidate";
 import { useRouter } from "vue-router";
 import useOrder from "@/services/reuseable/useOrder";
 import FormGroup from "@/components/FormGroup";
 import { EV_OVERLAY_TRANSPARENT, EV_GET_CART } from "@/constants";
+import InputAddress from "@/features/Cart/InputAddress.vue";
 
 export default {
-  components: { FormGroup },
+  components: { FormGroup, InputAddress },
 
   setup() {
     const router = useRouter();
     const isVisible = ref(false);
     const emitter = inject("emitter");
     const { state: checkout, v$ } = checkoutValidate();
+
     const paymentMethods = reactive([
-      { name: "Tại cửa hàng", id: "cash" },
+      { name: "Thanh toán khi nhận hàng", id: "cash" },
       { name: "Thẻ ngân hàng", id: "vnpay" },
-      { name: "Ví điện tử Mono", id: "momo" },
     ]);
-    const { response, errors, loading, store } = useOrder();
+    const deliveryMethods = reactive([
+      { name: "Tại cửa hàng", id: "shop" },
+      { name: "Giao hàng tận nhà", id: "ship" },
+    ]);
+    const { response, errors, loading, store, calculateShippingFee } =
+      useOrder();
 
     onMounted(() => wait().then((isVisible.value = true)));
 
@@ -185,8 +225,28 @@ export default {
       window.location.href = res.data.url;
     }
 
+    watchEffect(() => {
+      if (!checkout.address_api.district_id || !checkout.address_api.ward_id)
+        return;
+
+      handleCalculateShippingFee();
+    });
+
+    function handleCalculateShippingFee() {
+      if (checkout.delivery_method !== "ship") return;
+
+      // call api calculate shiping fee
+      calculateShippingFee({
+        district: checkout.address_api.district_id.id,
+        ward: checkout.address_api.ward_id.id,
+      }).then((res) => {
+        console.log(res);
+      });
+    }
+
     return {
       paymentMethods,
+      deliveryMethods,
       checkout,
       v$,
       handleSubmitCheckout,
