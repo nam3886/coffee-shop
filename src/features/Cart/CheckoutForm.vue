@@ -203,8 +203,14 @@ export default {
       { name: "Tại cửa hàng", id: "shop" },
       { name: "Giao hàng tận nhà", id: "ship" },
     ]);
-    const { response, errors, loading, store, calculateShippingFee } =
-      useOrder();
+    const {
+      response,
+      errors,
+      loading,
+      store,
+      calculateShippingFee,
+      clearUserSession,
+    } = useOrder();
 
     onMounted(() => wait().then((isVisible.value = true)));
 
@@ -239,13 +245,23 @@ export default {
       window.location.href = res.data.url;
     }
 
+    /**HANDLE SHIPPING */
     const shippingInfo = ref({});
 
     watchEffect(() => {
-      if (!checkout.address_api.district_id || !checkout.address_api.ward_id)
-        return;
+      if (checkout.delivery_method !== "ship") return;
+      if (!checkout.address_api.district || !checkout.address_api.ward) return;
 
       handleCalculateShippingFee();
+    });
+
+    watchEffect(() => {
+      if (checkout.delivery_method === "ship") return;
+
+      clearUserSession().then(async () => {
+        const { data: cart } = await getCart();
+        appStore.dispatch(SET_CART, cart.data);
+      });
     });
 
     const handleCalculateShippingFee = debounce(() => {
@@ -253,8 +269,8 @@ export default {
       emitter.emit(EV_OVERLAY_LOADING, true);
       // call api calculate shiping fee
       calculateShippingFee({
-        district: checkout.address_api.district_id.id,
-        ward: checkout.address_api.ward_id.id,
+        district: checkout.address_api.district.id,
+        ward: checkout.address_api.ward.id,
       })
         .then(async () => {
           const { data: cart } = await getCart();

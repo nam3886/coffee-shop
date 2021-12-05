@@ -49,14 +49,13 @@ export default {
     getDistrictList();
 
     const district = computed({
-      get: () => props.modelValue.district_id,
-      set: (district_id) =>
-        emit("update:modelValue", { ...props.modelValue, district_id }),
+      get: () => props.modelValue.district,
+      set: (district) =>
+        emit("update:modelValue", { ...props.modelValue, district }),
     });
     const ward = computed({
-      get: () => props.modelValue.ward_id,
-      set: (ward_id) =>
-        emit("update:modelValue", { ...props.modelValue, ward_id }),
+      get: () => props.modelValue.ward,
+      set: (ward) => emit("update:modelValue", { ...props.modelValue, ward }),
     });
     const address = computed({
       get: () => props.modelValue.address,

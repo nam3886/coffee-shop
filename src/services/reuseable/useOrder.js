@@ -20,6 +20,10 @@ export default function () {
     return await API.post("/location/calculate-fee", params);
   }
 
+  async function clearUserSession() {
+    return await API.get("/clear-user-session");
+  }
+
   return {
     response,
     errors,
@@ -28,5 +32,6 @@ export default function () {
     getList,
     store,
     calculateShippingFee,
+    clearUserSession,
   };
 }
