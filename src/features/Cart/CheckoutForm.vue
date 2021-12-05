@@ -223,6 +223,8 @@ export default {
       if (!errors.value) {
         checkoutMethods[checkout.payment_method] &&
           checkoutMethods[checkout.payment_method](response.value);
+      } else {
+        alert(errors.value);
       }
 
       emitter.emit(EV_OVERLAY_TRANSPARENT, false);
