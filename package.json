@@ -55,13 +55,7 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "vue/no-multiple-template-root": 0,
-      "prettier/prettier": [
-        "error",
-        {
-          "endOfLine": "auto"
-        }
-      ]
+      "vue/no-multiple-template-root": 0
     }
   },
   "browserslist": [
