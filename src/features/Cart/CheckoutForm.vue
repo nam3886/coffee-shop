@@ -252,7 +252,8 @@ export default {
       if (checkout.delivery_method !== "ship") return;
       if (!checkout.address_api.district || !checkout.address_api.ward) return;
 
-      handleCalculateShippingFee();
+      typeof handleCalculateShippingFee === "function" &&
+        handleCalculateShippingFee();
     });
 
     watchEffect(() => {
