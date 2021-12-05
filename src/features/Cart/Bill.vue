@@ -47,7 +47,7 @@
         </div>
       </div>
       <div class="bg-white p-3 py-3 border-bottom clearfix">
-        <div class="input-group-sm mb-2 input-group">
+        <!-- <div class="input-group-sm mb-2 input-group">
           <input
             placeholder="Nhập mã giảm giá"
             type="text"
@@ -58,22 +58,27 @@
               <i class="feather-percent"></i> Xác nhận
             </button>
           </div>
-        </div>
+        </div> -->
         <div id="customerNote"></div>
       </div>
       <div class="bg-white p-3 clearfix border-bottom">
-        <p class="mb-1">
-          Tổng tiền <span class="float-right text-dark">$3140</span>
+        <p v-if="$store.getters.getCart.delivery_fee" class="mb-1">
+          Tổng tiền
+          <span class="float-right text-dark">
+            {{ $store.getters.getCart.total_format }}
+          </span>
         </p>
-        <p class="mb-1">
+        <p v-if="$store.getters.getCart.delivery_fee" class="mb-1">
           Phí vận chuyển
-          <span class="float-right text-dark">$62.8</span>
+          <span class="float-right text-dark">
+            {{ $store.getters.getCart.delivery_fee_format }}
+          </span>
         </p>
-        <hr />
+        <hr v-if="$store.getters.getCart.delivery_fee" />
         <h6 class="font-weight-bold mb-0">
           Thực thu
           <span class="float-right">
-            {{ $store.getters.getCart.total_format }}
+            {{ $store.getters.getCart.grand_total_format }}
           </span>
         </h6>
       </div>

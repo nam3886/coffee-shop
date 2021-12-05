@@ -62,6 +62,13 @@
                     class="form-control"
                   />
                 </form-group>
+                <form-group
+                  v-show="v$.delivery_method.$model === 'ship'"
+                  v-model="v$.address_api"
+                  class="col-md-12"
+                >
+                  <input-address v-model="v$.address_api.$model" />
+                </form-group>
                 <form-group v-model="v$.payment_method" class="col-md-12">
                   <label class="form-label font-weight-bold small">
                     Phương thức thanh toán
@@ -114,19 +121,17 @@
                     </label>
                   </div>
                 </form-group>
-                <form-group
-                  v-show="v$.delivery_method.$model === 'ship'"
-                  v-model="v$.address_api"
-                  class="col-md-12"
+
+                <div
+                  v-if="shippingInfo.expect_time"
+                  class="col-md-12 form-group mb-0"
                 >
-                  <input-address v-model="v$.address_api.$model" />
-                </form-group>
-                <!-- <div class="col-md-12 form-group mb-0">
                   <span class="small pt-1">
-                    Vui lòng đến đúng hoặc trễ hơn không quá 10 phút so với thời
-                    gian đặt bàn.
+                    Thời gian dự kiến giao hàng
+                    <b>{{ shippingInfo.expect_time_format }}</b>
+                    ({{ shippingInfo.expect_time }})
                   </span>
-                </div> -->
+                </div>
                 <teleport v-if="isVisible" to="#customerNote">
                   <form-group v-model="v$.note" class="mb-0 input-group">
                     <div class="input-group-prepend">
@@ -148,7 +153,7 @@
                     class="btn btn-success btn-block btn-lg d-flex align-items-center justify-content-center"
                     @click.prevent="handleSubmitCheckout"
                   >
-                    Thanh toán {{ $store.getters.getCart.total_format }}
+                    Thanh toán {{ $store.getters.getCart.grand_total_format }}
                     <i class="feather-arrow-right"></i>
                   </v-button>
                 </teleport>
@@ -169,8 +174,16 @@ import checkoutValidate from "@/validate/checkoutValidate";
 import { useRouter } from "vue-router";
 import useOrder from "@/services/reuseable/useOrder";
 import FormGroup from "@/components/FormGroup";
-import { EV_OVERLAY_TRANSPARENT, EV_GET_CART } from "@/constants";
+import {
+  EV_OVERLAY_TRANSPARENT,
+  EV_GET_CART,
+  EV_OVERLAY_LOADING,
+} from "@/constants";
 import InputAddress from "@/features/Cart/InputAddress.vue";
+import { useStore } from "vuex";
+import { SET_CART } from "@/store/actionTypes";
+import { getCart } from "@/services/reuseable/useCart";
+import { debounce } from "lodash";
 
 export default {
   components: { FormGroup, InputAddress },
@@ -180,6 +193,7 @@ export default {
     const isVisible = ref(false);
     const emitter = inject("emitter");
     const { state: checkout, v$ } = checkoutValidate();
+    const appStore = useStore();
 
     const paymentMethods = reactive([
       { name: "Thanh toán khi nhận hàng", id: "cash" },
@@ -225,6 +239,8 @@ export default {
       window.location.href = res.data.url;
     }
 
+    const shippingInfo = ref({});
+
     watchEffect(() => {
       if (!checkout.address_api.district_id || !checkout.address_api.ward_id)
         return;
@@ -232,17 +248,21 @@ export default {
       handleCalculateShippingFee();
     });
 
-    function handleCalculateShippingFee() {
+    const handleCalculateShippingFee = debounce(() => {
       if (checkout.delivery_method !== "ship") return;
-
+      emitter.emit(EV_OVERLAY_LOADING, true);
       // call api calculate shiping fee
       calculateShippingFee({
         district: checkout.address_api.district_id.id,
         ward: checkout.address_api.ward_id.id,
-      }).then((res) => {
-        console.log(res);
-      });
-    }
+      })
+        .then(async () => {
+          const { data: cart } = await getCart();
+          appStore.dispatch(SET_CART, cart.data);
+        })
+        .catch((e) => console.log({ e }))
+        .finally(() => emitter.emit(EV_OVERLAY_LOADING, false));
+    }, 1000);
 
     return {
       paymentMethods,
@@ -253,6 +273,7 @@ export default {
       isVisible,
       loading,
       errors,
+      shippingInfo,
     };
   },
 };

@@ -67,6 +67,10 @@ export default {
     watch(district, (val) => {
       generateFullAddress();
       val && getWardList(val.id);
+      if (!val) {
+        ward.value = null;
+        wardList.value = [];
+      }
     });
     watch(ward, generateFullAddress);
     watch(address, generateFullAddress);
