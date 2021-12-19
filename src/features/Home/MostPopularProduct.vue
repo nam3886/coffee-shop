@@ -34,6 +34,7 @@
                 <v-product-img
                   :product="product"
                   class="img-fluid item-img w-100"
+                  style="height: 175px"
                 />
               </a>
             </div>
@@ -57,10 +58,10 @@
                 </ul>
                 <p></p>
               </div>
-              <div class="list-card-badge">
+              <!-- <div class="list-card-badge">
                 <span class="badge badge-danger">Giảm giá</span>&nbsp;
                 <small>65% </small>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -80,7 +81,7 @@ export default {
   setup() {
     const { listProduct, loading, error, getListProduct } = useProduct();
 
-    getListProduct({ "filter[feature]": "popular", paginate: 6 });
+    getListProduct({ "filter[feature]": "popular", paginate: 8 });
 
     return { listProduct, loading, error };
   },

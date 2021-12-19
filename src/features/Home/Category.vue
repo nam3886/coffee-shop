@@ -17,6 +17,7 @@
             :alt="category.name"
             :src="category.image"
             class="img-fluid mb-2"
+            style="height: 38px"
           />
           <p class="m-0 small">{{ category.name }}</p>
         </router-link>

@@ -33,6 +33,7 @@
               <v-product-img
                 :product="product"
                 class="img-fluid item-img w-100"
+                style="height: 200px"
               />
             </a>
           </div>

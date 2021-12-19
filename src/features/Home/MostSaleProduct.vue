@@ -55,10 +55,10 @@
                   >
                 </p>
               </div>
-              <div class="list-card-badge">
+              <!-- <div class="list-card-badge">
                 <span class="badge badge-danger">Giảm giá</span>&nbsp;
                 <small>65% </small>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

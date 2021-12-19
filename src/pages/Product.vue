@@ -45,6 +45,7 @@
                   <v-product-img
                     :product="product"
                     class="img-fluid item-img w-100"
+                    style="height: 240px"
                   />
                 </a>
               </div>
@@ -64,10 +65,10 @@
                     </span>
                   </p>
                 </div>
-                <div class="list-card-badge">
+                <!-- <div class="list-card-badge">
                   <span class="badge badge-danger">Giảm giá</span>&nbsp;
                   <small>65%</small>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

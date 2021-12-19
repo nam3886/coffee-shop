@@ -74,13 +74,13 @@
                   class="dropdown-menu dropdown-menu-right"
                   aria-labelledby="dropdownMenuButton"
                 >
-                  <a class="dropdown-item" href="profile.html">My account</a>
+                  <!-- <a class="dropdown-item" href="profile.html">My account</a>
                   <a class="dropdown-item" href="faq.html">Delivery support</a>
                   <a class="dropdown-item" href="contact-us.html">Contant us</a>
                   <a class="dropdown-item" href="terms.html">Term of use</a>
                   <a class="dropdown-item" href="privacy.html"
                     >Privacy policy</a
-                  >
+                  > -->
                   <button-logout class="w-100 text-left">
                     <a class="dropdown-item" href="#" @click.prevent="">
                       Đăng xuất
