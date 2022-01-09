@@ -72,11 +72,11 @@
               </p>
             </div>
             <div class="text-muted m-0 ml-auto mr-3 small">
-              <template v-if="order.cod_amount">
+              <template v-if="order.delivery_fee">
                 Phí vận chuyển<br />
                 <span class="text-dark font-weight-bold">
-                  {{ order.cod_amount_format }}
-                </span>
+                  {{ order.delivery_fee_format }} </span
+                ><br />
               </template>
               Tổng tiền<br />
               <span class="text-dark font-weight-bold">

@@ -77,10 +77,22 @@
                   {{ itemOrder.product.name }} x {{ itemOrder.quantity }}
                 </p>
               </div>
-              <div class="text-muted m-0 ml-auto mr-3 small">
+              <!-- <div class="text-muted m-0 ml-auto mr-3 small">
                 Tổng tiền<br />
                 <span class="text-dark font-weight-bold">
                   {{ item.order.total_format }}
+                </span>
+              </div> -->
+              <div class="text-muted m-0 ml-auto mr-3 small">
+                <template v-if="item.order.delivery_fee">
+                  Phí vận chuyển<br />
+                  <span class="text-dark font-weight-bold">
+                    {{ item.order.delivery_fee_format }} </span
+                  ><br />
+                </template>
+                Tổng tiền<br />
+                <span class="text-dark font-weight-bold">
+                  {{ item.order.grand_total_format }}
                 </span>
               </div>
             </div>
